@@ -26,7 +26,7 @@ public class MainPage implements ActionListener{
                 JOptionPane.showMessageDialog(container, "Invalid Input!");
         }
     }
-    
+
     JFrame container;
     JButton enter;
     JTextField userInput, passwordInput;
@@ -39,6 +39,16 @@ public class MainPage implements ActionListener{
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
+
+        ImageIcon logo = new ImageIcon("APU_LOGO.jpg");//Image of APU Logo
+        container.setIconImage(logo.getImage());
+
+        ImageIcon image1 = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\APU\\Sem 5\\JP\\VS Code\\Assignment\\Images\\APU_LOGO.jpg");
+        JLabel imagePlaceholder = new JLabel();
+        imagePlaceholder.setIcon(image1);
+        imagePlaceholder.setBounds((container.getWidth() - 250)/2, 50, 250, 235);
+
+        
 
         userText = new JLabel("Username");//Username word
         userText.setBounds(((container.getWidth() - 350)/2)+5, 295, 350, 30);
@@ -53,11 +63,6 @@ public class MainPage implements ActionListener{
 
         passwordInput = new JTextField();//Type password here
         passwordInput.setBounds((container.getWidth() - 350)/2, 380, 350, 30);
-
-        ImageIcon image1 = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\APU\\Sem 5\\JP\\VS Code\\Assignment\\Images\\APU_LOGO.jpg");//Location of the image, remember to change location if not the same
-        JLabel imagePlaceholder = new JLabel();
-        imagePlaceholder.setIcon(image1);
-        imagePlaceholder.setBounds((container.getWidth() - 250)/2, 50, 250, 235);
 
         enter = new JButton("Enter");//Enter Button
         enter.setBounds((container.getWidth() - 250)/2, 430, 250, 60);
