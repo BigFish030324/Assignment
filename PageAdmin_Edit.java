@@ -30,7 +30,7 @@ public class PageAdmin_Edit implements ActionListener{
         container.setLayout(null);
 
         registerText = new JLabel("Edit");//register word
-        registerText.setBounds((container.getWidth() - 140)/2, 60, 140, 50);
+        registerText.setBounds((container.getWidth() - 110)/2, 60, 110, 50);
         registerText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         userText = new JLabel("Username");//Username word

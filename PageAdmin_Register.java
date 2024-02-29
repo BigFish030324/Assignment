@@ -10,8 +10,20 @@ import javax.swing.JTextField;
 public class PageAdmin_Register implements ActionListener{
     public void actionPerformed(ActionEvent e){
         try{
-            // backend part
-        } catch(Exception f){
+            if(e.getSource() == ok){
+                int password = 1234;//Need backend to change the method for registering new user
+                String input1 = userInput.getText();
+                int input2 = Integer.parseInt(passwordInput.getText());
+                if(input1.equals("Admin") && input2 == password){
+                    container.setVisible(false);
+                    RegisterSuccess.container.setVisible(true);
+                    // PageAdmin.container.setVisible(true);
+                } else {
+                    throw new Exception();
+                }
+            }
+        } 
+        catch(Exception f){
                 JOptionPane.showMessageDialog(container, "Invalid Input!");
         }
     }
