@@ -1,6 +1,8 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,8 +19,8 @@ public class PageAdmin_Register implements ActionListener{
                 int input2 = Integer.parseInt(passwordInput.getText());
                 if(input1.equals("Admin") && input2 == password){
                     container.setVisible(false);
+                    PageAdmin.container.setVisible(true);
                     RegisterSuccess.container.setVisible(true);
-                    // PageAdmin.container.setVisible(true);
                 } else {
                     throw new Exception();
                 }
@@ -61,15 +63,23 @@ public class PageAdmin_Register implements ActionListener{
         passwordInput = new JTextField();//Type password here
         passwordInput.setBounds((container.getWidth() - 350)/2, 225, 350, 30);
 
-        JRadioButton userRadio = new JRadioButton();
+        JRadioButton userRadio = new JRadioButton("User");//Choose button for user
+        userRadio.setBounds((container.getWidth()/2)-170, 260, 90, 30);
 
-        JRadioButton technicianRadio = new JRadioButton();
+        JRadioButton technicianRadio = new JRadioButton("Technician");//Choose button for techiician
+        technicianRadio.setBounds((container.getWidth()/2)-50, 260, 90, 30);
 
-        JRadioButton managerRadio = new JRadioButton();
+        JRadioButton managerRadio = new JRadioButton("Manager");//Choose button for manager (if not needed, can delete)
+        managerRadio.setBounds((container.getWidth()/2)+90, 260, 90, 30);
 
         ok = new JButton("OK");//OK Button
         ok.setBounds(container.getWidth()-150, 300, 100, 30);
         ok.addActionListener(this);
+
+        ButtonGroup registerGroup = new ButtonGroup();//To limit 1 role 1 time
+        registerGroup.add(userRadio);
+        registerGroup.add(technicianRadio);
+        registerGroup.add(managerRadio);
 
         container.add(ok);
         container.add(registerText);
@@ -77,6 +87,9 @@ public class PageAdmin_Register implements ActionListener{
         container.add(passwordText);
         container.add(userInput);
         container.add(passwordInput);
+        container.add(userRadio);
+        container.add(technicianRadio);
+        container.add(managerRadio);
         container.setVisible(true);
     }
 }
