@@ -1,13 +1,18 @@
 public class ARunCodeHere {
     
-    static MainPage x;
-    static PageAdmin y;
-    static PageAdmin_Register z;
-    // static Customer login = null;
+    static MainPage a;
+    static PageAdmin b;
+    static PageAdmin_Register c;
+    static PageAdmin_Edit d;
     public static void main(String[] args) {
-        // DataBase.read();
-        x = new MainPage();
-        y = new PageAdmin();
-        z = new PageAdmin_Register();
+        a = new MainPage();
+        b = new PageAdmin();
+        c = new PageAdmin_Register();
+        d = new PageAdmin_Edit();
+
+        a.container.setVisible(true);
+        b.container.setVisible(false);
+        c.container.setVisible(false);
+        d.container.setVisible(false);
     }    
 }

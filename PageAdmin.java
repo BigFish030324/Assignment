@@ -4,16 +4,33 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 public class PageAdmin implements ActionListener {
     public void actionPerformed(ActionEvent e){
         try{
             if(e.getSource() == register){
                 container.setVisible(false);
-                PageAdmin_Register pageAdminRegister = new PageAdmin_Register();
-                pageAdminRegister.container.setVisible(true);
+                PageAdmin_Register PageAdminRegister = new PageAdmin_Register();
+                PageAdmin_Register.container.setVisible(true);
+            } else if(e.getSource() == edit){
+                container.setVisible(false);
+                PageAdmin_Edit PageAdminEdit = new PageAdmin_Edit();
+                PageAdmin_Edit.container.setVisible(true);
+            // } else if(e.getSource() == appointment){
+            //     container.setVisible(false);
+            //     PageAdmin_Appointment adminAppointment = new PageAdmin_Appointment();
+            //     PageAdmin_Appointment.container.setVisible(true);
+            // } else if(e.getSource() == feedback){
+            //     container.setVisible(false);
+            //     PageAdmin_Feedback adminFeedback = new PageAdmin_Feedback();
+            //     PageAdmin_Feedback.container.setVisible(true);
+            // } else if(e.getSource() == payment){
+            //     container.setVisible(false);
+            //     PageAdmin_Payment adminPayment = new PageAdmin_Payment();
+            //     PageAdmin_Payment.container.setVisible(true);
+            }
+            else{
+                throw new Exception();
             }
         }
         catch(Exception f){
@@ -55,12 +72,6 @@ public class PageAdmin implements ActionListener {
         adminText = new JLabel("Admin");//Admin text 
         adminText.setBounds((container.getWidth() - 110)/2, 100, 110, 50);
         adminText.setFont(new Font("Times New Roman", Font.BOLD, 36));
-
-        // ImageIcon image1 = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\APU\\Sem 5\\JP\\VS Code\\Assignment\\Images\\APU_LOGO.jpg");//Location of the image, remember to change location if not the same
-        // JLabel imagePlaceholder = new JLabel();
-        // imagePlaceholder.setIcon(image1);
-        // imagePlaceholder.setBounds((container.getWidth() - 250)/2, 50, 250, 235);
-
         
         container.add(register);
         container.add(edit);
@@ -68,7 +79,6 @@ public class PageAdmin implements ActionListener {
         container.add(feedback);
         container.add(payment);
         container.add(adminText);
-        // container.add(imagePlaceholder);
         container.setVisible(true);
     }
 }
