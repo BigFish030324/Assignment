@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JRadioButton;
 
 public class PageAdmin_Register implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -32,6 +33,7 @@ public class PageAdmin_Register implements ActionListener{
     JButton ok;
     JTextField userInput, passwordInput;
     JLabel registerText, userText, passwordText;
+    JRadioButton userRadio, technicianRadio, managerRadio;
 
     public PageAdmin_Register(){
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
@@ -42,22 +44,28 @@ public class PageAdmin_Register implements ActionListener{
         container.setLayout(null);
 
         registerText = new JLabel("Registration");//register word
-        registerText.setBounds((container.getWidth() - 140)/2, 60, 140, 50);
+        registerText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
         registerText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         userText = new JLabel("Username");//Username word
-        userText.setBounds(((container.getWidth() - 350)/2)+5, 135, 350, 30);
+        userText.setBounds(((container.getWidth() - 350)/2)+5, 125, 350, 30);
         userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         userInput = new JTextField();//Type username here
-        userInput.setBounds((container.getWidth() - 350)/2, 165, 350, 30);
+        userInput.setBounds((container.getWidth() - 350)/2, 155, 350, 30);
 
         passwordText = new JLabel("Password");//Password word
-        passwordText.setBounds(((container.getWidth() - 350)/2)+5, 205, 350, 30);
+        passwordText.setBounds(((container.getWidth() - 350)/2)+5, 195, 350, 30);
         passwordText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         passwordInput = new JTextField();//Type password here
-        passwordInput.setBounds((container.getWidth() - 350)/2, 235, 350, 30);
+        passwordInput.setBounds((container.getWidth() - 350)/2, 225, 350, 30);
+
+        JRadioButton userRadio = new JRadioButton();
+
+        JRadioButton technicianRadio = new JRadioButton();
+
+        JRadioButton managerRadio = new JRadioButton();
 
         ok = new JButton("OK");//OK Button
         ok.setBounds(container.getWidth()-150, 300, 100, 30);

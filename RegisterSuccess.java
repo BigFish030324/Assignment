@@ -18,18 +18,18 @@ public class RegisterSuccess implements ActionListener{
 
     public RegisterSuccess(){
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(300,200);//GUI Size
+        container.setSize(350,160);//GUI Size
         container.setLocationRelativeTo(null);//GUI Location
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-        successText = new JLabel("Successful!");//register word
-        successText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
-        successText.setFont(new Font("Times New Roman", Font.BOLD, 24));
+        successText = new JLabel("Successfully Added!");//register word
+        successText.setBounds((container.getWidth()/2)-90, 20, 200, 50);
+        successText.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
         ok = new JButton("OK");//OK Button
-        ok.setBounds(container.getWidth()-100, 80, 100, 30);
+        ok.setBounds((container.getWidth()/2)+45, 80, 100, 30);
         ok.addActionListener(this);
 
         container.add(ok);
