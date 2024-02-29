@@ -14,7 +14,9 @@ import javax.swing.JTextField;
 public class PageAdmin implements ActionListener {
     public void actionPerformed(ActionEvent e){
         try{
-            //Backend Part
+            if(e.getSource() == register){
+                // Show the registration page
+                PageAdmin_Register.container.setVisible(true);
         }
         catch(Exception f){
             // JOptionPane.showMessageDialog(enter, "Invalid Input! ");
@@ -52,10 +54,9 @@ public class PageAdmin implements ActionListener {
         payment.setBounds((container.getWidth() - 500)/2, 450, 500, 50);
         payment.addActionListener(this);
 
-        adminText = new JLabel("Admin");//Admin text
-        int x = (container.getWidth() - 140)/2; 
-        adminText.setBounds(x, 100, 140, 50);
-        adminText.setFont(new Font("Times New Roman", Font.BOLD, 48));
+        adminText = new JLabel("Admin");//Admin text 
+        adminText.setBounds((container.getWidth() - 110)/2, 100, 110, 50);
+        adminText.setFont(new Font("Times New Roman", Font.BOLD, 36));
 
         // ImageIcon image1 = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\APU\\Sem 5\\JP\\VS Code\\Assignment\\Images\\APU_LOGO.jpg");//Location of the image, remember to change location if not the same
         // JLabel imagePlaceholder = new JLabel();
