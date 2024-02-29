@@ -40,10 +40,7 @@ public class MainPage implements ActionListener{
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-        ImageIcon logo = new ImageIcon("APU_LOGO.jpg");//Image of APU Logo
-        container.setIconImage(logo.getImage());
-
-        ImageIcon image1 = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\APU\\Sem 5\\JP\\VS Code\\Assignment\\Images\\APU_LOGO.jpg");
+        ImageIcon image1 = new ImageIcon("C:\\Users\\Lenovo\\Documents\\GitHub\\Assignment\\Images\\APU_LOGO.jpg");
         JLabel imagePlaceholder = new JLabel();
         imagePlaceholder.setIcon(image1);
         imagePlaceholder.setBounds((container.getWidth() - 250)/2, 50, 250, 235);
