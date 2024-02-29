@@ -1,10 +1,6 @@
-// import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-// import java.util.concurrent.Flow;
-
-// import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,8 +11,10 @@ public class PageAdmin implements ActionListener {
     public void actionPerformed(ActionEvent e){
         try{
             if(e.getSource() == register){
-                // Show the registration page
-                PageAdmin_Register.container.setVisible(true);
+                container.setVisible(false);
+                PageAdmin_Register pageAdminRegister = new PageAdmin_Register();
+                pageAdminRegister.container.setVisible(true);
+            }
         }
         catch(Exception f){
             // JOptionPane.showMessageDialog(enter, "Invalid Input! ");
