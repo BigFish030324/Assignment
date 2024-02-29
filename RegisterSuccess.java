@@ -24,7 +24,7 @@ public class RegisterSuccess implements ActionListener{
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-        successText = new JLabel("Successfully Added!");//register word
+        successText = new JLabel("Successfully Added!");//success word
         successText.setBounds((container.getWidth()/2)-90, 20, 200, 50);
         successText.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
