@@ -47,7 +47,7 @@ public class MainPage implements ActionListener{
         APUCircle.setBackground(new Color(255, 255, 255, 0));
 
         // ImageIcon image1 = new ImageIcon("E:\\User\\Documents\\GitHub\\Assignment\\Images\\APU_LOGO.jpg");
-        ImageIcon image1 = new ImageIcon("C:\\Users\\Lenovo\\Documents\\GitHub\\Assignment\\Images\\APU_LOGO.jpg");
+        ImageIcon image1 = new ImageIcon("..\\Assignment\\Images\\APU_LOGO.jpg");
         Image setSize1 = image1.getImage();//Code for APU Logo
         setSize1 = setSize1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         image1 = new ImageIcon(setSize1);
@@ -55,7 +55,7 @@ public class MainPage implements ActionListener{
         ImageAPU.setIcon(image1);
         ImageAPU.setBounds(60, 45, 80, 80);
 
-        ImageIcon image2 = new ImageIcon("C:\\Users\\Lenovo\\Documents\\GitHub\\Assignment\\Images\\Hostel_LOGO.jpeg");
+        ImageIcon image2 = new ImageIcon("..\\Assignment\\Images\\Hostel_LOGO.jpeg");
         Image setSize2 = image2.getImage();
         setSize2 = setSize2.getScaledInstance(container.getWidth(), container.getHeight(), Image.SCALE_SMOOTH);
         image2 = new ImageIcon(setSize2);
