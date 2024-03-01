@@ -13,28 +13,25 @@ public class PageAdmin_Register implements ActionListener{
     public void actionPerformed(ActionEvent e){
         try{
             if(e.getSource() == ok){
-                int password = 1234;//Need backend to change the method for registering new user
-                String input1 = userInput.getText();
-                int input2 = Integer.parseInt(passwordInput.getText());
-                if(input1.equals("Admin") && input2 == password){//Remember to add .getsource for user role
-                    container.setVisible(false);
-                    PageAdmin.container.setVisible(true);
-                    RegisterSuccess.container.setVisible(true);
-                } else {
-                    throw new Exception();
-                }
+                
+                Admin.registerUser();
+                container.setVisible(false);
+                PageAdmin.container.setVisible(true);
+                RegisterSuccess.container.setVisible(true);
+
             }
         } 
         catch(Exception f){
-                JOptionPane.showMessageDialog(container, "Invalid Input!");
+            JOptionPane.showMessageDialog(container, "Invalid Input!");
         }
     }
     
     static JFrame container;
     JButton ok;
-    JTextField userInput, passwordInput;
+    static JTextField userInput;
+    static JTextField passwordInput;
     JLabel registerText, userText, passwordText;
-    JRadioButton userRadio, technicianRadio, managerRadio;
+    static JRadioButton customerRadio, technicianRadio, adminRadio;
 
     public PageAdmin_Register(){
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
@@ -62,23 +59,23 @@ public class PageAdmin_Register implements ActionListener{
         passwordInput = new JTextField();//Type password here
         passwordInput.setBounds((container.getWidth() - 350)/2, 225, 350, 30);
 
-        userRadio = new JRadioButton("User");//Choose button for user
-        userRadio.setBounds((container.getWidth()/2)-170, 260, 90, 30);
+        customerRadio = new JRadioButton("User");//Choose button for user
+        customerRadio.setBounds((container.getWidth()/2)-170, 260, 90, 30);
 
-        technicianRadio = new JRadioButton("Technician");//Choose button for techiician
+        technicianRadio = new JRadioButton("Technician");//Choose button for technician
         technicianRadio.setBounds((container.getWidth()/2)-50, 260, 90, 30);
 
-        managerRadio = new JRadioButton("Manager");//Choose button for manager (if not needed, can delete)
-        managerRadio.setBounds((container.getWidth()/2)+90, 260, 90, 30);
+        adminRadio = new JRadioButton("Admin");//Choose button for manager (if not needed, can delete)
+        adminRadio.setBounds((container.getWidth()/2)+90, 260, 90, 30);
 
         ok = new JButton("OK");//OK Button
         ok.setBounds(container.getWidth()-150, 300, 100, 30);
         ok.addActionListener(this);
 
         ButtonGroup registerGroup = new ButtonGroup();//To limit 1 role 1 time
-        registerGroup.add(userRadio);
+        registerGroup.add(customerRadio);
         registerGroup.add(technicianRadio);
-        registerGroup.add(managerRadio);
+        registerGroup.add(adminRadio);
 
         container.add(ok);
         container.add(registerText);
@@ -86,9 +83,9 @@ public class PageAdmin_Register implements ActionListener{
         container.add(passwordText);
         container.add(userInput);
         container.add(passwordInput);
-        container.add(userRadio);
+        container.add(customerRadio);
         container.add(technicianRadio);
-        container.add(managerRadio);
+        container.add(adminRadio);
         container.setVisible(true);
     }
 }

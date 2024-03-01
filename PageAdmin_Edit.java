@@ -32,9 +32,9 @@ public class PageAdmin_Edit implements ActionListener{
 
     static JFrame container;
     JButton ok, dlt;
-    JTextField userInput, passwordInput, newuserInput, newpasswordInput;
-    JLabel editText, userText, passwordText, neweditText, newuserText, newpasswordText;
-    JRadioButton userRadio, technicianRadio, managerRadio, newuserRadio, newtechnicianRadio, newmanagerRadio;
+    JTextField userInput, passwordInput, newUserInput, newPasswordInput;
+    JLabel editText, userText, passwordText, newEditText, newUserText, newPasswordText;
+    JRadioButton userRadio, technicianRadio, managerRadio, newUserRadio, newTechnicianRadio, newManagerRadio;
     drawline line;
 
     public PageAdmin_Edit(){
@@ -92,28 +92,28 @@ public class PageAdmin_Edit implements ActionListener{
 
 // This is the part of new username and password will be type in
 
-        newuserText = new JLabel("Username");//Username word
-        newuserText.setBounds(430, 125, 350, 30);
-        newuserText.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        newUserText = new JLabel("Username");//Username word
+        newUserText.setBounds(430, 125, 350, 30);
+        newUserText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        newuserInput = new JTextField();//Type username here
-        newuserInput.setBounds(425, 155, 300, 30);
+        newUserInput = new JTextField();//Type username here
+        newUserInput.setBounds(425, 155, 300, 30);
 
-        newpasswordText = new JLabel("Password");//Password word
-        newpasswordText.setBounds(430, 195, 350, 30);
-        newpasswordText.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        newPasswordText = new JLabel("Password");//Password word
+        newPasswordText.setBounds(430, 195, 350, 30);
+        newPasswordText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        newpasswordInput = new JTextField();//Type password here
-        newpasswordInput.setBounds(425, 225, 300, 30);
+        newPasswordInput = new JTextField();//Type password here
+        newPasswordInput.setBounds(425, 225, 300, 30);
 
-        newuserRadio = new JRadioButton("User");//Choose button for user
-        newuserRadio.setBounds(430, 260, 80, 30);
+        newUserRadio = new JRadioButton("User");//Choose button for user
+        newUserRadio.setBounds(430, 260, 80, 30);
 
-        newtechnicianRadio = new JRadioButton("Technician");//Choose button for techiician
-        newtechnicianRadio.setBounds(515, 260, 90, 30);
+        newTechnicianRadio = new JRadioButton("Technician");//Choose button for techiician
+        newTechnicianRadio.setBounds(515, 260, 90, 30);
 
-        newmanagerRadio = new JRadioButton("Manager");//Choose button for manager (if not needed, can delete)
-        newmanagerRadio.setBounds(630, 260, 80, 30);
+        newManagerRadio = new JRadioButton("Manager");//Choose button for manager (if not needed, can delete)
+        newManagerRadio.setBounds(630, 260, 80, 30);
         
         container.add(ok);
         container.add(dlt);
@@ -130,13 +130,13 @@ public class PageAdmin_Edit implements ActionListener{
         container.add(managerRadio);
         
         // Part of new username and password:
-        container.add(newuserText);
-        container.add(newpasswordText);
-        container.add(newuserInput);
-        container.add(newpasswordInput);
-        container.add(newuserRadio);
-        container.add(newtechnicianRadio);
-        container.add(newmanagerRadio);
+        container.add(newUserText);
+        container.add(newPasswordText);
+        container.add(newUserInput);
+        container.add(newPasswordInput);
+        container.add(newUserRadio);
+        container.add(newTechnicianRadio);
+        container.add(newManagerRadio);
         container.setVisible(true);
     }
 }
