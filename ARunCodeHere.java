@@ -19,5 +19,6 @@ public class ARunCodeHere {
         PageAdmin_Register.container.setVisible(false);
         PageAdmin_Edit.container.setVisible(false);
         RegisterSuccess.container.setVisible(false);
+        EditConfirmation.container.setVisible(false);
     }    
 }
