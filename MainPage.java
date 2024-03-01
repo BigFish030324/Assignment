@@ -1,4 +1,7 @@
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -6,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class MainPage implements ActionListener{
@@ -33,6 +37,7 @@ public class MainPage implements ActionListener{
     JButton enter;
     JTextField userInput, passwordInput;
     JLabel userText, passwordText;
+    JPanel backgroundBox;
 
     public MainPage(){
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
@@ -41,6 +46,9 @@ public class MainPage implements ActionListener{
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
+
+        backgroundBox = new box();
+        backgroundBox.setBounds(0, 0, 638, 290);
 
         ImageIcon image1 = new ImageIcon("C:\\Users\\Lenovo\\Documents\\GitHub\\Assignment\\Images\\APU_LOGO.jpg");
         JLabel imagePlaceholder = new JLabel();
@@ -72,6 +80,16 @@ public class MainPage implements ActionListener{
         container.add(userInput);
         container.add(passwordInput);
         container.add(imagePlaceholder);
+        container.add(backgroundBox);
         container.setVisible(true);
+    }
+}
+
+class box extends JPanel {
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.BLACK);
+        g2d.drawRect(10, 10, 618, 20);
     }
 }
