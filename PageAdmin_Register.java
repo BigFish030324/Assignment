@@ -12,7 +12,10 @@ import javax.swing.JRadioButton;
 public class PageAdmin_Register implements ActionListener{
     public void actionPerformed(ActionEvent e){
         try{
-            if(e.getSource() == ok){
+            if((userInput.getText().isEmpty() || passwordInput.getText().isEmpty() || registerGroup.getSelection() == null) && e.getSource() == ok){
+                throw new Exception();
+            }
+            else{
                 
                 Admin.registerUser();
                 container.setVisible(false);
@@ -32,6 +35,7 @@ public class PageAdmin_Register implements ActionListener{
     static JTextField passwordInput;
     JLabel registerText, userText, passwordText;
     static JRadioButton customerRadio, technicianRadio, adminRadio;
+    ButtonGroup registerGroup = new ButtonGroup();//To limit 1 role 1 time
 
     public PageAdmin_Register(){
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
@@ -59,20 +63,20 @@ public class PageAdmin_Register implements ActionListener{
         passwordInput = new JTextField();//Type password here
         passwordInput.setBounds((container.getWidth() - 350)/2, 225, 350, 30);
 
-        customerRadio = new JRadioButton("User");//Choose button for user
-        customerRadio.setBounds((container.getWidth()/2)-170, 260, 90, 30);
+        adminRadio = new JRadioButton("Admin");//Choose button for manager (if not needed, can delete)
+        adminRadio.setBounds((container.getWidth()/2)+90, 260, 90, 30);
 
         technicianRadio = new JRadioButton("Technician");//Choose button for technician
         technicianRadio.setBounds((container.getWidth()/2)-50, 260, 90, 30);
 
-        adminRadio = new JRadioButton("Admin");//Choose button for manager (if not needed, can delete)
-        adminRadio.setBounds((container.getWidth()/2)+90, 260, 90, 30);
+        customerRadio = new JRadioButton("Customer");//Choose button for user
+        customerRadio.setBounds((container.getWidth()/2)-170, 260, 90, 30);
 
+        
         ok = new JButton("OK");//OK Button
         ok.setBounds(container.getWidth()-150, 300, 100, 30);
         ok.addActionListener(this);
 
-        ButtonGroup registerGroup = new ButtonGroup();//To limit 1 role 1 time
         registerGroup.add(customerRadio);
         registerGroup.add(technicianRadio);
         registerGroup.add(adminRadio);
