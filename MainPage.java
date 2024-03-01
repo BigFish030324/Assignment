@@ -1,4 +1,7 @@
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -6,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class MainPage implements ActionListener{
@@ -23,6 +27,7 @@ public class MainPage implements ActionListener{
     JButton enter;
     static JTextField userInput, passwordInput;
     JLabel userText, passwordText;
+    JPanel backgroundBox;
 
     public MainPage(){
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
@@ -33,11 +38,11 @@ public class MainPage implements ActionListener{
         container.setLayout(null);
 
         ImageIcon image1 = new ImageIcon("E:\\User\\Documents\\GitHub\\Assignment\\Images\\APU_LOGO.jpg");
+        backgroundBox = new box();
+        backgroundBox.setBounds(0, 0, 638, 290);
         JLabel imagePlaceholder = new JLabel();
         imagePlaceholder.setIcon(image1);
         imagePlaceholder.setBounds((container.getWidth() - 250)/2, 50, 250, 235);
-
-        
 
         userText = new JLabel("Username");//Username word
         userText.setBounds(((container.getWidth() - 350)/2)+5, 295, 350, 30);
@@ -52,6 +57,7 @@ public class MainPage implements ActionListener{
 
         passwordInput = new JTextField();//Type password here
         passwordInput.setBounds((container.getWidth() - 350)/2, 380, 350, 30);
+        passwordInput.addActionListener(this);
 
         User.readData();
 
@@ -65,6 +71,16 @@ public class MainPage implements ActionListener{
         container.add(userInput);
         container.add(passwordInput);
         container.add(imagePlaceholder);
+        container.add(backgroundBox);
         container.setVisible(true);
+    }
+}
+
+class box extends JPanel {
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.BLACK);
+        g2d.drawRect(10, 10, 618, 20);
     }
 }
