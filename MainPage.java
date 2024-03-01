@@ -12,24 +12,16 @@ public class MainPage implements ActionListener{
     public void actionPerformed(ActionEvent e){
         try{
             if(e.getSource() == enter){
-                int password = 1234;
-                String input1 = userInput.getText();
-                int input2 = Integer.parseInt(passwordInput.getText());
-                if(input1.equals("Admin") && input2 == password){
-                    container.setVisible(false);
-                    PageAdmin.container.setVisible(true);
-                } else {
-                    throw new Exception();
-                }
+                User.userLogin();
             }
         } catch(Exception f){
                 JOptionPane.showMessageDialog(container, "Invalid Input!");
         }
     }
 
-    JFrame container;
+    static JFrame container;
     JButton enter;
-    JTextField userInput, passwordInput;
+    static JTextField userInput, passwordInput;
     JLabel userText, passwordText;
 
     public MainPage(){
@@ -40,7 +32,7 @@ public class MainPage implements ActionListener{
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-        ImageIcon image1 = new ImageIcon("C:\\Users\\Lenovo\\Documents\\GitHub\\Assignment\\Images\\APU_LOGO.jpg");
+        ImageIcon image1 = new ImageIcon("E:\\User\\Documents\\GitHub\\Assignment\\Images\\APU_LOGO.jpg");
         JLabel imagePlaceholder = new JLabel();
         imagePlaceholder.setIcon(image1);
         imagePlaceholder.setBounds((container.getWidth() - 250)/2, 50, 250, 235);
@@ -60,6 +52,8 @@ public class MainPage implements ActionListener{
 
         passwordInput = new JTextField();//Type password here
         passwordInput.setBounds((container.getWidth() - 350)/2, 380, 350, 30);
+
+        User.readData();
 
         enter = new JButton("Enter");//Enter Button
         enter.setBounds((container.getWidth() - 250)/2, 430, 250, 60);

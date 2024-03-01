@@ -13,9 +13,9 @@ public class ARunCodeHere {
         e = new RegisterSuccess();
 
         a.container.setVisible(true);
-        b.container.setVisible(false);
-        c.container.setVisible(false);
-        d.container.setVisible(false);
-        e.container.setVisible(false);
+        PageAdmin.container.setVisible(false);
+        PageAdmin_Register.container.setVisible(false);
+        PageAdmin_Edit.container.setVisible(false);
+        RegisterSuccess.container.setVisible(false);
     }    
 }
