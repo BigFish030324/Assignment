@@ -21,6 +21,8 @@ public class MainPage implements ActionListener{
                 } else {
                     throw new Exception();
                 }
+            } else if (e.getSource() == passwordInput) {
+                enter.doClick();
             }
         } catch(Exception f){
                 JOptionPane.showMessageDialog(container, "Invalid Input!");
@@ -45,8 +47,6 @@ public class MainPage implements ActionListener{
         imagePlaceholder.setIcon(image1);
         imagePlaceholder.setBounds((container.getWidth() - 250)/2, 50, 250, 235);
 
-        
-
         userText = new JLabel("Username");//Username word
         userText.setBounds(((container.getWidth() - 350)/2)+5, 295, 350, 30);
         userText.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -60,6 +60,7 @@ public class MainPage implements ActionListener{
 
         passwordInput = new JTextField();//Type password here
         passwordInput.setBounds((container.getWidth() - 350)/2, 380, 350, 30);
+        passwordInput.addActionListener(this);
 
         enter = new JButton("Enter");//Enter Button
         enter.setBounds((container.getWidth() - 250)/2, 430, 250, 60);
