@@ -1,7 +1,9 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Image;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,7 +23,6 @@ public class PageAdmin_Register implements ActionListener{
                 container.setVisible(false);
                 PageAdmin.container.setVisible(true);
                 RegisterSuccess.container.setVisible(true);
-
             }
         } 
         catch(Exception f){
@@ -44,6 +45,14 @@ public class PageAdmin_Register implements ActionListener{
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
+
+        // ImageIcon image2 = new ImageIcon("..\\Assignment\\Images\\Back_Icon.png");
+        // Image setSize2 = image2.getImage();
+        // setSize2 = setSize2.getScaledInstance(container.getWidth(), container.getHeight(), Image.SCALE_SMOOTH);
+        // image2 = new ImageIcon(setSize2);
+        // JLabel ImageHostel = new JLabel();//Code for Back Icon
+        // ImageHostel.setIcon(image2);
+        // ImageHostel.setBounds(0, 0, container.getWidth(), container.getHeight());
 
         registerText = new JLabel("Registration");//register word
         registerText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
@@ -72,7 +81,6 @@ public class PageAdmin_Register implements ActionListener{
         customerRadio = new JRadioButton("Customer");//Choose button for user
         customerRadio.setBounds((container.getWidth()/2)-170, 260, 90, 30);
 
-        
         ok = new JButton("OK");//OK Button
         ok.setBounds(container.getWidth()-150, 300, 100, 30);
         ok.addActionListener(this);
