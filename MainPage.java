@@ -46,7 +46,6 @@ public class MainPage implements ActionListener{
         APUCircle.setBounds(40, 25, 120, 120);
         APUCircle.setBackground(new Color(255, 255, 255, 0));
 
-        // ImageIcon image1 = new ImageIcon("E:\\User\\Documents\\GitHub\\Assignment\\Images\\APU_LOGO.jpg");
         ImageIcon image1 = new ImageIcon("..\\Assignment\\Images\\APU_LOGO.jpg");
         Image setSize1 = image1.getImage();//Code for APU Logo
         setSize1 = setSize1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
