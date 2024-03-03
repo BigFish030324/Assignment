@@ -87,7 +87,7 @@ class Admin extends User {
             String name, password;
 
             // Assign role based on Radio Button
-            if(PageAdmin_Register.adminRadio.isSelected()){
+            if(PageAdmin_Register.managerRadio.isSelected()){
                 role = 0;
             } else if(PageAdmin_Register.technicianRadio.isSelected()){
                 role = 1;

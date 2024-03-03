@@ -16,7 +16,7 @@ public class ARunCodeHere {
 
         MainPage.container.setVisible(true);
         PageAdmin.container.setVisible(false);
-        PageAdmin_Register.container.setVisible(false);
+        PageAdmin_Register.container.setVisible(true);
         PageAdmin_Edit.container.setVisible(false);
         RegisterSuccess.container.setVisible(false);
         EditConfirmation.container.setVisible(false);

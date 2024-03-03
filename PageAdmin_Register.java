@@ -35,7 +35,7 @@ public class PageAdmin_Register implements ActionListener{
     static JTextField userInput;
     static JTextField passwordInput;
     JLabel registerText, userText, passwordText;
-    static JRadioButton customerRadio, technicianRadio, adminRadio;
+    static JRadioButton customerRadio, technicianRadio, managerRadio;
     ButtonGroup registerGroup = new ButtonGroup();//To limit 1 role 1 time
 
     public PageAdmin_Register(){
@@ -46,13 +46,13 @@ public class PageAdmin_Register implements ActionListener{
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-        // ImageIcon image2 = new ImageIcon("..\\Assignment\\Images\\Back_Icon.png");
-        // Image setSize2 = image2.getImage();
-        // setSize2 = setSize2.getScaledInstance(container.getWidth(), container.getHeight(), Image.SCALE_SMOOTH);
-        // image2 = new ImageIcon(setSize2);
-        // JLabel ImageHostel = new JLabel();//Code for Back Icon
-        // ImageHostel.setIcon(image2);
-        // ImageHostel.setBounds(0, 0, container.getWidth(), container.getHeight());
+        ImageIcon image1 = new ImageIcon("..\\Assignment\\Images\\Back_Icon2.jpg");
+        Image setSize1 = image1.getImage();
+        setSize1 = setSize1.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        image1 = new ImageIcon(setSize1);
+        JLabel backIcon = new JLabel();//Code for Back Icon
+        backIcon.setIcon(image1);
+        backIcon.setBounds(10, 10, 30, 30);
 
         registerText = new JLabel("Registration");//register word
         registerText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
@@ -72,8 +72,8 @@ public class PageAdmin_Register implements ActionListener{
         passwordInput = new JTextField();//Type password here
         passwordInput.setBounds((container.getWidth() - 350)/2, 225, 350, 30);
 
-        adminRadio = new JRadioButton("Admin");//Choose button for manager (if not needed, can delete)
-        adminRadio.setBounds((container.getWidth()/2)+90, 260, 90, 30);
+        managerRadio = new JRadioButton("Manager");//Choose button for manager (if not needed, can delete)
+        managerRadio.setBounds((container.getWidth()/2)+90, 260, 90, 30);
 
         technicianRadio = new JRadioButton("Technician");//Choose button for technician
         technicianRadio.setBounds((container.getWidth()/2)-50, 260, 90, 30);
@@ -81,13 +81,16 @@ public class PageAdmin_Register implements ActionListener{
         customerRadio = new JRadioButton("Customer");//Choose button for user
         customerRadio.setBounds((container.getWidth()/2)-170, 260, 90, 30);
 
+        // backIcon = new backIcon();//Having issue of unable to add AddListenner
+        // backIcon.addActionListener(this);
+
         ok = new JButton("OK");//OK Button
         ok.setBounds(container.getWidth()-150, 300, 100, 30);
         ok.addActionListener(this);
 
         registerGroup.add(customerRadio);
         registerGroup.add(technicianRadio);
-        registerGroup.add(adminRadio);
+        registerGroup.add(managerRadio);
 
         container.add(ok);
         container.add(registerText);
@@ -97,7 +100,8 @@ public class PageAdmin_Register implements ActionListener{
         container.add(passwordInput);
         container.add(customerRadio);
         container.add(technicianRadio);
-        container.add(adminRadio);
+        container.add(managerRadio);
+        container.add(backIcon);
         container.setVisible(true);
     }
 }
