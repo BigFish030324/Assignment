@@ -27,7 +27,7 @@ public class MainPage implements ActionListener{
     static JFrame container;
     JButton enter;
     static JTextField userInput, passwordInput;
-    JLabel userText, passwordText;
+    JLabel userText, passwordText, aboutUs1Text, aboutUs2Text;
     JPanel backgroundBox, APUCircle;
 
     public MainPage(){
@@ -83,12 +83,21 @@ public class MainPage implements ActionListener{
         enter.setBounds((container.getWidth() - 250)/2, 350, 250, 60);
         enter.addActionListener(this);
 
-        
+        aboutUs1Text = new JLabel("Click here for more detail in ");
+        aboutUs1Text.setBounds(container.getWidth()/2-110, 405, 250, 30);
+        aboutUs1Text.setFont(new Font("Times New Roman", Font.BOLD, 12));
+
+        aboutUs2Text = new JLabel("<html><u><font color='blue'>About Us!</font></u></html>");
+        aboutUs2Text.setBounds(container.getWidth()/2+45, 403, 250, 30);
+        aboutUs2Text.setFont(new Font("Times New Roman", Font.BOLD, 14));
+
         container.add(enter);
         container.add(userText);
         container.add(passwordText);
         container.add(userInput);
         container.add(passwordInput);
+        container.add(aboutUs1Text);
+        container.add(aboutUs2Text);
         container.add(ImageAPU);
         container.add(APUCircle);
         container.add(backgroundBox);
