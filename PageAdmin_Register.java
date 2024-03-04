@@ -19,7 +19,7 @@ public class PageAdmin_Register implements ActionListener{
             }
             else{
                 
-                Admin.registerUser();
+                Manager.registerUser();
                 container.setVisible(false);
                 PageAdmin.container.setVisible(true);
                 RegisterSuccess.container.setVisible(true);

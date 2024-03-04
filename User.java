@@ -20,7 +20,7 @@ public class User {
         return name;
     }
 
-    public String getPassword(){
+    public String getPass(){
         return password;
     }
 
@@ -65,8 +65,10 @@ public class User {
                 break;
             }
         }
-        String password = MainPage.passwordInput.getText();
-        if(password.equals(User.userList.get(index).getPassword())){
+        char[] password = MainPage.passwordInput.getPassword();
+        String enteredPassword = new String(password);
+
+        if(enteredPassword.equals(User.userList.get(index).getPass())){
             MainPage.container.setVisible(false);
             PageAdmin.container.setVisible(true);
         } else {
@@ -75,8 +77,8 @@ public class User {
     }
 }
 
-class Admin extends User {
-    public Admin(String name, String password){
+class Manager extends User {
+    public Manager(String name, String password){
         super(0, name, password);
     }
 
