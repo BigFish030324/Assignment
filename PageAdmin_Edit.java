@@ -45,7 +45,7 @@ public class PageAdmin_Edit implements ActionListener{
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-// This is the origin username and password which is before changing or deleting
+// This is where register, username, password and buttons are
 
         editText = new JLabel("Edit Profile");//register word
         editText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
@@ -87,19 +87,19 @@ public class PageAdmin_Edit implements ActionListener{
         registerGroup.add(technicianRadio);
         registerGroup.add(managerRadio);
 
-        apply = new JButton("Apply");//OK Button
+        apply = new JButton("Apply");//Apply Button
         apply.setBounds(container.getWidth()-160, container.getHeight()-90, 120, 30);
         apply.addActionListener(this);
 
-        dlt = new JButton("Delete");//OK Button
+        dlt = new JButton("Delete");//Delete Button
         dlt.setBounds(container.getWidth()-160, container.getHeight()-130, 120, 30);
         dlt.addActionListener(this);
 
-        
+        // Part of adding apply and delete into GUI
         container.add(apply);
         container.add(dlt);
 
-        // Part of origin username and password:
+        // Part of adding to GUI:
         container.add(editText);
         container.add(userText);
         container.add(passwordText);
