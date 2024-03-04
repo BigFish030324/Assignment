@@ -6,7 +6,7 @@ public class ARunCodeHere {
     static PageAdmin_Edit d;
     static RegisterSuccess e;
     static EditConfirmation f;
-    static AboutUs g;
+    // static AboutUs g;
 
     public static void main(String[] args) {
         a = new MainPage();
@@ -15,7 +15,7 @@ public class ARunCodeHere {
         d = new PageAdmin_Edit();
         e = new RegisterSuccess();
         f = new EditConfirmation();
-        g = new AboutUs();
+        // g = new AboutUs();
 
         MainPage.container.setVisible(true);
         PageAdmin.container.setVisible(false);
@@ -23,6 +23,6 @@ public class ARunCodeHere {
         PageAdmin_Edit.container.setVisible(false);
         RegisterSuccess.container.setVisible(false);
         EditConfirmation.container.setVisible(false);
-        AboutUs.container.setVisible(false);
+        // AboutUs.container.setVisible(false);
     }    
 }
