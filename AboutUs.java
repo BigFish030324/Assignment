@@ -1,39 +1,68 @@
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
-public class AboutUs implements ActionListener{
+public class AboutUs implements ActionListener {
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == ok){
-            container.setVisible(false);
+        if (e.getSource() == okButton) {
+            container.dispose();
         }
     }
 
-    static JFrame container;
-    JButton ok;
-    JLabel aboutUsText;
+    public static void main(String[] args) {
+        new AboutUs();
+    }
 
-    public AboutUs(){
+    JFrame container;
+    JTextArea descriptionText;
+    JButton okButton;
+
+    public AboutUs() {
+        initializeGUI();
+    }
+
+    public void initializeGUI() {
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(800,600);//GUI Size
-        container.setLocationRelativeTo(null);//GUI Location
+        container.setSize(600, 400);
+        container.setLocationRelativeTo(null);
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        container.setResizable(false);//Fix the GUI Size
-        container.setLayout(null);
+        container.setResizable(false);
 
-        aboutUsText = new JLabel("APU Hostel Home Appliances Service Centre (AHHASC) is strategically located at Technology Park Malaysia, Bukit Jalil, Kuala Lumpur. TPM is the ideal location for this new and contemporary hostel due to its strong positioning as Malaysia's primary hub for leading-edge and high-tech developments in a wide variety of areas such as Information and Communication Technology, Biotechnology, Microelectronics, Engineering and Broadcasting. TPM is also located in one of the most rapidly developing areas in Kuala Lumpur, and is well served and accessible through major highways, LRT and other forms of public transportation.");//aboutus sentence
-        aboutUsText.setBounds(15, 0, 770, 50);
-        aboutUsText.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
 
-        ok = new JButton("OK");//confirm Button
-        ok.setBounds((container.getWidth()/2)-260, container.getHeight()-100, 500, 30);
-        ok.addActionListener(this);
+        JLabel aboutUs = new JLabel("About APU Hostel Home Appliances Service Centre (AHHASC)");
+        aboutUs.setBounds(20, 10, 770, 30);
+        aboutUs.setFont(new Font("Times New Roman", Font.BOLD, 20));
 
-        container.add(ok);
-        container.add(aboutUsText);
+        descriptionText = new JTextArea();
+        descriptionText.setEditable(false);
+        descriptionText.setLineWrap(true);
+        descriptionText.setWrapStyleWord(true);
+        descriptionText.setText("Welcome to your new home\n" + 
+        "\nAPU is the right place for you to kick off your university life. Whether you're looking for APU On-Campus Residence, APU Off-Campus Residence or Satellite Campus Residence within Technology Park Malaysia (TPM), we offer a different range of accommodations in various styles, sizes, and budgets.\n" + 
+        "\n\n\nLive, Learn, and Have Fun at APU Accommodation\n" + 
+        "\nLiving away from home is a big step and the start of a new chapter. Our contemporary accommodation options are designed with you in mind, to provide a secure and welcoming home for you to create memories that will last a lifetime.\n" + 
+        "\nOur APU On-Campus Residence and Satellite Campus Residence @ TPM at APU provide students the university life beyond classrooms. We provide everything that you need from common pantry to residence’s lounge areas. As a resident of APU, you'll be living in an environment designed not only to house students but also to foster community and intellectual growth.");
+        descriptionText.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+
+        JScrollPane scrollPane = new JScrollPane(descriptionText);
+        scrollPane.setBounds(25, 50, 535, 250);
+
+        okButton = new JButton("OK");
+        okButton.setBounds((container.getWidth()/2)-150, container.getHeight()-90, 300, 30);
+        okButton.addActionListener(this);
+
+        panel.add(aboutUs);
+        panel.add(scrollPane);
+        panel.add(okButton);
+        container.add(panel);
         container.setVisible(true);
     }
 }
