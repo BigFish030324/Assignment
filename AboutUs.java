@@ -16,7 +16,7 @@ public class AboutUs implements ActionListener{
 
     static JFrame container;
     JButton ok;
-    JLabel AHHASCText, aboutUsText;
+    JLabel aboutUsText;
     Slider ownSlider;
 
     public AboutUs(){
@@ -27,13 +27,9 @@ public class AboutUs implements ActionListener{
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-        AHHASCText = new JLabel("AHHASC");//asking sentence
-        AHHASCText.setBounds(15, 0, 330, 50);
-        AHHASCText.setFont(new Font("Times New Roman", Font.BOLD, 36));
-
-        aboutUsText = new JLabel("AHHASC");//asking sentence
+        aboutUsText = new JLabel("<html>Are you sure that you want to continue the <br>action?</html>");//asking sentence
         aboutUsText.setBounds(15, 0, 330, 50);
-        aboutUsText.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+        aboutUsText.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 
         ok = new JButton("OK");//confirm Button
         ok.setBounds((container.getWidth()/2)+45, 70, 100, 30);
@@ -42,7 +38,6 @@ public class AboutUs implements ActionListener{
         ownSlider = new Slider();
 
         container.add(ok);
-        container.add(AHHASCText);
         container.add(aboutUsText);
         container.setVisible(true);
     }
