@@ -12,7 +12,7 @@ import javax.swing.JRadioButton;
 public class PageAdmin_Edit implements ActionListener{
     public void actionPerformed(ActionEvent e){
         try{
-            if(e.getSource() == apply){
+            if(e.getSource() == ok){
                 int password = 1234;//Need backend to change the method for registering new user
                 String input1 = userInput.getText();
                 int input2 = Integer.parseInt(passwordInput.getText());
