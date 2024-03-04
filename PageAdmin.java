@@ -10,12 +10,11 @@ public class PageAdmin implements ActionListener {
         try{
             if(e.getSource() == register){
                 container.setVisible(false);
-                PageAdmin_Register PageAdminRegister = new PageAdmin_Register();
                 PageAdmin_Register.container.setVisible(true);
             } 
             else if(e.getSource() == edit){
                 container.setVisible(false);
-                PageAdmin_Edit PageAdminEdit = new PageAdmin_Edit();
+                // PageAdmin_Edit PageAdminEdit = new PageAdmin_Edit();
                 PageAdmin_Edit.container.setVisible(true);
             // } else if(e.getSource() == appointment){
             //     container.setVisible(false);

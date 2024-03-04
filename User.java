@@ -20,12 +20,16 @@ public class User {
         return name;
     }
 
-    public String getPassword(){
+    public String getPass(){
         return password;
     }
 
     public void setRole(int role){
         this.role = role;
+    }
+
+    public int getRole(){
+        return role;
     }
 
     @Override
@@ -65,8 +69,11 @@ public class User {
                 break;
             }
         }
-        String password = MainPage.passwordInput.getText();
-        if(password.equals(User.userList.get(index).getPassword())){
+        char[] password = MainPage.passwordInput.getPassword(); // Hide Password
+        String enteredPassword = new String(password); // Get Password as String
+
+        // Validate Password and Manager role
+        if(enteredPassword.equals(User.userList.get(index).getPass()) && User.userList.get(index).getRole() == 0){
             MainPage.container.setVisible(false);
             PageAdmin.container.setVisible(true);
         } else {
@@ -75,8 +82,8 @@ public class User {
     }
 }
 
-class Admin extends User {
-    public Admin(String name, String password){
+class Manager extends User {
+    public Manager(String name, String password){
         super(0, name, password);
     }
 
@@ -84,7 +91,8 @@ class Admin extends User {
     public static void registerUser(){
         try{
             int role;
-            String name, password;
+            String name;
+            char[] password;
 
             // Assign role based on Radio Button
             if(PageAdmin_Register.managerRadio.isSelected()){
@@ -101,11 +109,12 @@ class Admin extends User {
             name = PageAdmin_Register.userInput.getText();
 
             // Read password from Register Page
-            password = PageAdmin_Register.passwordInput.getText();
+            password = PageAdmin_Register.passwordInput.getPassword();
+            String enteredPassword = new String(password);
             
             BufferedWriter write = new BufferedWriter(new FileWriter(FILE_PATH, true));
 
-            write.write(role+","+name+","+password);
+            write.write(role+","+name+","+enteredPassword);
             write.newLine();
 
             write.close();
