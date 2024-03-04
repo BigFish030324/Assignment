@@ -8,10 +8,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 
 public class PageAdmin_Register implements ActionListener{
+    @SuppressWarnings("deprecation")
+    
     public void actionPerformed(ActionEvent e){
         try{
             if((userInput.getText().isEmpty() || passwordInput.getText().isEmpty() || registerGroup.getSelection() == null) && e.getSource() == ok){
@@ -33,7 +36,7 @@ public class PageAdmin_Register implements ActionListener{
     static JFrame container;
     JButton ok;
     static JTextField userInput;
-    static JTextField passwordInput;
+    static JPasswordField passwordInput;
     JLabel registerText, userText, passwordText;
     static JRadioButton customerRadio, technicianRadio, managerRadio;
     ButtonGroup registerGroup = new ButtonGroup();//To limit 1 role 1 time
@@ -69,7 +72,7 @@ public class PageAdmin_Register implements ActionListener{
         passwordText.setBounds(((container.getWidth() - 350)/2)+5, 195, 350, 30);
         passwordText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        passwordInput = new JTextField();//Type password here
+        passwordInput = new JPasswordField();//Type password here
         passwordInput.setBounds((container.getWidth() - 350)/2, 225, 350, 30);
 
         managerRadio = new JRadioButton("Manager");//Choose button for manager (if not needed, can delete)
