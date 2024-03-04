@@ -28,6 +28,10 @@ public class User {
         this.role = role;
     }
 
+    public int getRole(){
+        return role;
+    }
+
     @Override
     public String toString(){
         return role+","+name +","+password;
@@ -65,10 +69,11 @@ public class User {
                 break;
             }
         }
-        char[] password = MainPage.passwordInput.getPassword();
-        String enteredPassword = new String(password);
+        char[] password = MainPage.passwordInput.getPassword(); // Hide Password
+        String enteredPassword = new String(password); // Get Password as String
 
-        if(enteredPassword.equals(User.userList.get(index).getPass())){
+        // Validate Password and Manager role
+        if(enteredPassword.equals(User.userList.get(index).getPass()) && User.userList.get(index).getRole() == 0){
             MainPage.container.setVisible(false);
             PageAdmin.container.setVisible(true);
         } else {
@@ -86,7 +91,8 @@ class Manager extends User {
     public static void registerUser(){
         try{
             int role;
-            String name, password;
+            String name;
+            char[] password;
 
             // Assign role based on Radio Button
             if(PageAdmin_Register.managerRadio.isSelected()){
@@ -103,11 +109,12 @@ class Manager extends User {
             name = PageAdmin_Register.userInput.getText();
 
             // Read password from Register Page
-            password = PageAdmin_Register.passwordInput.getText();
+            password = PageAdmin_Register.passwordInput.getPassword();
+            String enteredPassword = new String(password);
             
             BufferedWriter write = new BufferedWriter(new FileWriter(FILE_PATH, true));
 
-            write.write(role+","+name+","+password);
+            write.write(role+","+name+","+enteredPassword);
             write.newLine();
 
             write.close();
