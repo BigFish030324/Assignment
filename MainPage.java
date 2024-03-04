@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class MainPage implements ActionListener{
@@ -26,7 +27,8 @@ public class MainPage implements ActionListener{
 
     static JFrame container;
     JButton enter;
-    static JTextField userInput, passwordInput;
+    static JTextField userInput;
+    static JPasswordField passwordInput;
     JLabel userText, passwordText;
     JPanel backgroundBox, APUCircle;
 
@@ -74,7 +76,7 @@ public class MainPage implements ActionListener{
         passwordText.setBounds(((container.getWidth() - 350)/2)+5, 250, 350, 30);
         passwordText.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
-        passwordInput = new JTextField();//Type password here
+        passwordInput = new JPasswordField();//Type password here
         passwordInput.setBounds((container.getWidth() - 350)/2, 280, 350, 30);
         passwordInput.addActionListener(this);
 

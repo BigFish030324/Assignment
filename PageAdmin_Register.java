@@ -17,7 +17,7 @@ public class PageAdmin_Register implements ActionListener{
             }
             else{
                 
-                Admin.registerUser();
+                Manager.registerUser();
                 container.setVisible(false);
                 PageAdmin.container.setVisible(true);
                 RegisterSuccess.container.setVisible(true);
@@ -34,7 +34,7 @@ public class PageAdmin_Register implements ActionListener{
     static JTextField userInput;
     static JTextField passwordInput;
     JLabel registerText, userText, passwordText;
-    static JRadioButton customerRadio, technicianRadio, adminRadio;
+    static JRadioButton customerRadio, technicianRadio, managerRadio;
     ButtonGroup registerGroup = new ButtonGroup();//To limit 1 role 1 time
 
     public PageAdmin_Register(){
@@ -63,8 +63,8 @@ public class PageAdmin_Register implements ActionListener{
         passwordInput = new JTextField();//Type password here
         passwordInput.setBounds((container.getWidth() - 350)/2, 225, 350, 30);
 
-        adminRadio = new JRadioButton("Admin");//Choose button for manager (if not needed, can delete)
-        adminRadio.setBounds((container.getWidth()/2)+90, 260, 90, 30);
+        managerRadio = new JRadioButton("Manager");//Choose button for manager (if not needed, can delete)
+        managerRadio.setBounds((container.getWidth()/2)+90, 260, 90, 30);
 
         technicianRadio = new JRadioButton("Technician");//Choose button for technician
         technicianRadio.setBounds((container.getWidth()/2)-50, 260, 90, 30);
@@ -79,7 +79,7 @@ public class PageAdmin_Register implements ActionListener{
 
         registerGroup.add(customerRadio);
         registerGroup.add(technicianRadio);
-        registerGroup.add(adminRadio);
+        registerGroup.add(managerRadio);
 
         container.add(ok);
         container.add(registerText);
@@ -89,7 +89,7 @@ public class PageAdmin_Register implements ActionListener{
         container.add(passwordInput);
         container.add(customerRadio);
         container.add(technicianRadio);
-        container.add(adminRadio);
+        container.add(managerRadio);
         container.setVisible(true);
     }
 }
