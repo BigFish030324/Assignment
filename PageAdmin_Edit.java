@@ -35,7 +35,6 @@ public class PageAdmin_Edit implements ActionListener{
     JTextField userInput, passwordInput, newUserInput, newPasswordInput;
     JLabel editText, userText, passwordText, newEditText, newUserText, newPasswordText;
     JRadioButton userRadio, technicianRadio, managerRadio, newUserRadio, newTechnicianRadio, newManagerRadio;
-    drawline line;
 
     public PageAdmin_Edit(){
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
@@ -45,7 +44,9 @@ public class PageAdmin_Edit implements ActionListener{
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-// This is where register, username, password and buttons are
+// Register, username, password and buttons
+
+        JLabel icon = new backIcon();//Go back icon
 
         editText = new JLabel("Edit Profile");//register word
         editText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
@@ -58,7 +59,7 @@ public class PageAdmin_Edit implements ActionListener{
         userInput = new JTextField();//Type username here
         userInput.setBounds(container.getWidth()/10, 155, 350, 30);
 
-        check = new JButton("Delete");//Check Button
+        check = new JButton("Check");//Check Button
         check.setBounds(container.getWidth()-140, 155, 100, 30);
         check.addActionListener(this);
 
@@ -109,6 +110,7 @@ public class PageAdmin_Edit implements ActionListener{
         container.add(edit);
         container.add(userRadio);
         container.add(technicianRadio);
+        container.add(icon);
         container.add(managerRadio);
     }
 }
