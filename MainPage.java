@@ -5,9 +5,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class MainPage implements ActionListener, MouseListener{
+public class MainPage implements ActionListener{
     public void actionPerformed(ActionEvent e){
         try{
             if(e.getSource() == enter){
@@ -93,7 +90,6 @@ public class MainPage implements ActionListener, MouseListener{
         aboutUs2Text = new JLabel("<html><u><font color='blue'>About Us!</font></u></html>");
         aboutUs2Text.setBounds(container.getWidth()/2+45, 403, 250, 30);
         aboutUs2Text.setFont(new Font("Times New Roman", Font.BOLD, 14));
-        aboutUs2Text.addMouseListener(this);
 
         container.add(enter);
         container.add(userText);
@@ -107,30 +103,6 @@ public class MainPage implements ActionListener, MouseListener{
         container.add(backgroundBox);
         container.add(ImageHostel);
         container.setVisible(true);
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        if (e.getSource() == aboutUs2Text) {
-            AboutUs.container.setVisible(true);
-
-        }
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
     }
 }
 

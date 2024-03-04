@@ -8,16 +8,13 @@ import javax.swing.JLabel;
 public class AboutUs implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == ok){
-            Slider.frame.setVisible(true);
             container.setVisible(false);
-            MainPage.container.setVisible(false);
         }
     }
 
     static JFrame container;
     JButton ok;
     JLabel aboutUsText;
-    Slider ownSlider;
 
     public AboutUs(){
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
@@ -35,11 +32,12 @@ public class AboutUs implements ActionListener{
         ok.setBounds((container.getWidth()/2)+45, 70, 100, 30);
         ok.addActionListener(this);
 
-        ownSlider = new Slider();
-
         container.add(ok);
         container.add(aboutUsText);
         container.setVisible(true);
     }
 
+    public class Slider {
+        a
+    }
 }
