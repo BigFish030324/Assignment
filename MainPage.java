@@ -29,7 +29,7 @@ public class MainPage implements ActionListener{
     JButton enter;
     static JTextField userInput;
     static JPasswordField passwordInput;
-    JLabel userText, passwordText, aboutUs1Text, aboutUs2Text;;
+    JLabel userText, passwordText, aboutUs1Text, aboutUs2Text;
     JPanel backgroundBox, APUCircle;
 
     public MainPage(){
