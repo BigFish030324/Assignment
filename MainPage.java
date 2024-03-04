@@ -29,7 +29,7 @@ public class MainPage implements ActionListener{
     JButton enter;
     static JTextField userInput;
     static JPasswordField passwordInput;
-    JLabel userText, passwordText;
+    JLabel userText, passwordText, aboutUs1Text, aboutUs2Text;;
     JPanel backgroundBox, APUCircle;
 
     public MainPage(){
@@ -48,7 +48,6 @@ public class MainPage implements ActionListener{
         APUCircle.setBounds(40, 25, 120, 120);
         APUCircle.setBackground(new Color(255, 255, 255, 0));
 
-        // ImageIcon image1 = new ImageIcon("E:\\User\\Documents\\GitHub\\Assignment\\Images\\APU_LOGO.jpg");
         ImageIcon image1 = new ImageIcon("..\\Assignment\\Images\\APU_LOGO.jpg");
         Image setSize1 = image1.getImage();//Code for APU Logo
         setSize1 = setSize1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
@@ -86,12 +85,21 @@ public class MainPage implements ActionListener{
         enter.setBounds((container.getWidth() - 250)/2, 350, 250, 60);
         enter.addActionListener(this);
 
-        
+        aboutUs1Text = new JLabel("Click here for more detail in ");
+        aboutUs1Text.setBounds(container.getWidth()/2-110, 405, 250, 30);
+        aboutUs1Text.setFont(new Font("Times New Roman", Font.BOLD, 12));
+
+        aboutUs2Text = new JLabel("<html><u><font color='blue'>About Us!</font></u></html>");
+        aboutUs2Text.setBounds(container.getWidth()/2+45, 403, 250, 30);
+        aboutUs2Text.setFont(new Font("Times New Roman", Font.BOLD, 14));
+
         container.add(enter);
         container.add(userText);
         container.add(passwordText);
         container.add(userInput);
         container.add(passwordInput);
+        container.add(aboutUs1Text);
+        container.add(aboutUs2Text);
         container.add(ImageAPU);
         container.add(APUCircle);
         container.add(backgroundBox);
