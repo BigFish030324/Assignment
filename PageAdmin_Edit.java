@@ -17,78 +17,98 @@ public class PageAdmin_Edit implements ActionListener{
     public void actionPerformed(ActionEvent e){
         String username = userInput.getText();
     
-    if (e.getSource() == check) {
-        try {
-            int index = -1;
+        if (e.getSource() == check) {
+            try {
+                int index = -1;
 
-            // Set Buttons to enable when username exists
-            for (int i = 0; i < User.userList.size(); i++) {
-                if (User.userList.get(i).getName().equals(username)) {
-                    index = i;
-                    passwordInput.setText(User.userList.get(i).getPass());
-                    edit.setEnabled(true);
-                    userRadio.setEnabled(true);
-                    technicianRadio.setEnabled(true);
-                    managerRadio.setEnabled(true);
-                    dlt.setEnabled(true);
-                    apply.setEnabled(true);
-                    break;
-                }
-            }
-
-            if(index != -1){
-                if (User.userList.get(index).getRole() == 0){
-                    managerRadio.setSelected(true);
-                }
-                else if (User.userList.get(index).getRole() == 1){
-                    technicianRadio.setSelected(true);
-                }
-                else if (User.userList.get(index).getRole() == 2){
-                    userRadio.setSelected(true);
-                }
-            }
-            else if (index == -1) {
-                throw new Exception();
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(container, "Invalid Input!");
-        }
-    } else if (e.getSource() == apply) { //Click Apply to make changes
-        try {
-            int index = -1;
-            int role = 0;
-
-            for (int i = 0; i < User.userList.size(); i++) {
-                if (User.userList.get(i).getName().equals(username)) {
-                    index = i;
-                    break;
-                }
-            }
-
-            if (index != -1) {
-
-                // Choose radio button to change roles
-                if(managerRadio.isSelected()){
-                    role = 0;
-                }else if(technicianRadio.isSelected()){
-                    role = 1;
-                }else if(userRadio.isSelected()){
-                    role = 2;
+                // Set Buttons to enable when username exists
+                for (int i = 0; i < User.userList.size(); i++) {
+                    if (User.userList.get(i).getName().equals(username)) {
+                        index = i;
+                        passwordInput.setText(User.userList.get(i).getPass());
+                        edit.setEnabled(true);
+                        userRadio.setEnabled(true);
+                        technicianRadio.setEnabled(true);
+                        managerRadio.setEnabled(true);
+                        dlt.setEnabled(true);
+                        apply.setEnabled(true);
+                        break;
+                    }
                 }
 
-                User.setPass(index, passwordInput.getText());
-                User.setRole(index, role);
-                Manager.writeData();
+                if(index != -1){
+                    if (User.userList.get(index).getRole() == 0){
+                        managerRadio.setSelected(true);
+                    }
+                    else if (User.userList.get(index).getRole() == 1){
+                        technicianRadio.setSelected(true);
+                    }
+                    else if (User.userList.get(index).getRole() == 2){
+                        userRadio.setSelected(true);
+                    }
+                }
+                else if (index == -1) {
+                    throw new Exception();
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(container, "Invalid Input!");
             }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(container, "Invalid Input!");
+        } else if (e.getSource() == apply) { //Click Apply to make changes
+            try {
+                int index = -1;
+                int role = 0;
+
+                for (int i = 0; i < User.userList.size(); i++) {
+                    if (User.userList.get(i).getName().equals(username)) {
+                        index = i;
+                        break;
+                    }
+                }
+
+                if (index != -1) {
+
+                    // Choose radio button to change roles
+                    if(managerRadio.isSelected()){
+                        role = 0;
+                    }else if(technicianRadio.isSelected()){
+                        role = 1;
+                    }else if(userRadio.isSelected()){
+                        role = 2;
+                    }
+
+                    User.setPass(index, passwordInput.getText());
+                    User.setRole(index, role);
+                    Manager.writeData();
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(container, "Invalid Input!");
+                }
             }
-        }
+        
 
         // Click on Edit to enable edit password
         if(e.getSource() == edit){
             passwordInput.setEditable(true);
         }
+    }
+
+    private void resetComponents() {
+        userInput.setText("");
+        passwordInput.setText("");
+
+        userRadio.setSelected(false);
+        technicianRadio.setSelected(false);
+        managerRadio.setSelected(false);
+
+        edit.setEnabled(false);
+        userRadio.setEnabled(false);
+        technicianRadio.setEnabled(false);
+        managerRadio.setEnabled(false);
+
+        passwordInput.setEditable(false);
+        
+        apply.setEnabled(false);
+        dlt.setEnabled(false);
     }
 
     static JFrame container;
@@ -113,6 +133,7 @@ public class PageAdmin_Edit implements ActionListener{
 
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
+                resetComponents();
                 PageAdmin.container.setVisible(true);
                 container.setVisible(false);
             }
