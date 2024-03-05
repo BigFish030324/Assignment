@@ -11,30 +11,59 @@ import javax.swing.JRadioButton;
 
 public class PageAdmin_Edit implements ActionListener{
     public void actionPerformed(ActionEvent e){
-        try{
-            if(e.getSource() == ok){
-                int password = 1234;//Need backend to change the method for registering new user
-                String input1 = userInput.getText();
-                int input2 = Integer.parseInt(passwordInput.getText());
-                if(input1.equals("Admin") && input2 == password){//Remember to add .getsource for user role and able to edit new userrname/password
-                    container.setVisible(false);
-                    PageAdmin_Edit.container.setVisible(true);
-                    EditConfirmation.container.setVisible(true);
-                } else {
-                    throw new Exception();
+        String username = PageAdmin_Edit.userInput.getText();
+    
+    if (e.getSource() == PageAdmin_Edit.check) {
+        try {
+            User.readData();
+            int index = -1;
+
+            for (int i = 0; i < User.userList.size(); i++) {
+                if (User.userList.get(i).getName().equals(username)) {
+                    index = i;
+                    PageAdmin_Edit.passwordInput.setEditable(true);
+                    PageAdmin_Edit.edit.setEnabled(true);
+                    PageAdmin_Edit.userRadio.setEnabled(true);
+                    PageAdmin_Edit.technicianRadio.setEnabled(true);
+                    PageAdmin_Edit.managerRadio.setEnabled(true);
+                    PageAdmin_Edit.dlt.setEnabled(true);
+                    PageAdmin_Edit.apply.setEnabled(true);
+                    break;
                 }
             }
-        } 
-        catch(Exception f){
-                JOptionPane.showMessageDialog(container, "Invalid Input!");
+
+            if (index == -1) {
+                throw new Exception();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(container, "Invalid Input!");
+        }
+    } else if (e.getSource() == PageAdmin_Edit.apply) {
+        try {
+            int index = -1;
+
+            for (int i = 0; i < User.userList.size(); i++) {
+                if (User.userList.get(i).getName().equals(username)) {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index != -1) {
+                User.setPass(index, PageAdmin_Edit.passwordInput.getText());
+                Manager.writeData();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(container, "Invalid Input!");
+            }
         }
     }
 
     static JFrame container;
-    JButton check, edit, apply, dlt;
-    JTextField userInput, passwordInput, newUserInput, newPasswordInput;
-    JLabel editText, userText, passwordText, newEditText, newUserText, newPasswordText;
-    JRadioButton userRadio, technicianRadio, managerRadio, newUserRadio, newTechnicianRadio, newManagerRadio;
+    static JButton check, edit, apply, dlt;
+    static JTextField userInput, passwordInput;
+    JLabel editText, userText, passwordText;
+    static JRadioButton userRadio, technicianRadio, managerRadio;
     drawline line;
 
     public PageAdmin_Edit(){
@@ -58,7 +87,7 @@ public class PageAdmin_Edit implements ActionListener{
         userInput = new JTextField();//Type username here
         userInput.setBounds(container.getWidth()/10, 155, 350, 30);
 
-        check = new JButton("Delete");//Check Button
+        check = new JButton("Check");//Check Button
         check.setBounds(container.getWidth()-140, 155, 100, 30);
         check.addActionListener(this);
 
@@ -68,19 +97,24 @@ public class PageAdmin_Edit implements ActionListener{
 
         passwordInput = new JTextField();//Type password here
         passwordInput.setBounds(container.getWidth()/10, 225, 350, 30);
+        passwordInput.setEditable(false);
 
         edit = new JButton("Edit");//Edit Button
         edit.setBounds(container.getWidth()-140, 225, 100, 30);
         edit.addActionListener(this);
+        edit.setEnabled(false);
 
         userRadio = new JRadioButton("User");//Choose button for user
         userRadio.setBounds(container.getWidth()/10, 270, 80, 30);
+        userRadio.setEnabled(false);
 
-        technicianRadio = new JRadioButton("Technician");//Choose button for techiician
+        technicianRadio = new JRadioButton("Technician");//Choose button for technician
         technicianRadio.setBounds(container.getWidth()/10, 300, 90, 30);
+        technicianRadio.setEnabled(false);
 
         managerRadio = new JRadioButton("Manager");//Choose button for manager (if not needed, can delete)
         managerRadio.setBounds(container.getWidth()/10, 330, 80, 30);
+        managerRadio.setEnabled(false);
 
         ButtonGroup registerGroup = new ButtonGroup();//To limit 1 role 1 time
         registerGroup.add(userRadio);
@@ -90,10 +124,12 @@ public class PageAdmin_Edit implements ActionListener{
         apply = new JButton("Apply");//Apply Button
         apply.setBounds(container.getWidth()-160, container.getHeight()-90, 120, 30);
         apply.addActionListener(this);
+        apply.setEnabled(false);
 
         dlt = new JButton("Delete");//Delete Button
         dlt.setBounds(container.getWidth()-160, container.getHeight()-130, 120, 30);
         dlt.addActionListener(this);
+        dlt.setEnabled(false);
 
         // Part of adding apply and delete into GUI
         container.add(apply);

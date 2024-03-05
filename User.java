@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import java.awt.event.ActionEvent;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class User {
     private int role;
@@ -22,6 +25,10 @@ public class User {
 
     public String getPass(){
         return password;
+    }
+
+    public static void setPass(int index, String password){
+        User.userList.get(index).password = password;
     }
 
     public void setRole(int role){
@@ -87,6 +94,17 @@ class Manager extends User {
         super(0, name, password);
     }
 
+    public static void writeData() throws IOException {
+        try(BufferedWriter write = new BufferedWriter(new FileWriter(FILE_PATH, false))){
+            for (int i = 0; i < User.userList.size(); i ++) {
+            write.write(User.userList.get(i).getRole()+","+User.userList.get(i).getName()+","+User.userList.get(i).getPass());
+            write.newLine();
+        }
+            write.flush();
+            write.close();
+        }
+    }
+
     private static final String FILE_PATH = "user.txt";
     public static void registerUser(){
         try{
@@ -121,6 +139,21 @@ class Manager extends User {
         }catch(Exception e){
             System.out.println("Invalid input!");
         }
+    }
+
+    public static void modifyUser(ActionEvent e) throws IOException {
+        String username = PageAdmin_Edit.userInput.getText();
+        int index = -1;
+        if(e.getSource()==PageAdmin_Edit.apply){
+            for(int i=0; i < User.userList.size(); i++){
+                if(User.userList.get(i).getName().equals(username)){
+                    index = i;
+                }
+            }
+            setPass(index, PageAdmin_Edit.passwordInput.getText());
+            writeData();
+        }
+        
     }
 }
 
