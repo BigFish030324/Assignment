@@ -74,7 +74,9 @@ public class PageAdmin_Edit implements ActionListener{
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-// This is where register, username, password and buttons are
+// Register, username, password and buttons
+
+        JLabel icon = new backIcon();//Go back icon
 
         editText = new JLabel("Edit Profile");//register word
         editText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
@@ -145,6 +147,7 @@ public class PageAdmin_Edit implements ActionListener{
         container.add(edit);
         container.add(userRadio);
         container.add(technicianRadio);
+        container.add(icon);
         container.add(managerRadio);
     }
 }

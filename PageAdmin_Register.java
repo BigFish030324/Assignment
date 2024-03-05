@@ -49,13 +49,7 @@ public class PageAdmin_Register implements ActionListener{
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-        ImageIcon image1 = new ImageIcon("..\\Assignment\\Images\\Back_Icon2.jpg");
-        Image setSize1 = image1.getImage();
-        setSize1 = setSize1.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-        image1 = new ImageIcon(setSize1);
-        JLabel backIcon = new JLabel();//Code for Back Icon
-        backIcon.setIcon(image1);
-        backIcon.setBounds(10, 10, 30, 30);
+        JLabel icon = new backIcon();// Go back icon
 
         registerText = new JLabel("Registration");//register word
         registerText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
@@ -84,9 +78,6 @@ public class PageAdmin_Register implements ActionListener{
         customerRadio = new JRadioButton("Customer");//Choose button for user
         customerRadio.setBounds((container.getWidth()/2)-170, 260, 90, 30);
 
-        // backIcon = new backIcon();//Having issue of unable to add AddListenner
-        // backIcon.addActionListener(this);
-
         ok = new JButton("OK");//OK Button
         ok.setBounds(container.getWidth()-150, 300, 100, 30);
         ok.addActionListener(this);
@@ -104,7 +95,7 @@ public class PageAdmin_Register implements ActionListener{
         container.add(customerRadio);
         container.add(technicianRadio);
         container.add(managerRadio);
-        container.add(backIcon);
+        container.add(icon);
         container.setVisible(true);
     }
 }
