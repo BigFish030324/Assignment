@@ -1,43 +1,68 @@
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
-public class AboutUs implements ActionListener{
+public class AboutUs implements ActionListener {
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == ok){
-            container.setVisible(false);
+        if (e.getSource() == okButton) {
+            container.dispose();
         }
     }
 
-    static JFrame container;
-    JButton ok;
-    JLabel aboutUsText;
-
-    public AboutUs(){
-        container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(360,150);//GUI Size
-        container.setLocationRelativeTo(null);//GUI Location
-        container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        container.setResizable(false);//Fix the GUI Size
-        container.setLayout(null);
-
-        aboutUsText = new JLabel("<html>Are you sure that you want to continue the <br>action?</html>");//asking sentence
-        aboutUsText.setBounds(15, 0, 330, 50);
-        aboutUsText.setFont(new Font("Times New Roman", Font.PLAIN, 17));
-
-        ok = new JButton("OK");//confirm Button
-        ok.setBounds((container.getWidth()/2)+45, 70, 100, 30);
-        ok.addActionListener(this);
-
-        container.add(ok);
-        container.add(aboutUsText);
-        container.setVisible(true);
+    public static void main(String[] args) {
+        new AboutUs();
     }
 
-    public class Slider {
-        a
+    JFrame container;
+    JTextArea descriptionText;
+    JButton okButton;
+
+    public AboutUs() {
+        initializeGUI();
+    }
+
+    public void initializeGUI() {
+        container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
+        container.setSize(600, 400);
+        container.setLocationRelativeTo(null);
+        container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        container.setResizable(false);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+
+        JLabel aboutUs = new JLabel("About APU Hostel Home Appliances Service Centre (AHHASC)");
+        aboutUs.setBounds(20, 10, 770, 30);
+        aboutUs.setFont(new Font("Times New Roman", Font.BOLD, 20));
+
+        descriptionText = new JTextArea();
+        descriptionText.setEditable(false);
+        descriptionText.setLineWrap(true);
+        descriptionText.setWrapStyleWord(true);
+        descriptionText.setText("Welcome to your new home\n" + 
+        "\nAPU is the right place for you to kick off your university life. Whether you're looking for APU On-Campus Residence, APU Off-Campus Residence or Satellite Campus Residence within Technology Park Malaysia (TPM), we offer a different range of accommodations in various styles, sizes, and budgets.\n" + 
+        "\n\n\nLive, Learn, and Have Fun at APU Accommodation\n" + 
+        "\nLiving away from home is a big step and the start of a new chapter. Our contemporary accommodation options are designed with you in mind, to provide a secure and welcoming home for you to create memories that will last a lifetime.\n" + 
+        "\nOur APU On-Campus Residence and Satellite Campus Residence @ TPM at APU provide students the university life beyond classrooms. We provide everything that you need from common pantry to residence’s lounge areas. As a resident of APU, you'll be living in an environment designed not only to house students but also to foster community and intellectual growth.");
+        descriptionText.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+
+        JScrollPane scrollPane = new JScrollPane(descriptionText);
+        scrollPane.setBounds(25, 50, 535, 250);
+
+        okButton = new JButton("OK");
+        okButton.setBounds((container.getWidth()/2)-150, container.getHeight()-90, 300, 30);
+        okButton.addActionListener(this);
+
+        panel.add(aboutUs);
+        panel.add(scrollPane);
+        panel.add(okButton);
+        container.add(panel);
+        container.setVisible(true);
     }
 }
