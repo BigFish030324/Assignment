@@ -99,7 +99,7 @@ public class PageAdmin_Appointment implements ActionListener{
         registerGroup.add(managerRadio);
 
         container.add(ok);
-        container.add(registerText);
+        container.add(appointmentText);
         container.add(userText);
         container.add(passwordText);
         container.add(userInput);
