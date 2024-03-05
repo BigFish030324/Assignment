@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -69,20 +70,45 @@ public class MainPage implements ActionListener{
         userText.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
         userInput = new JTextField();//Type username here
-        userInput.setBounds((container.getWidth() - 350)/2, 210, 350, 30);
+        userInput.setBounds((container.getWidth() - 350)/2, 210, 350, 40);
 
         passwordText = new JLabel("Password");//Password word
-        passwordText.setBounds(((container.getWidth() - 350)/2)+5, 250, 350, 30);
+        passwordText.setBounds(((container.getWidth() - 350)/2)+5, 260, 350, 30);
         passwordText.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
         passwordInput = new JPasswordField();//Type password here
-        passwordInput.setBounds((container.getWidth() - 350)/2, 280, 350, 30);
+        passwordInput.setBounds((container.getWidth() - 350)/2, 290, 350, 40);
         passwordInput.addActionListener(this);
+
+        // Code for Show Checkbox
+        ImageIcon image3 = new ImageIcon("..\\Assignment\\Images\\Show.png");
+        Image setSize3 = image3.getImage();
+        setSize3 = setSize3.getScaledInstance(40, 25, Image.SCALE_SMOOTH);
+        image3 = new ImageIcon(setSize3);
+        JLabel ImageShow = new JLabel();
+        ImageShow.setIcon(image3);
+        // ImageShow.setBounds(60, 45, 30, 30);
+
+        // Code for Don't Show Checkbox
+        ImageIcon image4 = new ImageIcon("..\\Assignment\\Images\\Dont_Show.png");
+        Image setSize4 = image4.getImage();
+        setSize4 = setSize4.getScaledInstance(40, 25, Image.SCALE_SMOOTH);
+        image4 = new ImageIcon(setSize4);
+        JLabel ImageDontShow = new JLabel();
+        ImageDontShow.setIcon(image4); // Fixed the variable name here
+        // ImageDontShow.setBounds(60, 45, 30, 30);
+
+        JCheckBox showPassword = new JCheckBox(); // Added text to the checkbox
+        showPassword.setFocusCycleRoot(false);
+        showPassword.setOpaque(false);
+        showPassword.setBounds(((container.getWidth() - 350)/2)+300, 300, 40, 25);
+        showPassword.setIcon(image4);
+        showPassword.setSelectedIcon(image3);
 
         User.readData();
 
         enter = new JButton("Enter");//Enter Button
-        enter.setBounds((container.getWidth() - 250)/2, 350, 250, 60);
+        enter.setBounds((container.getWidth() - 350)/2, 350, 350, 50);
         enter.addActionListener(this);
 
         aboutUs1Text = new JLabel("Click here for more detail in ");
@@ -94,6 +120,7 @@ public class MainPage implements ActionListener{
         aboutUs2Text.setFont(new Font("Times New Roman", Font.BOLD, 14));
 
         container.add(enter);
+        container.add(showPassword);
         container.add(userText);
         container.add(passwordText);
         container.add(userInput);
