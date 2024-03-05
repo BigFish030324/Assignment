@@ -1,6 +1,10 @@
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,36 +15,48 @@ import javax.swing.JRadioButton;
 
 public class PageAdmin_Edit implements ActionListener{
     public void actionPerformed(ActionEvent e){
-        String username = PageAdmin_Edit.userInput.getText();
+        String username = userInput.getText();
     
-    if (e.getSource() == PageAdmin_Edit.check) {
+    if (e.getSource() == check) {
         try {
-            User.readData();
             int index = -1;
 
+            // Set Buttons to enable when username exists
             for (int i = 0; i < User.userList.size(); i++) {
                 if (User.userList.get(i).getName().equals(username)) {
                     index = i;
-                    PageAdmin_Edit.passwordInput.setEditable(true);
-                    PageAdmin_Edit.edit.setEnabled(true);
-                    PageAdmin_Edit.userRadio.setEnabled(true);
-                    PageAdmin_Edit.technicianRadio.setEnabled(true);
-                    PageAdmin_Edit.managerRadio.setEnabled(true);
-                    PageAdmin_Edit.dlt.setEnabled(true);
-                    PageAdmin_Edit.apply.setEnabled(true);
+                    passwordInput.setText(User.userList.get(i).getPass());
+                    edit.setEnabled(true);
+                    userRadio.setEnabled(true);
+                    technicianRadio.setEnabled(true);
+                    managerRadio.setEnabled(true);
+                    dlt.setEnabled(true);
+                    apply.setEnabled(true);
                     break;
                 }
             }
 
-            if (index == -1) {
+            if(index != -1){
+                if (User.userList.get(index).getRole() == 0){
+                    managerRadio.setSelected(true);
+                }
+                else if (User.userList.get(index).getRole() == 1){
+                    technicianRadio.setSelected(true);
+                }
+                else if (User.userList.get(index).getRole() == 2){
+                    userRadio.setSelected(true);
+                }
+            }
+            else if (index == -1) {
                 throw new Exception();
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(container, "Invalid Input!");
         }
-    } else if (e.getSource() == PageAdmin_Edit.apply) {
+    } else if (e.getSource() == apply) { //Click Apply to make changes
         try {
             int index = -1;
+            int role = 0;
 
             for (int i = 0; i < User.userList.size(); i++) {
                 if (User.userList.get(i).getName().equals(username)) {
@@ -50,12 +66,28 @@ public class PageAdmin_Edit implements ActionListener{
             }
 
             if (index != -1) {
-                User.setPass(index, PageAdmin_Edit.passwordInput.getText());
+
+                // Choose radio button to change roles
+                if(managerRadio.isSelected()){
+                    role = 0;
+                }else if(technicianRadio.isSelected()){
+                    role = 1;
+                }else if(userRadio.isSelected()){
+                    role = 2;
+                }
+
+                User.setPass(index, passwordInput.getText());
+                User.setRole(index, role);
                 Manager.writeData();
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(container, "Invalid Input!");
             }
+        }
+
+        // Click on Edit to enable edit password
+        if(e.getSource() == edit){
+            passwordInput.setEditable(true);
         }
     }
 
@@ -77,6 +109,14 @@ public class PageAdmin_Edit implements ActionListener{
 // Register, username, password and buttons
 
         JLabel icon = new backIcon();//Go back icon
+        icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        icon.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                PageAdmin.container.setVisible(true);
+                container.setVisible(false);
+            }
+        });
 
         editText = new JLabel("Edit Profile");//register word
         editText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);

@@ -15,11 +15,7 @@ public class AboutUs implements ActionListener {
         }
     }
 
-    public static void main(String[] args) {
-        new AboutUs();
-    }
-
-    JFrame container;
+    static JFrame container;
     JTextArea descriptionText;
     JButton okButton;
 

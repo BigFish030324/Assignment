@@ -23,6 +23,6 @@ public class ARunCodeHere {
         PageAdmin_Edit.container.setVisible(false);
         RegisterSuccess.container.setVisible(false);
         EditConfirmation.container.setVisible(false);
-        g.container.setVisible(false);// dont know why i they AboutUs cant run, so put g as it works
+        AboutUs.container.setVisible(false);// dont know why i they AboutUs cant run, so put g as it works
     }    
 }
