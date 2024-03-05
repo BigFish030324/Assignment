@@ -1,10 +1,14 @@
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -116,8 +120,25 @@ public class MainPage implements ActionListener{
         aboutUs1Text.setFont(new Font("Times New Roman", Font.BOLD, 12));
 
         aboutUs2Text = new JLabel("<html><u><font color='blue'>About Us!</font></u></html>");
-        aboutUs2Text.setBounds(container.getWidth()/2+45, 403, 250, 30);
+        aboutUs2Text.setBounds(((container.getWidth() - 350)/2)+222, 408, 80, 20);
         aboutUs2Text.setFont(new Font("Times New Roman", Font.BOLD, 14));
+
+        aboutUs2Text.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        aboutUs2Text.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                AboutUs.container.setVisible(true);
+                container.setVisible(false);
+            }
+
+            public void mouseEntered(MouseEvent e) {
+                container.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+        
+            public void mouseExited(MouseEvent e) {
+                container.setCursor(Cursor.getDefaultCursor());
+            }
+        });
 
         container.add(enter);
         container.add(showPassword);

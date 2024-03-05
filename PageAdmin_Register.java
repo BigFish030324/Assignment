@@ -1,15 +1,18 @@
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 import javax.swing.JRadioButton;
 
 public class PageAdmin_Register implements ActionListener{
@@ -50,6 +53,15 @@ public class PageAdmin_Register implements ActionListener{
         container.setLayout(null);
 
         JLabel icon = new backIcon();// Go back icon
+
+        icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        icon.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                PageAdmin.container.setVisible(true);
+                container.setVisible(false);
+            }
+        });
 
         registerText = new JLabel("Registration");//register word
         registerText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
