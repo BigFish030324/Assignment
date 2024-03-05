@@ -1,6 +1,9 @@
 import java.awt.Font;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -49,6 +52,17 @@ public class PageAdmin implements ActionListener {
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
+        JLabel icon = new backIcon();// Go back icon
+
+        icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        icon.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                MainPage.container.setVisible(true);
+                container.setVisible(false);
+            }
+        });
+
         register = new JButton("Register");//Username word
         register.setBounds((container.getWidth() - 500)/2, 170, 500, 50);
         register.addActionListener(this);
@@ -79,6 +93,7 @@ public class PageAdmin implements ActionListener {
         container.add(feedback);
         container.add(payment);
         container.add(adminText);
+        container.add(icon);
         container.setVisible(true);
     }
 }
