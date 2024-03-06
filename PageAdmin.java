@@ -19,10 +19,9 @@ public class PageAdmin implements ActionListener {
                 container.setVisible(false);
                 // PageAdmin_Edit PageAdminEdit = new PageAdmin_Edit();
                 PageAdmin_Edit.container.setVisible(true);
-            // } else if(e.getSource() == appointment){
-            //     container.setVisible(false);
-            //     PageAdmin_Appointment adminAppointment = new PageAdmin_Appointment();
-            //     PageAdmin_Appointment.container.setVisible(true);
+            } else if(e.getSource() == appointment){
+                PageAdmin_Appointment.container.setVisible(true);
+                container.setVisible(false);
             // } else if(e.getSource() == feedback){
             //     container.setVisible(false);
             //     PageAdmin_Feedback adminFeedback = new PageAdmin_Feedback();

@@ -4,7 +4,7 @@ public class ARunCodeHere {
     static PageAdmin b;
     static PageAdmin_Register c;
     static PageAdmin_Edit d;
-    // static PageAdmin_Appointment e;
+    static PageAdmin_Appointment e;
     static RegisterSuccess f;
     static EditConfirmation g;
     static AboutUs h;
@@ -14,7 +14,7 @@ public class ARunCodeHere {
         b = new PageAdmin();
         c = new PageAdmin_Register();
         d = new PageAdmin_Edit();
-        // e = new PageAdmin_Appointment();
+        e = new PageAdmin_Appointment();
         f = new RegisterSuccess();
         g = new EditConfirmation();
         h = new AboutUs();
@@ -23,7 +23,7 @@ public class ARunCodeHere {
         PageAdmin.container.setVisible(false);
         PageAdmin_Register.container.setVisible(false);
         PageAdmin_Edit.container.setVisible(false);
-        // PageAdmin_Appointment.container.setVisible(false);
+        PageAdmin_Appointment.container.setVisible(false);
         RegisterSuccess.container.setVisible(false);
         EditConfirmation.container.setVisible(false);
         AboutUs.container.setVisible(false);// dont know why i they AboutUs cant run, so put g as it works

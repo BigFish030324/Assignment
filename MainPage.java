@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -35,6 +36,7 @@ public class MainPage implements ActionListener{
     static JPasswordField passwordInput;
     JLabel userText, passwordText, aboutUs1Text, aboutUs2Text;
     JPanel backgroundBox, APUCircle;
+    JLayeredPane layer;
 
     public MainPage(){
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
@@ -43,6 +45,9 @@ public class MainPage implements ActionListener{
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
+
+        layer = new JLayeredPane();
+        layer.setBounds(0, 0, 1000, 600);
 
         backgroundBox = new box();// The background box behind login input
         backgroundBox.setBounds((container.getWidth()-450)/2, (container.getHeight()-300)/2, 450, 300);
@@ -139,18 +144,19 @@ public class MainPage implements ActionListener{
             }
         });
 
-        container.add(enter);
-        container.add(showPassword);
-        container.add(userText);
-        container.add(passwordText);
-        container.add(userInput);
-        container.add(passwordInput);
-        container.add(aboutUs1Text);
-        container.add(aboutUs2Text);
-        container.add(ImageAPU);
-        container.add(APUCircle);
-        container.add(backgroundBox);
-        container.add(ImageHostel);
+        layer.add(enter, JLayeredPane.MODAL_LAYER);
+        layer.add(showPassword, JLayeredPane.POPUP_LAYER);
+        layer.add(userText, JLayeredPane.MODAL_LAYER);
+        layer.add(passwordText, JLayeredPane.MODAL_LAYER);
+        layer.add(userInput, JLayeredPane.MODAL_LAYER);
+        layer.add(passwordInput, JLayeredPane.MODAL_LAYER);
+        layer.add(aboutUs1Text, JLayeredPane.MODAL_LAYER);
+        layer.add(aboutUs2Text, JLayeredPane.MODAL_LAYER);
+        layer.add(ImageAPU, JLayeredPane.MODAL_LAYER);
+        layer.add(APUCircle, JLayeredPane.PALETTE_LAYER);
+        layer.add(backgroundBox, JLayeredPane.PALETTE_LAYER);
+        layer.add(ImageHostel, JLayeredPane.DEFAULT_LAYER);
+        container.add(layer);
         container.setVisible(true);
     }
 }
