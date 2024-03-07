@@ -31,7 +31,7 @@ public class PageAdmin_Appointment implements ActionListener{
             }
         }
     }
-    
+
     static JFrame container;
     JButton ok;
     static JTextField userInput, descriptionInput;

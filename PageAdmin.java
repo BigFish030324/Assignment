@@ -17,15 +17,13 @@ public class PageAdmin implements ActionListener {
             } 
             else if(e.getSource() == edit){
                 container.setVisible(false);
-                // PageAdmin_Edit PageAdminEdit = new PageAdmin_Edit();
                 PageAdmin_Edit.container.setVisible(true);
             } else if(e.getSource() == appointment){
-                PageAdmin_Appointment.container.setVisible(true);
                 container.setVisible(false);
-            // } else if(e.getSource() == feedback){
-            //     container.setVisible(false);
-            //     PageAdmin_Feedback adminFeedback = new PageAdmin_Feedback();
-            //     PageAdmin_Feedback.container.setVisible(true);
+                PageAdmin_Appointment.container.setVisible(true);
+            } else if(e.getSource() == feedback){
+                container.setVisible(false);
+                PageAdmin_Feedback.container.setVisible(true);
             // } else if(e.getSource() == payment){
             //     container.setVisible(false);
             //     PageAdmin_Payment adminPayment = new PageAdmin_Payment();
