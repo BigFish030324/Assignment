@@ -1,18 +1,10 @@
-import java.awt.Cursor;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class PageAdmin_Appointment implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -24,17 +16,18 @@ public class PageAdmin_Appointment implements ActionListener{
                     throw new Exception();
                 } else {
                     container.setVisible(false);
-                    PageAdmin.container.setVisible(true);
+                    //PageAdmin.container.setVisible(true);
                 }
             } catch (Exception f) {
                 JOptionPane.showMessageDialog(container, "Invalid Input!");
             }
         }
     }
-
+    
     static JFrame container;
     JButton ok;
-    static JTextField userInput, descriptionInput;
+    static JTextField userInput;
+    static JTextArea descriptionInput;
     JLabel appointmentText, userText, bookDateText, bookTimeText, descriptionText;
     JComboBox<String> userComboBox, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
 
@@ -48,6 +41,8 @@ public class PageAdmin_Appointment implements ActionListener{
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
+
+        panel.setBounds(((container.getWidth() + 10)/2)+5, 310, 350, 90);
 
         JLabel icon = new backIcon();// Go back icon
 
@@ -108,16 +103,22 @@ public class PageAdmin_Appointment implements ActionListener{
         descriptionText.setBounds(((container.getWidth() + 10)/2)+5, 280, 350, 30);
         descriptionText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        descriptionInput = new JTextField();// Type description here
-        descriptionInput.setBounds((container.getWidth() + 10) / 2, 310, 350, 90);
+        descriptionInput = new JTextArea(20, 20);
+        descriptionInput.setText("This is the default text. Please enter any text that you like here. Just add it, don't worry.");// Type description here
 
         JScrollPane scrollPane = new JScrollPane(descriptionInput);
-        scrollPane.setBounds((container.getWidth() + 10) / 2, 310, 350, 90);
+        scrollPane.setBounds(0, 0, panel.getWidth(), panel.getHeight());
+
+        JLabel line1 = new JLabel("How are you");
+        JLabel line2 = new JLabel("Hi");
+        JLabel line3 = new JLabel("Hello");
+        line1.setBounds(0, 0, 100, 50);
+        line2.setBounds(0, 60, 100, 50);
+        line3.setBounds(0, 120, 100, 50);
 
         ok = new JButton("OK");//OK Button
         ok.setBounds(container.getWidth()-150, 410, 100, 30);
         ok.addActionListener(this);
-
 
 
 
@@ -138,8 +139,6 @@ public class PageAdmin_Appointment implements ActionListener{
         container.add(bookTimeBox_AMPM);
 
         container.add(descriptionText);
-        container.add(descriptionInput);
-        panel.add(scrollPane);
 
         container.add(icon);
         container.setVisible(true);
