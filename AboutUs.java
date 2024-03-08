@@ -27,7 +27,7 @@ public class AboutUs implements ActionListener {
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
         container.setSize(600, 400);
         container.setLocationRelativeTo(null);
-        container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        container.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         container.setResizable(false);
 
         JPanel panel = new JPanel();
