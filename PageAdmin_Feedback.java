@@ -1,9 +1,13 @@
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,23 +45,45 @@ public class PageAdmin_Feedback implements ActionListener{
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setLayout(null);
 
-        // Left Panel
-        JPanel leftPanel = new JPanel();
-        leftPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
-        leftPanel.setBounds(0, 0, 600, 600);
-        JScrollPane scrollPane = new JScrollPane(leftPanel);
+        // Left Top Panel
+        JPanel leftTopPanel = new JPanel();
+        leftTopPanel.setLayout(new FlowLayout());
+        leftTopPanel.setBounds(10, 10, 300, 50);
+        // leftTopPanel.setPreferredSize(new Dimension(100, 200));
+        leftTopPanel.setBackground(Color.GREEN);
+
+        // Left Below Panel
+        JPanel leftBelowPanel = new JPanel();
+        leftBelowPanel.setLayout(new FlowLayout());
+        leftBelowPanel.setPreferredSize(new Dimension(100, 600));
+        leftBelowPanel.setBackground(Color.BLUE);
+
+        JButton button1 = new JButton("Hello");
+        JButton button2 = new JButton("Hello");
+        JButton button3 = new JButton("Hello");
+        JButton button4 = new JButton("Hello");
+        leftBelowPanel.add(button1);
+        leftBelowPanel.add(button2);
+        leftBelowPanel.add(button3);
+        leftBelowPanel.add(button4);
+
+        JScrollPane scrollPane = new JScrollPane(leftBelowPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setBounds(10, 50, 300, 500);
+        scrollPane.setViewportView(leftBelowPanel);
+
 
         String[] users = {"Technicians", "Customers"};
         JComboBox<String> usersComboBox = new JComboBox<>(users);
-        leftPanel.add(new JLabel("Users:"));
-        leftPanel.add(usersComboBox);
+        leftTopPanel.add(new JLabel("Users:"));
+        leftTopPanel.add(usersComboBox);
 
         // Right Panel
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(null);
-        rightPanel.setBounds(600, 0, 400, 600);
-        container.add(rightPanel);
+        rightPanel.setBounds(310, 10, 670, 540);
+        rightPanel.setBackground(Color.RED);
+
 
         userText = new JLabel("Username");//Username word
         userText.setBounds(((container.getWidth() + 10)/2)+5, 110, 350, 30);
@@ -84,6 +110,8 @@ public class PageAdmin_Feedback implements ActionListener{
         scrollPane2.setBounds((container.getWidth() + 10) / 2, 310, 350, 90);
 
         container.add(scrollPane);
+        container.add(leftTopPanel);
+        container.add(rightPanel);
         usersComboBox.setVisible(true);
         container.setVisible(true);
     }
