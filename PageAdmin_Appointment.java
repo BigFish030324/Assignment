@@ -63,9 +63,6 @@ public class PageAdmin_Appointment implements ActionListener{
         userText.setBounds(((container.getWidth() + 10)/2)+5, 110, 350, 30);
         userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        // userInput = new JTextField();//Type username here
-        // userInput.setBounds((container.getWidth() + 10)/2, 135, 350, 30);
-
         String[] username = {"Fish", "JOJO"};
         userComboBox = new JComboBox<>(username);
         userComboBox.setBounds((container.getWidth() + 10)/2, 135, 350, 30);
@@ -75,12 +72,12 @@ public class PageAdmin_Appointment implements ActionListener{
         bookDateText.setBounds(((container.getWidth() + 10)/2)+5, 165, 350, 30);
         bookDateText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        String[] month = {"1", "2"};
+        String[] month = {"1", "2"}; //Booking date for the month
         bookDateBox_Month = new JComboBox<>(month);
-        bookDateBox_Month.setBounds((container.getWidth() + 10)/2, 190, 170, 30);
+        bookDateBox_Month.setBounds((container.getWidth() + 10)/2, 190, 350, 30);
         bookDateBox_Month.addActionListener(this);
 
-        String[] year = {"1", "2"};
+        String[] year = {"1", "2"}; //Booking date for the year
         bookDateBox_Year = new JComboBox<>(year);
         bookDateBox_Year.setBounds((container.getWidth()/2) + 185, 190, 170, 30);
         bookDateBox_Year.addActionListener(this);
@@ -108,13 +105,6 @@ public class PageAdmin_Appointment implements ActionListener{
 
         JScrollPane scrollPane = new JScrollPane(descriptionInput);
         scrollPane.setBounds(0, 0, panel.getWidth(), panel.getHeight());
-
-        JLabel line1 = new JLabel("How are you");
-        JLabel line2 = new JLabel("Hi");
-        JLabel line3 = new JLabel("Hello");
-        line1.setBounds(0, 0, 100, 50);
-        line2.setBounds(0, 60, 100, 50);
-        line3.setBounds(0, 120, 100, 50);
 
         ok = new JButton("OK");//OK Button
         ok.setBounds(container.getWidth()-150, 410, 100, 30);
