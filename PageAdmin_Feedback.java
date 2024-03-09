@@ -63,7 +63,7 @@ public class PageAdmin_Feedback implements ActionListener{
         leftTopPanel.setLayout(new FlowLayout());
         leftTopPanel.setBounds(50, 10, 260, 40);
         // leftTopPanel.setPreferredSize(new Dimension(100, 200));
-        leftTopPanel.setBackground(Color.GREEN);
+        // leftTopPanel.setBackground(Color.GREEN);
 
         String[] users = {"Technicians", "Customers"};
         JComboBox<String> usersComboBox = new JComboBox<>(users);
@@ -74,7 +74,7 @@ public class PageAdmin_Feedback implements ActionListener{
         JPanel leftBelowPanel = new JPanel();
         leftBelowPanel.setLayout(new FlowLayout());
         leftBelowPanel.setPreferredSize(new Dimension(100, 600));
-        leftBelowPanel.setBackground(Color.BLUE);
+        // leftBelowPanel.setBackground(Color.BLUE);
 
         JButton button1 = new JButton("Feedback 1");//Change this button to title sent by any feedback
         button1.setPreferredSize(new Dimension(280, 40));
@@ -89,7 +89,7 @@ public class PageAdmin_Feedback implements ActionListener{
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(null);
         rightPanel.setBounds(310, 10, 660, 540);
-        rightPanel.setBackground(Color.RED);
+        // rightPanel.setBackground(Color.RED);
 
         feedbackText = new JLabel("Feedback");//Username word
         feedbackText.setBounds((rightPanel.getWidth()/2) + 260, 50, 140, 50);
@@ -117,7 +117,8 @@ public class PageAdmin_Feedback implements ActionListener{
         descriptionDisplay.setBounds((rightPanel.getWidth() + 10) / 2, 270, 600, 250);
 
         JScrollPane scrollPane2 = new JScrollPane(descriptionDisplay);
-        scrollPane2.setBounds((rightPanel.getWidth() + 10) / 2, 270, descriptionDisplay.getWidth(), descriptionDisplay.getHeight());
+        scrollPane2.setBounds((rightPanel.getWidth() + 10) / 2, 270, 600, 250);
+        scrollPane2.setBackground(Color.RED);
 
         // Left Top Panel
         container.add(scrollPane);
