@@ -104,10 +104,20 @@ public class PageAdmin_Feedback implements ActionListener{
         descriptionText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         descriptionDisplay = new JTextField();// Display description here
+<<<<<<< Updated upstream
         descriptionDisplay.setBounds((container.getWidth() + 10) / 2, 310, 350, 90);
+=======
+        descriptionDisplay.setBounds(335, 300, 600, 250);
+>>>>>>> Stashed changes
 
+        descriptionDisplay.setBackground(Color.RED);
         JScrollPane scrollPane2 = new JScrollPane(descriptionDisplay);
+<<<<<<< Updated upstream
         scrollPane2.setBounds((container.getWidth() + 10) / 2, 310, 350, 90);
+=======
+        scrollPane2.setBounds((rightPanel.getWidth() + 10) / 2, 270, 600, 250);
+        
+>>>>>>> Stashed changes
 
         container.add(scrollPane);
         container.add(leftTopPanel);
