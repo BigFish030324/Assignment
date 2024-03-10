@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import org.w3c.dom.events.MouseEvent;
@@ -37,12 +38,13 @@ public class PageAdmin_Feedback implements ActionListener{
     }
 
     static JFrame container;
-    static JTextField userDisplay, dateDisplay, descriptionDisplay;
+    static JTextField userDisplay, dateDisplay;
+    JTextArea descriptionDisplay;
     JLabel feedbackText, userText, dateText, descriptionText;
     JComboBox<String> users;
 
     public PageAdmin_Feedback() {
-        JFrame container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
+        container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
         container.setSize(1000, 600);
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setLayout(null);
@@ -61,7 +63,7 @@ public class PageAdmin_Feedback implements ActionListener{
         // Left Top Panel
         JPanel leftTopPanel = new JPanel();
         leftTopPanel.setLayout(new FlowLayout());
-        leftTopPanel.setBounds(50, 10, 260, 40);
+        leftTopPanel.setBounds(45, 5, 260, 40);
         // leftTopPanel.setPreferredSize(new Dimension(100, 200));
         // leftTopPanel.setBackground(Color.GREEN);
 
@@ -113,26 +115,25 @@ public class PageAdmin_Feedback implements ActionListener{
         descriptionText.setBounds(((rightPanel.getWidth() + 10)/2)+5, 240, 350, 30);
         descriptionText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        descriptionDisplay = new JTextField();// Display description here
-        descriptionDisplay.setBounds((rightPanel.getWidth() + 10) / 2, 270, 600, 250);
+        descriptionDisplay = new JTextArea(20, 50);// Display description here
+        descriptionDisplay.setSize(600, 400);
 
         JScrollPane scrollPane2 = new JScrollPane(descriptionDisplay);
-        scrollPane2.setBounds((rightPanel.getWidth() + 10) / 2, 270, 600, 250);
-        scrollPane2.setBackground(Color.RED);
+        scrollPane2.setBounds(25, 270, 600, 250);
+        // scrollPane2.setBackground(Color.BLUE);
 
         // Left Top Panel
         container.add(scrollPane);
         container.add(leftTopPanel);
 
         // Right Panel
-        container.add(scrollPane2);
+        rightPanel.add(scrollPane2);
         container.add(feedbackText);
         container.add(userText);
         container.add(userDisplay);
         container.add(dateText);
         container.add(dateDisplay);
         container.add(descriptionText);
-        container.add(descriptionDisplay);
         container.add(rightPanel);
 
         container.add(icon);
