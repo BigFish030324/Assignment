@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 
 import java.awt.event.MouseEvent;
 
-public class PageAdmin_Payment implements ActionListener{
+public class PageCustomer_Payment implements ActionListener{
     public void actionPerformed(ActionEvent e){
         // if (e.getSource() == userComboBox) {
         //     System.out.println(userComboBox.getSelectedItem());
@@ -38,7 +38,7 @@ public class PageAdmin_Payment implements ActionListener{
     static JTextField userDisplay, dateDisplay, serviceDisplay, totalDisplay;
     JLabel paymentText, userText, dateText, serviceText, totalText;
 
-    public PageAdmin_Payment() {
+    public PageCustomer_Payment() {
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
         container.setSize(700, 400);
         container.setLocationRelativeTo(null);
@@ -51,7 +51,7 @@ public class PageAdmin_Payment implements ActionListener{
 
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
-                PageAdmin.container.setVisible(true);
+                PageCustomer.container.setVisible(true);
                 container.setVisible(false);
             }
         });

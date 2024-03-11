@@ -60,44 +60,44 @@ public class PageAdmin_Appointment implements ActionListener{
         appointmentText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         userText = new JLabel("Username");//Username word
-        userText.setBounds(((container.getWidth() + 10)/2)+5, 110, 350, 30);
+        userText.setBounds(((container.getWidth() + 10)/2) + 10, 110, 350, 30);
         userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         String[] username = {"Fish", "JOJO"};
         userComboBox = new JComboBox<>(username);
-        userComboBox.setBounds((container.getWidth() + 10)/2, 135, 350, 30);
+        userComboBox.setBounds(((container.getWidth() + 10)/2) + 5, 135, 350, 30);
         userComboBox.addActionListener(this);
 
         bookDateText = new JLabel("Book Date");//Book date word
-        bookDateText.setBounds(((container.getWidth() + 10)/2)+5, 165, 350, 30);
+        bookDateText.setBounds(((container.getWidth() + 10)/2) + 10, 165, 350, 30);
         bookDateText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         String[] month = {"1", "2"}; //Booking date for the month
         bookDateBox_Month = new JComboBox<>(month);
-        bookDateBox_Month.setBounds((container.getWidth() + 10)/2, 190, 350, 30);
+        bookDateBox_Month.setBounds(((container.getWidth() + 10)/2) + 5, 190, 350, 30);
         bookDateBox_Month.addActionListener(this);
 
         String[] year = {"1", "2"}; //Booking date for the year
         bookDateBox_Year = new JComboBox<>(year);
-        bookDateBox_Year.setBounds((container.getWidth()/2) + 185, 190, 170, 30);
+        bookDateBox_Year.setBounds((container.getWidth()/2) + 190, 190, 170, 30);
         bookDateBox_Year.addActionListener(this);
 
         bookTimeText = new JLabel("Book Time");//book time word
-        bookTimeText.setBounds(((container.getWidth() + 10)/2)+5, 220, 350, 30);
+        bookTimeText.setBounds(((container.getWidth() + 10)/2) + 10, 220, 350, 30);
         bookTimeText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         String[] time = {"1", "2"};
         bookTimeBox_Time = new JComboBox<>(time);
-        bookTimeBox_Time.setBounds((container.getWidth() + 10)/2, 250, 170, 30);
+        bookTimeBox_Time.setBounds(((container.getWidth() + 10)/2) + 5, 250, 170, 30);
         bookTimeBox_Time.addActionListener(this);
 
         String[] dayNight = {"am", "pm"};
         bookTimeBox_AMPM = new JComboBox<>(dayNight);
-        bookTimeBox_AMPM.setBounds((container.getWidth()/2) + 185, 250, 170, 30);
+        bookTimeBox_AMPM.setBounds((container.getWidth()/2) + 190, 250, 170, 30);
         bookTimeBox_AMPM.addActionListener(this);
 
         descriptionText = new JLabel("Description");//Description word
-        descriptionText.setBounds(((container.getWidth() + 10)/2)+5, 280, 350, 30);
+        descriptionText.setBounds(((container.getWidth() + 10)/2)+10, 280, 350, 30);
         descriptionText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         descriptionInput = new JTextArea(20, 20);

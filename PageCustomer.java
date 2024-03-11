@@ -8,18 +8,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class PageTechnician implements ActionListener {
+public class PageCustomer implements ActionListener {
     public void actionPerformed(ActionEvent e){
         try{
             if(e.getSource() == appointment){
                 container.setVisible(false);
-                PageTechnician_Appointment.container.setVisible(true);
+                PageCustomer_Appointment.container.setVisible(true);
             } else if(e.getSource() == feedback){
                 container.setVisible(false);
-                PageTechnician_Feedback.container.setVisible(true);
+                PageCustomer_Feedback.container.setVisible(true);
             } else if(e.getSource() == payment){
                 container.setVisible(false);
-                PageTechnician_Payment.container.setVisible(true);
+                PageCustomer_Payment.container.setVisible(true);
             }
             else{
                 throw new Exception();
@@ -32,8 +32,8 @@ public class PageTechnician implements ActionListener {
     
     static JFrame container;
     JButton appointment, feedback, payment;
-    JLabel technicianText;
-    public PageTechnician(){
+    JLabel customerText;
+    public PageCustomer(){
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
         container.setSize(1000,500);//GUI Size
         container.setLocationRelativeTo(null);//GUI Location
@@ -64,16 +64,16 @@ public class PageTechnician implements ActionListener {
         payment.setBounds((container.getWidth() - 500)/2, 330, 500, 50);
         payment.addActionListener(this);
 
-        technicianText = new JLabel("Technician");//Technician text 
-        technicianText.setBounds((container.getWidth() - 170)/2, 100, 170, 50);
-        technicianText.setFont(new Font("Times New Roman", Font.BOLD, 36));
+        customerText = new JLabel("Customer");//Technician text 
+        customerText.setBounds((container.getWidth() - 170)/2, 100, 170, 50);
+        customerText.setFont(new Font("Times New Roman", Font.BOLD, 36));
 
 
 
         container.add(appointment);
         container.add(feedback);
         container.add(payment);
-        container.add(technicianText);
+        container.add(customerText);
         container.add(icon);
         container.setVisible(true);
     }

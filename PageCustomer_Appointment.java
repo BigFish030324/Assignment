@@ -6,11 +6,11 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 
-public class PageTechnician_Appointment implements ActionListener{
+public class PageCustomer_Appointment implements ActionListener{
     public void actionPerformed(ActionEvent e){
         // if (e.getSource() == userComboBox) {
         //     System.out.println(userComboBox.getSelectedItem());
-        // } else if (e.getSource() == ok) {
+        // } else if (e.getSource() == register) {
         //     try {
         //         if (userInput.getText().isEmpty()) {
         //             throw new Exception();
@@ -25,12 +25,13 @@ public class PageTechnician_Appointment implements ActionListener{
     }
     
     static JFrame container;
+    JButton register;
     static JTextField userInput;
     static JTextArea descriptionInput;
     JLabel appointmentText, userText, bookDateText, bookTimeText, descriptionText;
     JComboBox<String> userComboBox, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
 
-    public PageTechnician_Appointment(){
+    public PageCustomer_Appointment(){
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
         container.setSize(900,500);//GUI Size
         container.setLocationRelativeTo(null);//GUI Location
@@ -49,7 +50,7 @@ public class PageTechnician_Appointment implements ActionListener{
 
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
-                PageTechnician.container.setVisible(true);
+                PageCustomer.container.setVisible(true);
                 container.setVisible(false);
             }
         });
@@ -105,10 +106,15 @@ public class PageTechnician_Appointment implements ActionListener{
         JScrollPane scrollPane = new JScrollPane(descriptionInput);
         scrollPane.setBounds(0, 0, panel.getWidth(), panel.getHeight());
 
+        register = new JButton("Register");//OK Button
+        register.setBounds(container.getWidth() - 190, 410, 100, 30);
+        register.addActionListener(this);
+
 
 
         panel.add(scrollPane);
         container.add(panel);
+        container.add(register);
         container.add(appointmentText);
 
         container.add(userText);
