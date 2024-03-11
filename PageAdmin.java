@@ -24,10 +24,9 @@ public class PageAdmin implements ActionListener {
             } else if(e.getSource() == feedback){
                 container.setVisible(false);
                 PageAdmin_Feedback.container.setVisible(true);
-            // } else if(e.getSource() == payment){
-            //     container.setVisible(false);
-            //     PageAdmin_Payment adminPayment = new PageAdmin_Payment();
-            //     PageAdmin_Payment.container.setVisible(true);
+            } else if(e.getSource() == payment){
+                container.setVisible(false);
+                PageAdmin_Payment.container.setVisible(true);
             }
             else{
                 throw new Exception();

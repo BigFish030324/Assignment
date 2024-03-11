@@ -1,5 +1,4 @@
-
-import java.awt.Color;
+// import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -14,12 +13,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import java.awt.event.MouseEvent;
 
-public class PageAdmin_Feedback implements ActionListener{
+public class PageAdmin_Payment implements ActionListener{
     public void actionPerformed(ActionEvent e){
         // if (e.getSource() == userComboBox) {
         //     System.out.println(userComboBox.getSelectedItem());
@@ -38,14 +36,13 @@ public class PageAdmin_Feedback implements ActionListener{
     }
 
     static JFrame container;
-    static JTextField userDisplay, dateDisplay;
-    JTextArea descriptionDisplay;
-    JLabel feedbackText, userText, dateText, descriptionText;
-    JComboBox<String> users;
+    static JTextField dateDisplay, totalDisplay;
+    JLabel paymentText, paymentText2, userText, dateText, servicesText, totalText;
+    JComboBox<String> users, services;
 
-    public PageAdmin_Feedback() {
+    public PageAdmin_Payment() {
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(1000, 600);
+        container.setSize(700, 400);
         container.setLocationRelativeTo(null);
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setLayout(null);
@@ -64,14 +61,8 @@ public class PageAdmin_Feedback implements ActionListener{
         // Left Top Panel
         JPanel leftTopPanel = new JPanel();
         leftTopPanel.setLayout(new FlowLayout());
-        leftTopPanel.setBounds(45, 5, 260, 40);
-        // leftTopPanel.setPreferredSize(new Dimension(100, 200));
+        leftTopPanel.setBounds(45, 5, 200, 40);
         // leftTopPanel.setBackground(Color.GREEN);
-
-        String[] users = {"Technicians", "Customers"};
-        JComboBox<String> usersComboBox = new JComboBox<>(users);
-        usersComboBox.setPreferredSize(new Dimension(leftTopPanel.getWidth(), leftTopPanel.getHeight()));
-        leftTopPanel.add(usersComboBox);
 
         // Left Below Panel
         JPanel leftBelowPanel = new JPanel();
@@ -79,62 +70,71 @@ public class PageAdmin_Feedback implements ActionListener{
         leftBelowPanel.setPreferredSize(new Dimension(100, 600));
         // leftBelowPanel.setBackground(Color.BLUE);
 
-        JButton button1 = new JButton("Feedback 1");//Change this button to title sent by any feedback
-        button1.setPreferredSize(new Dimension(280, 40));
-        leftBelowPanel.add(button1);
-
         JScrollPane scrollPane = new JScrollPane(leftBelowPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setBounds(10, 50, 300, 500);
+        scrollPane.setBounds(10, 50, 235, 300);
         scrollPane.setViewportView(leftBelowPanel);
+
+        JButton button1 = new JButton("Payment 1");//Change this button to title sent by any feedback
+        button1.setPreferredSize(new Dimension(200, 40));
+        leftBelowPanel.add(button1);
 
         // Right Panel
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(null);
-        rightPanel.setBounds(310, 10, 660, 540);
+        rightPanel.setBounds(250, 5, 430, 345);
         // rightPanel.setBackground(Color.RED);
 
-        feedbackText = new JLabel("Feedback");//Username word
-        feedbackText.setBounds((rightPanel.getWidth()/2) + 260, 50, 140, 50);
-        feedbackText.setFont(new Font("Times New Roman", Font.BOLD, 24));
+        paymentText2 = new JLabel("Payment");//Username word
+        paymentText2.setBounds((container.getWidth()/2) - 50, 5, 140, 50);
+        paymentText2.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         userText = new JLabel("Username");//Username word
-        userText.setBounds(((rightPanel.getWidth() + 10)/2)+5, 100, 350, 30);
+        userText.setBounds((rightPanel.getWidth()/2) + 55, 50, 350, 30);
         userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        userDisplay = new JTextField();//Display username here
-        userDisplay.setBounds((rightPanel.getWidth() + 10)/2, 130, 600, 30);
+        String[] users = {"Fish", "JOJO"};
+        JComboBox<String> usersComboBox = new JComboBox<>(users);
+        usersComboBox.setBounds((rightPanel.getWidth()/2) + 50, 80, 400, 30);
+        rightPanel.add(usersComboBox);
 
         dateText = new JLabel("Date");//Date word
-        dateText.setBounds(((rightPanel.getWidth() + 10)/2)+5, 170, 350, 30);
+        dateText.setBounds((rightPanel.getWidth()/2) + 55, 120, 350, 30);
         dateText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         dateDisplay = new JTextField();//Display date here
-        dateDisplay.setBounds((rightPanel.getWidth() + 10)/2, 200, 600, 30);
+        dateDisplay.setBounds((rightPanel.getWidth()/2) + 50, 150, 400, 30);
 
-        descriptionText = new JLabel("Description");//Description word
-        descriptionText.setBounds(((rightPanel.getWidth() + 10)/2)+5, 240, 350, 30);
-        descriptionText.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        servicesText = new JLabel("Services");//Username word
+        servicesText.setBounds((rightPanel.getWidth()/2) + 55, 190, 350, 30);
+        servicesText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        descriptionDisplay = new JTextArea(20, 50);// Display description here
-        descriptionDisplay.setSize(600, 400);
+        String[] services = {"Service 1", "Service 2"};
+        JComboBox<String> servicesComboBox = new JComboBox<>(services);
+        servicesComboBox.setBounds((rightPanel.getWidth()/2) + 50, 220, 400, 30);
+        rightPanel.add(servicesComboBox);
 
-        JScrollPane scrollPane2 = new JScrollPane(descriptionDisplay);
-        scrollPane2.setBounds(25, 270, 600, 250);
-        // scrollPane2.setBackground(Color.BLUE);
+        totalText = new JLabel("Total: ");//Date word
+        totalText.setBounds(rightPanel.getWidth() + 100, rightPanel.getHeight() - 30, 350, 30);
+        totalText.setFont(new Font("Times New Roman", Font.BOLD, 16));
+
+        totalDisplay = new JTextField();//Display date here
+        totalDisplay.setBounds((rightPanel.getWidth()) + 150, 315, 90, 30);
 
         // Left Top Panel
         container.add(scrollPane);
         container.add(leftTopPanel);
 
         // Right Panel
-        rightPanel.add(scrollPane2);
-        container.add(feedbackText);
+        container.add(paymentText2);
         container.add(userText);
-        container.add(userDisplay);
+        container.add(usersComboBox);
         container.add(dateText);
         container.add(dateDisplay);
-        container.add(descriptionText);
+        container.add(servicesText);
+        container.add(servicesComboBox);
+        container.add(totalText);
+        container.add(totalDisplay);
         container.add(rightPanel);
 
         container.add(icon);
