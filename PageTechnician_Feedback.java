@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,7 +18,7 @@ import javax.swing.JTextField;
 
 import java.awt.event.MouseEvent;
 
-public class PageAdmin_Feedback implements ActionListener{
+public class PageTechnician_Feedback implements ActionListener{
     public void actionPerformed(ActionEvent e){
         // if (e.getSource() == userComboBox) {
         //     System.out.println(userComboBox.getSelectedItem());
@@ -40,10 +39,9 @@ public class PageAdmin_Feedback implements ActionListener{
     static JFrame container;
     static JTextField userDisplay, dateDisplay;
     JTextArea descriptionDisplay;
-    JLabel feedbackText, userText, dateText, descriptionText;
-    JComboBox<String> users;
+    JLabel customerText, feedbackText, userText, dateText, descriptionText;
 
-    public PageAdmin_Feedback() {
+    public PageTechnician_Feedback() {
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
         container.setSize(1000, 600);
         container.setLocationRelativeTo(null);
@@ -56,7 +54,7 @@ public class PageAdmin_Feedback implements ActionListener{
 
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
-                PageAdmin.container.setVisible(true);
+                PageTechnician.container.setVisible(true);
                 container.setVisible(false);
             }
         });
@@ -67,10 +65,9 @@ public class PageAdmin_Feedback implements ActionListener{
         leftTopPanel.setBounds(45, 5, 260, 40);
         // leftTopPanel.setBackground(Color.GREEN);
 
-        String[] users = {"Technicians", "Customers"};
-        JComboBox<String> usersComboBox = new JComboBox<>(users);
-        usersComboBox.setPreferredSize(new Dimension(leftTopPanel.getWidth(), leftTopPanel.getHeight()));
-        leftTopPanel.add(usersComboBox);
+        customerText = new JLabel("Customer");//Customer word
+        customerText.setBounds((leftTopPanel.getWidth() - 50)/2, 0, 140, 50);
+        customerText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         // Left Below Panel
         JPanel leftBelowPanel = new JPanel();
@@ -123,6 +120,7 @@ public class PageAdmin_Feedback implements ActionListener{
         // scrollPane2.setBackground(Color.BLUE);
 
         // Left Top Panel
+        container.add(customerText);
         container.add(scrollPane);
         container.add(leftTopPanel);
 
@@ -137,7 +135,6 @@ public class PageAdmin_Feedback implements ActionListener{
         container.add(rightPanel);
 
         container.add(icon);
-        usersComboBox.setVisible(true);
         container.setVisible(true);
     }
 }

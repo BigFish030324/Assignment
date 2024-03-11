@@ -37,7 +37,7 @@ public class PageAdmin_Payment implements ActionListener{
 
     static JFrame container;
     static JTextField dateDisplay, totalDisplay;
-    JLabel paymentText, paymentText2, userText, dateText, servicesText, totalText;
+    JLabel paymentText, userText, dateText, servicesText, totalText;
     JComboBox<String> users, services;
 
     public PageAdmin_Payment() {
@@ -85,9 +85,9 @@ public class PageAdmin_Payment implements ActionListener{
         rightPanel.setBounds(250, 5, 430, 345);
         // rightPanel.setBackground(Color.RED);
 
-        paymentText2 = new JLabel("Payment");//Username word
-        paymentText2.setBounds((container.getWidth()/2) - 50, 5, 140, 50);
-        paymentText2.setFont(new Font("Times New Roman", Font.BOLD, 24));
+        paymentText = new JLabel("Payment");//Username word
+        paymentText.setBounds((container.getWidth()/2) - 50, 5, 140, 50);
+        paymentText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         userText = new JLabel("Username");//Username word
         userText.setBounds((rightPanel.getWidth()/2) + 55, 50, 350, 30);
@@ -126,7 +126,7 @@ public class PageAdmin_Payment implements ActionListener{
         container.add(leftTopPanel);
 
         // Right Panel
-        container.add(paymentText2);
+        container.add(paymentText);
         container.add(userText);
         container.add(usersComboBox);
         container.add(dateText);
