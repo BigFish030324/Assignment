@@ -1,14 +1,18 @@
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+
+import java.awt.event.MouseEvent;
 
 public class PageAdmin_Appointment_TABLE implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -28,72 +32,94 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         // }
     }
     
-    static JTextField userDisplay, dateDisplay, timeDisplay;
+    JTable table;
+    JTextField userDisplay, dateDisplay, timeDisplay;
     JLabel userText, dateText, timeText;
+    static JFrame container;
 
     public PageAdmin_Appointment_TABLE() {
-        JTable table = new JTable();
-        Object[] columns = {"Username", "Date", "Time"};
-        DefaultTableColumnModel model = new DefaultTableColumnModel();
 
-        JFrame container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.getContentPane().setBackground(Color.BLACK);
+        // Set frame properties
+        container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
         container.getContentPane().setBackground(Color.WHITE);
-        container.setSize(630,550);//GUI Size
-        container.setLocationRelativeTo(null);//GUI Location
+        container.setSize(580, 600);
+        container.setLocationRelativeTo(null);
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        container.setResizable(false);//Fix the GUI Size
-        container.setLayout(null);
+        container.setResizable(false);
+        container.setLayout(null); // Consider using layout managers
 
-        model.setColumnIdentifiers(columns);
-        table.setModel(model);
+        JLabel icon = new backIcon();// Go back icon
 
-        table.setBackground(Color.WHITE);
-        table.setForeground(Color.BLACK);
-        table.setSelectionBackground(Color.RED);
-        table.setGridColor(Color.RED);
-        table.setSelectionForeground(Color.WHITE);
-        table.setFont(new Font("Times New Romen", Font.BOLD, 16));
+        icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        icon.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                PageAdmin.container.setVisible(true);
+                container.setVisible(false);
+            }
+        });
+
+        // Table data (replace with your actual data)
+        Object[] columnNames = {"Username", "Date", "Time"};  // Use final for constant values
+
+        String[][] data = {
+                {"Fish", "2023-10-26", "10:00"},
+                {"JOJO", "2023-11-15", "12:30"}
+        };
+
+        // Create the table model
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+
+        // Create the table
+        table = new JTable(model);
+
+        // Setting table properties
+        table.setBackground(Color.RED);
+        table.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        table.setBounds((container.getWidth()/2) - 260, 50, 500, 300);
         table.setRowHeight(30);
         table.setAutoCreateRowSorter(true);
 
+        // Create the scroll pane
         JScrollPane scrollpane = new JScrollPane(table);
         scrollpane.setForeground(Color.RED);
         scrollpane.setBackground(Color.WHITE);
-        scrollpane.setBounds(10, 10, 600, 350);
 
-        userDisplay = new JTextField();//Display username here
-        userDisplay.setBounds(120, 375, 185, 35);
+        // Initialize text fields and labels
+        userDisplay = new JTextField();
+        userDisplay.setBounds(120, 375, 410, 35);
         userDisplay.setColumns(10);
 
-        dateDisplay = new JTextField();//Display username here
-        dateDisplay.setBounds(120, 420, 185, 35);
+        dateDisplay = new JTextField();
+        dateDisplay.setBounds(120, 425, 410, 35);
         dateDisplay.setColumns(10);
 
-        timeDisplay = new JTextField();//Display username here
-        timeDisplay.setBounds(430, 420, 185, 35);
+        timeDisplay = new JTextField();
+        timeDisplay.setBounds(120, 475, 410, 35);
         timeDisplay.setColumns(10);
 
         userText = new JLabel("Username");
-        userText.setBounds(10, 385, 100, 20);
-        userText.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        userText.setBounds(30, 380, 100, 20);
+        userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         dateText = new JLabel("Date");
-        dateText.setBounds(10, 385, 100, 20);
-        dateText.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        dateText.setBounds(30, 430, 100, 20); // Adjusted position slightly
+        dateText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         timeText = new JLabel("Time");
-        timeText.setBounds(10, 385, 100, 20);
-        timeText.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        timeText.setBounds(30, 480, 100, 20); // Adjusted position and label text
+        timeText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        Object[] row = new Object[3];
-
-
-        container.getContentPane().add(userDisplay);
-        container.getContentPane().add(dateDisplay);
-        container.getContentPane().add(timeDisplay);
-
-        container.getContentPane().add(scrollpane);
+        // Add components to the frame
+        container.add(icon);
+        container.add(table);
+        container.add(userDisplay);
+        container.add(dateDisplay);
+        container.add(timeDisplay);
+        container.add(userText);
+        container.add(dateText);
+        container.add(timeText);
+        container.add(scrollpane);
         container.setVisible(true);
     }
 }
