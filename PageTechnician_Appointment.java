@@ -54,6 +54,15 @@ public class PageTechnician_Appointment implements ActionListener{
             }
         });
 
+        // Image of Appointment
+        ImageIcon image1 = new ImageIcon("..\\Assignment\\Images\\Appointment.png");
+        Image setSize1 = image1.getImage();
+        setSize1 = setSize1.getScaledInstance(300, 200, Image.SCALE_SMOOTH);
+        image1 = new ImageIcon(setSize1);
+        JLabel ImageAppointment = new JLabel();
+        ImageAppointment.setIcon(image1);
+        ImageAppointment.setBounds(100, 160, 300, 200);
+
         appointmentText = new JLabel("Appointment");//appointment word
         appointmentText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
         appointmentText.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -124,6 +133,7 @@ public class PageTechnician_Appointment implements ActionListener{
 
         container.add(descriptionText);
 
+        container.add(ImageAppointment);
         container.add(icon);
         container.setVisible(true);
     }

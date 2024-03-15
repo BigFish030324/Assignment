@@ -36,11 +36,17 @@ public class PageAdmin implements ActionListener {
             // JOptionPane.showMessageDialog(enter, "Invalid Input! ");
         }
     }
-    
+
+
+
     static JFrame container;
     JButton register, edit, appointment, feedback, payment;
     JLabel adminText;
+
     public PageAdmin(){
+
+        // Background Section
+        // Frame of this Page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
         container.setSize(1000,600);//GUI Size
         container.setLocationRelativeTo(null);//GUI Location
@@ -48,10 +54,9 @@ public class PageAdmin implements ActionListener {
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-        JLabel icon = new backIcon();// Go back icon
-
+        // Back Icon
+        JLabel icon = new backIcon();
         icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 MainPage.container.setVisible(true);
@@ -59,30 +64,42 @@ public class PageAdmin implements ActionListener {
             }
         });
 
-        register = new JButton("Register");//Username word
+        // Admin Word
+        adminText = new JLabel("Admin");
+        adminText.setBounds((container.getWidth() - 110)/2, 100, 110, 50);
+        adminText.setFont(new Font("Times New Roman", Font.BOLD, 36));
+
+        // Buttons
+        // Register Button
+        register = new JButton("Register");
         register.setBounds((container.getWidth() - 500)/2, 170, 500, 50);
         register.addActionListener(this);
 
-        edit = new JButton("Edit");//Password word
+        // Edit Button
+        edit = new JButton("Edit");
         edit.setBounds((container.getWidth() - 500)/2, 240, 500, 50);
         edit.addActionListener(this);
 
-        appointment = new JButton("Appointment");//Enter Button
+        // Appointment Button
+        appointment = new JButton("Appointment");
         appointment.setBounds((container.getWidth() - 500)/2, 310, 500, 50);
         appointment.addActionListener(this);
 
-        feedback = new JButton("Feedback");//Enter Button
+        // Feedback Button
+        feedback = new JButton("Feedback");
         feedback.setBounds((container.getWidth() - 500)/2, 380, 500, 50);
         feedback.addActionListener(this);
 
-        payment = new JButton("Payment");//Enter Button
+        // Payment Button
+        payment = new JButton("Payment");
         payment.setBounds((container.getWidth() - 500)/2, 450, 500, 50);
         payment.addActionListener(this);
 
-        adminText = new JLabel("Admin");//Admin text 
-        adminText.setBounds((container.getWidth() - 110)/2, 100, 110, 50);
-        adminText.setFont(new Font("Times New Roman", Font.BOLD, 36));
-        
+
+
+
+
+        // Add Section
         container.add(register);
         container.add(edit);
         container.add(appointment);
