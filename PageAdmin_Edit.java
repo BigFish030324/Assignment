@@ -10,8 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 public class PageAdmin_Edit implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -111,26 +111,27 @@ public class PageAdmin_Edit implements ActionListener{
         dlt.setEnabled(false);
     }
 
+
+
     static JFrame container;
     static JButton check, edit, apply, dlt;
     static JTextField userInput, passwordInput;
-    JLabel editText, userText, passwordText;
     static JRadioButton userRadio, technicianRadio, managerRadio;
-    drawline line;
+    JLabel editText, userText, passwordText;
 
     public PageAdmin_Edit(){
+
+        // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(550,510);//GUI Size
-        container.setLocationRelativeTo(null);//GUI Location
-        container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        container.setResizable(false);//Fix the GUI Size
+        container.setSize(550,510); // GUI Size
+        container.setLocationRelativeTo(null); // GUI Location
+        container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Exit
+        container.setResizable(false); // Fix the GUI Size
         container.setLayout(null);
 
-// Register, username, password and buttons
-
-        JLabel icon = new backIcon();//Go back icon
+        // Back Icon
+        JLabel icon = new backIcon();
         icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 resetComponents();
@@ -139,60 +140,77 @@ public class PageAdmin_Edit implements ActionListener{
             }
         });
 
-        editText = new JLabel("Edit Profile");//register word
+        // Text Section
+        // Edit Profile text
+        editText = new JLabel("Edit Profile");
         editText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
         editText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
-        userText = new JLabel("Username");//Username word
+        // Username text
+        userText = new JLabel("Username");
         userText.setBounds((container.getWidth()/10)+5, 125, 350, 30);
         userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        userInput = new JTextField();//Type username here
-        userInput.setBounds(container.getWidth()/10, 155, 350, 30);
-
-        check = new JButton("Check");//Check Button
-        check.setBounds(container.getWidth()-140, 155, 100, 30);
-        check.addActionListener(this);
-
-        passwordText = new JLabel("Password");//Password word
+        // Password text
+        passwordText = new JLabel("Password");
         passwordText.setBounds((container.getWidth()/10)+5, 195, 350, 30);
         passwordText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        passwordInput = new JTextField();//Type password here
+        // Input Section
+        // Username Input
+        userInput = new JTextField();
+        userInput.setBounds(container.getWidth()/10, 155, 350, 30);
+
+        // Password Input
+        passwordInput = new JTextField();
         passwordInput.setBounds(container.getWidth()/10, 225, 350, 30);
         passwordInput.setEditable(false);
 
-        edit = new JButton("Edit");//Edit Button
+        // Buttons
+        // Check Button
+        check = new JButton("Check");
+        check.setBounds(container.getWidth()-140, 155, 100, 30);
+        check.addActionListener(this);
+
+        // Edit Button
+        edit = new JButton("Edit");
         edit.setBounds(container.getWidth()-140, 225, 100, 30);
         edit.addActionListener(this);
         edit.setEnabled(false);
 
-        userRadio = new JRadioButton("User");//Choose button for user
-        userRadio.setBounds(container.getWidth()/10, 270, 80, 30);
-        userRadio.setEnabled(false);
-
-        technicianRadio = new JRadioButton("Technician");//Choose button for technician
-        technicianRadio.setBounds(container.getWidth()/10, 300, 90, 30);
-        technicianRadio.setEnabled(false);
-
-        managerRadio = new JRadioButton("Manager");//Choose button for manager (if not needed, can delete)
-        managerRadio.setBounds(container.getWidth()/10, 330, 80, 30);
-        managerRadio.setEnabled(false);
-
-        ButtonGroup registerGroup = new ButtonGroup();//To limit 1 role 1 time
-        registerGroup.add(userRadio);
-        registerGroup.add(technicianRadio);
-        registerGroup.add(managerRadio);
-
-        apply = new JButton("Apply");//Apply Button
+        // Apply Button
+        apply = new JButton("Apply");
         apply.setBounds(container.getWidth()-160, container.getHeight()-90, 120, 30);
         apply.addActionListener(this);
         apply.setEnabled(false);
 
-        dlt = new JButton("Delete");//Delete Button
+        // Delete Button
+        dlt = new JButton("Delete");
         dlt.setBounds(container.getWidth()-160, container.getHeight()-130, 120, 30);
         dlt.addActionListener(this);
         dlt.setEnabled(false);
+
+        // Radio Buttons
+        // User Radiobutton
+        userRadio = new JRadioButton("User");
+        userRadio.setBounds(container.getWidth()/10, 270, 80, 30);
+        userRadio.setEnabled(false);
+
+        // Technician Radiobutton
+        technicianRadio = new JRadioButton("Technician");
+        technicianRadio.setBounds(container.getWidth()/10, 300, 90, 30);
+        technicianRadio.setEnabled(false);
+
+        // Manager Radiobutton
+        managerRadio = new JRadioButton("Manager");
+        managerRadio.setBounds(container.getWidth()/10, 330, 80, 30);
+        managerRadio.setEnabled(false);
+
+        // Radiobutton Group (To limit 1 role per time)
+        ButtonGroup registerGroup = new ButtonGroup();
+        registerGroup.add(userRadio);
+        registerGroup.add(technicianRadio);
+        registerGroup.add(managerRadio);
 
         // Part of adding apply and delete into GUI
         container.add(apply);

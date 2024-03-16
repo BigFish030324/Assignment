@@ -11,9 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 public class PageAdmin_Register implements ActionListener{
     @SuppressWarnings("deprecation")
@@ -35,27 +34,31 @@ public class PageAdmin_Register implements ActionListener{
             JOptionPane.showMessageDialog(container, "Invalid Input!");
         }
     }
-    
+
+
+
     static JFrame container;
-    JButton ok;
     static JTextField userInput;
     static JPasswordField passwordInput;
-    JLabel registerText, userText, passwordText;
     static JRadioButton customerRadio, technicianRadio, managerRadio;
-    ButtonGroup registerGroup = new ButtonGroup();//To limit 1 role 1 time
+    JLabel registerText, userText, passwordText;
+    JButton ok;
+    ButtonGroup registerGroup = new ButtonGroup();
 
     public PageAdmin_Register(){
+
+        // Background Section
+        // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(700,400);//GUI Size
-        container.setLocationRelativeTo(null);//GUI Location
-        container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        container.setResizable(false);//Fix the GUI Size
+        container.setSize(700,400); // GUI Size
+        container.setLocationRelativeTo(null); // GUI Location
+        container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Set to able exit system
+        container.setResizable(false); // Fix the GUI Size
         container.setLayout(null);
 
-        JLabel icon = new backIcon();// Go back icon
-
+        // Back Icon
+        JLabel icon = new backIcon();
         icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 PageAdmin.container.setVisible(true);
@@ -63,41 +66,60 @@ public class PageAdmin_Register implements ActionListener{
             }
         });
 
-        registerText = new JLabel("Registration");//register word
+        // Text Section
+        // Registration text
+        registerText = new JLabel("Registration");
         registerText.setBounds((container.getWidth() - 140)/2, 50, 140, 50);
         registerText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
-        userText = new JLabel("Username");//Username word
+        // Username text
+        userText = new JLabel("Username");
         userText.setBounds(((container.getWidth() - 350)/2)+5, 125, 350, 30);
         userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        userInput = new JTextField();//Type username here
-        userInput.setBounds((container.getWidth() - 350)/2, 155, 350, 30);
-
-        passwordText = new JLabel("Password");//Password word
+        // Password text
+        passwordText = new JLabel("Password");
         passwordText.setBounds(((container.getWidth() - 350)/2)+5, 195, 350, 30);
         passwordText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        passwordInput = new JPasswordField();//Type password here
+        // Input Section
+        // User Input
+        userInput = new JTextField();
+        userInput.setBounds((container.getWidth() - 350)/2, 155, 350, 30);
+
+        // Password Input
+        passwordInput = new JPasswordField();
         passwordInput.setBounds((container.getWidth() - 350)/2, 225, 350, 30);
 
-        managerRadio = new JRadioButton("Manager");//Choose button for manager (if not needed, can delete)
+        // Buttons
+        // Radio Buttons
+        // Manager Radiobutton
+        managerRadio = new JRadioButton("Manager");
         managerRadio.setBounds((container.getWidth()/2)+90, 260, 90, 30);
 
-        technicianRadio = new JRadioButton("Technician");//Choose button for technician
+        // Technician Radiobutton
+        technicianRadio = new JRadioButton("Technician");
         technicianRadio.setBounds((container.getWidth()/2)-50, 260, 90, 30);
 
-        customerRadio = new JRadioButton("Customer");//Choose button for user
+        // Customer Radiobutton
+        customerRadio = new JRadioButton("Customer");
         customerRadio.setBounds((container.getWidth()/2)-170, 260, 90, 30);
 
-        ok = new JButton("OK");//OK Button
-        ok.setBounds(container.getWidth()-150, 300, 100, 30);
-        ok.addActionListener(this);
-
+        // Radiobutton Group
         registerGroup.add(customerRadio);
         registerGroup.add(technicianRadio);
         registerGroup.add(managerRadio);
 
+        // OK Button
+        ok = new JButton("OK");
+        ok.setBounds(container.getWidth()-150, 300, 100, 30);
+        ok.addActionListener(this);
+
+
+
+
+
+        // Add Section
         container.add(ok);
         container.add(registerText);
         container.add(userText);

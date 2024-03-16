@@ -1,5 +1,3 @@
-
-// import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -7,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,8 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
-import java.awt.event.MouseEvent;
 
 public class PageTechnician_Feedback implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -42,16 +39,17 @@ public class PageTechnician_Feedback implements ActionListener{
     JLabel customerText, feedbackText, userText, dateText, descriptionText;
 
     public PageTechnician_Feedback() {
+
+        // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
         container.setSize(1000, 600);
         container.setLocationRelativeTo(null);
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setLayout(null);
 
-        JLabel icon = new backIcon();// Go back icon
-
+        // Back Icon
+        JLabel icon = new backIcon();
         icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 PageTechnician.container.setVisible(true);
@@ -60,65 +58,82 @@ public class PageTechnician_Feedback implements ActionListener{
         });
 
         // Left Top Panel
+        // Create Panel
         JPanel leftTopPanel = new JPanel();
         leftTopPanel.setLayout(new FlowLayout());
         leftTopPanel.setBounds(45, 5, 260, 40);
-        // leftTopPanel.setBackground(Color.GREEN);
 
-        customerText = new JLabel("Customer");//Customer word
+        // Customer Text
+        customerText = new JLabel("Customer");
         customerText.setBounds((leftTopPanel.getWidth() - 50)/2, 0, 140, 50);
         customerText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         // Left Below Panel
+        // Create Panel
         JPanel leftBelowPanel = new JPanel();
         leftBelowPanel.setLayout(new FlowLayout());
         leftBelowPanel.setPreferredSize(new Dimension(100, 600));
-        // leftBelowPanel.setBackground(Color.BLUE);
 
-        JButton button1 = new JButton("Feedback 1");//Change this button to title sent by any feedback
+        // Feedback Button (Addable Feedback when receive new feedback)
+        JButton button1 = new JButton("Feedback 1");
         button1.setPreferredSize(new Dimension(280, 40));
         leftBelowPanel.add(button1);
 
+        // Scroll Pane for Left Below Panel
         JScrollPane scrollPane = new JScrollPane(leftBelowPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setBounds(10, 50, 300, 500);
         scrollPane.setViewportView(leftBelowPanel);
 
         // Right Panel
+        // Create Panel
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(null);
         rightPanel.setBounds(310, 10, 660, 540);
-        // rightPanel.setBackground(Color.RED);
 
-        feedbackText = new JLabel("Feedback");//Username word
+        // Text Section
+        // Feedback Text
+        feedbackText = new JLabel("Feedback");
         feedbackText.setBounds((rightPanel.getWidth()/2) + 260, 50, 140, 50);
         feedbackText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
-        userText = new JLabel("Username");//Username word
+        // Username Text
+        userText = new JLabel("Username");
         userText.setBounds(((rightPanel.getWidth() + 10)/2)+5, 100, 350, 30);
         userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        userDisplay = new JTextField();//Display username here
-        userDisplay.setBounds((rightPanel.getWidth() + 10)/2, 130, 600, 30);
-
-        dateText = new JLabel("Date");//Date word
+        // Date text
+        dateText = new JLabel("Date");
         dateText.setBounds(((rightPanel.getWidth() + 10)/2)+5, 170, 350, 30);
         dateText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        dateDisplay = new JTextField();//Display date here
-        dateDisplay.setBounds((rightPanel.getWidth() + 10)/2, 200, 600, 30);
-
-        descriptionText = new JLabel("Description");//Description word
+        // Description Text
+        descriptionText = new JLabel("Description");
         descriptionText.setBounds(((rightPanel.getWidth() + 10)/2)+5, 240, 350, 30);
         descriptionText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        descriptionDisplay = new JTextArea(20, 50);// Display description here
+        // Input Section
+        // Username Display
+        userDisplay = new JTextField();
+        userDisplay.setBounds((rightPanel.getWidth() + 10)/2, 130, 600, 30);
+
+        // Date Display
+        dateDisplay = new JTextField();
+        dateDisplay.setBounds((rightPanel.getWidth() + 10)/2, 200, 600, 30);
+
+        // Description Display
+        descriptionDisplay = new JTextArea(20, 50);
         descriptionDisplay.setSize(600, 400);
 
+        // Scroll Pane for Description Display
         JScrollPane scrollPane2 = new JScrollPane(descriptionDisplay);
         scrollPane2.setBounds(25, 270, 600, 250);
-        // scrollPane2.setBackground(Color.BLUE);
 
+
+
+
+
+        // Add Section
         // Left Top Panel
         container.add(customerText);
         container.add(scrollPane);
@@ -134,6 +149,7 @@ public class PageTechnician_Feedback implements ActionListener{
         container.add(descriptionText);
         container.add(rightPanel);
 
+        // Container
         container.add(icon);
         container.setVisible(true);
     }

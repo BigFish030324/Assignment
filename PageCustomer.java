@@ -1,9 +1,10 @@
-import java.awt.Font;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,22 +30,26 @@ public class PageCustomer implements ActionListener {
             // JOptionPane.showMessageDialog(enter, "Invalid Input! ");
         }
     }
-    
+
+
+
     static JFrame container;
     JButton appointment, feedback, payment;
     JLabel customerText;
+
     public PageCustomer(){
+
+        // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(1000,500);//GUI Size
-        container.setLocationRelativeTo(null);//GUI Location
-        container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        container.setResizable(false);//Fix the GUI Size
+        container.setSize(1000,500); // GUI Size
+        container.setLocationRelativeTo(null); // GUI Location
+        container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Able to close system
+        container.setResizable(false); // Fix the GUI Size
         container.setLayout(null);
 
-        JLabel icon = new backIcon();// Go back icon
-
+        // Back Icon
+        JLabel icon = new backIcon();
         icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 MainPage.container.setVisible(true);
@@ -52,24 +57,33 @@ public class PageCustomer implements ActionListener {
             }
         });
 
-        appointment = new JButton("Appointment");//Enter Button
-        appointment.setBounds((container.getWidth() - 500)/2, 170, 500, 50);
-        appointment.addActionListener(this);
-
-        feedback = new JButton("Feedback");//Enter Button
-        feedback.setBounds((container.getWidth() - 500)/2, 250, 500, 50);
-        feedback.addActionListener(this);
-
-        payment = new JButton("Payment");//Enter Button
-        payment.setBounds((container.getWidth() - 500)/2, 330, 500, 50);
-        payment.addActionListener(this);
-
-        customerText = new JLabel("Customer");//Technician text 
+        // Text Section
+        // Customer Text
+        customerText = new JLabel("Customer");
         customerText.setBounds((container.getWidth() - 170)/2, 100, 170, 50);
         customerText.setFont(new Font("Times New Roman", Font.BOLD, 36));
 
+        // Button Section
+        // Appointment Button
+        appointment = new JButton("Appointment");
+        appointment.setBounds((container.getWidth() - 500)/2, 170, 500, 50);
+        appointment.addActionListener(this);
+
+        // Feedback Button
+        feedback = new JButton("Feedback");
+        feedback.setBounds((container.getWidth() - 500)/2, 250, 500, 50);
+        feedback.addActionListener(this);
+
+        // Payment Button
+        payment = new JButton("Payment");
+        payment.setBounds((container.getWidth() - 500)/2, 330, 500, 50);
+        payment.addActionListener(this);
 
 
+
+
+
+        // Add Section
         container.add(appointment);
         container.add(feedback);
         container.add(payment);
