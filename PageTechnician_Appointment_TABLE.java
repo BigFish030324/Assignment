@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -12,7 +13,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class PageAdmin_Appointment_TABLE implements ActionListener{
+public class PageTechnician_Appointment_TABLE implements ActionListener{
     public void actionPerformed(ActionEvent e){
         // if (e.getSource() == userComboBox) {
         //     System.out.println(userComboBox.getSelectedItem());
@@ -32,12 +33,13 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
 
 
 
+    static JFrame container;
     JTable table;
     JTextField userDisplay, dateDisplay, timeDisplay;
     JLabel userText, dateText, timeText;
-    static JFrame container;
+    JButton ok;
 
-    public PageAdmin_Appointment_TABLE() {
+    public PageTechnician_Appointment_TABLE() {
 
         // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
@@ -111,12 +113,18 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         timeText.setBounds(30, 480, 100, 20);
         timeText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
+        // Button Section
+        // OK Button
+        ok = new JButton("OK");
+        ok.setBounds(container.getWidth()-150, container.getHeight() - 80, 100, 30);
+        ok.addActionListener(this);
+
 
 
 
 
         // Add components to the frame
-        container.add(icon);
+        container.add(ok);
         container.add(scrollpane);
         container.add(table);
         container.add(userDisplay);
@@ -125,6 +133,7 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         container.add(userText);
         container.add(dateText);
         container.add(timeText);
+        container.add(icon);
         container.setVisible(true);
     }
 }

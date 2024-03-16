@@ -1,10 +1,21 @@
-import java.awt.*;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class PageAdmin_Appointment implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -44,7 +55,7 @@ public class PageAdmin_Appointment implements ActionListener{
         container.setLayout(null);
 
         // Back Icon
-        JLabel icon = new backIcon();// Go back icon
+        JLabel icon = new backIcon();
         icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
@@ -96,7 +107,7 @@ public class PageAdmin_Appointment implements ActionListener{
         userComboBox.addActionListener(this);
 
         // Book Date (Month) Combo Box
-        String[] month = {"1", "2"};
+        String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
         bookDateBox_Month = new JComboBox<>(month);
         bookDateBox_Month.setBounds(((container.getWidth() + 10)/2) + 5, 190, 350, 30);
         bookDateBox_Month.addActionListener(this);

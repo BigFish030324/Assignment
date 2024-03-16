@@ -13,14 +13,15 @@ public class ARunCodeHere {
     static EditConfirmation j;
 
     static PageTechnician k;
-    static PageTechnician_Appointment l;
-    static PageTechnician_Feedback m;
-    static PageTechnician_Payment n;
+    static PageTechnician_Appointment_TABLE l;
+    static PageTechnician_Appointment m;
+    static PageTechnician_Feedback n;
+    static PageTechnician_Payment o;
 
-    static PageCustomer o;
-    static PageCustomer_Appointment p;
-    static PageCustomer_Feedback q;
-    static PageCustomer_Payment r;
+    static PageCustomer p;
+    static PageCustomer_Appointment q;
+    static PageCustomer_Feedback r;
+    static PageCustomer_Payment s;
 
     static AboutUs z;
 
@@ -38,14 +39,15 @@ public class ARunCodeHere {
         j = new EditConfirmation();
 
         k = new PageTechnician();
-        l = new PageTechnician_Appointment();
-        m = new PageTechnician_Feedback();
-        n = new PageTechnician_Payment();
+        l = new PageTechnician_Appointment_TABLE();
+        m = new PageTechnician_Appointment();
+        n = new PageTechnician_Feedback();
+        o = new PageTechnician_Payment();
 
-        o = new PageCustomer();
-        p = new PageCustomer_Appointment();
-        q = new PageCustomer_Feedback();
-        r = new PageCustomer_Payment();
+        p = new PageCustomer();
+        q = new PageCustomer_Appointment();
+        r = new PageCustomer_Feedback();
+        s = new PageCustomer_Payment();
 
         z = new AboutUs();
 
@@ -56,7 +58,7 @@ public class ARunCodeHere {
         PageAdmin.container.setVisible(false);
         PageAdmin_Register.container.setVisible(false);
         PageAdmin_Edit.container.setVisible(false);
-        PageAdmin_Appointment_TABLE.container.setVisible(false); // Issue on table heading
+        PageAdmin_Appointment_TABLE.container.setVisible(true); // Issue on table heading
         PageAdmin_Appointment.container.setVisible(false);
         PageAdmin_Feedback.container.setVisible(false); // Change feedback button to addable every new feedback
         PageAdmin_Payment.container.setVisible(false);
@@ -64,6 +66,7 @@ public class ARunCodeHere {
         EditConfirmation.container.setVisible(false);
 
         PageTechnician.container.setVisible(true);
+        PageTechnician_Appointment_TABLE.container.setVisible(true); // Issue on table heading
         PageTechnician_Appointment.container.setVisible(false);
         PageTechnician_Feedback.container.setVisible(false);
         PageTechnician_Payment.container.setVisible(false);

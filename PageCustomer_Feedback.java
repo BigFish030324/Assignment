@@ -5,14 +5,13 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
-import java.awt.event.MouseEvent;
 
 public class PageCustomer_Feedback implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -33,21 +32,22 @@ public class PageCustomer_Feedback implements ActionListener{
     }
 
     static JFrame container;
-    JTextArea descriptionDisplay;
-    JLabel feedbackText;
     static JButton ok;
+    JTextArea descriptionInput;
+    JLabel feedbackText;
 
     public PageCustomer_Feedback() {
+
+        // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
         container.setSize(700, 400);
         container.setLocationRelativeTo(null);
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setLayout(null);
 
-        JLabel icon = new backIcon();// Go back icon
-
+        // Back Icon
+        JLabel icon = new backIcon();
         icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 PageCustomer.container.setVisible(true);
@@ -55,26 +55,33 @@ public class PageCustomer_Feedback implements ActionListener{
             }
         });
 
-        feedbackText = new JLabel("Feedback");//Username word
+        // Feedback Text
+        feedbackText = new JLabel("Feedback");
         feedbackText.setBounds((container.getWidth() - 140)/2, 30, 140, 50);
         feedbackText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
-        descriptionDisplay = new JTextArea(15, 50);// Display description here
-        descriptionDisplay.setSize(300, 200);
+        // Description Input
+        descriptionInput = new JTextArea(15, 50);
+        descriptionInput.setSize(300, 200);
 
-        JScrollPane scrollPane2 = new JScrollPane(descriptionDisplay);
-        scrollPane2.setBounds((container.getWidth() - 600)/2, (container.getHeight() - 200)/2, 600, 200);
-        // scrollPane2.setBackground(Color.BLUE);
+        // Scroll Pane for Description Input
+        JScrollPane scrollPane = new JScrollPane(descriptionInput);
+        scrollPane.setBounds((container.getWidth() - 600)/2, (container.getHeight() - 200)/2, 600, 200);
 
-        ok = new JButton("OK");//OK Button
+        // OK Button
+        ok = new JButton("OK");
         ok.setBounds(540, 320, 110, 30);
         ok.addActionListener(this);
 
 
+
+
+
+        // Add section
         container.add(ok);
         container.add(icon);
 
-        container.add(scrollPane2);
+        container.add(scrollPane);
         container.add(feedbackText);
         
         container.setVisible(true);
