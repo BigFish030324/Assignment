@@ -58,7 +58,7 @@ public class ARunCodeHere {
         PageAdmin.container.setVisible(false);
         PageAdmin_Register.container.setVisible(false);
         PageAdmin_Edit.container.setVisible(false);
-        PageAdmin_Appointment_TABLE.container.setVisible(true); // Issue on table heading
+        PageAdmin_Appointment_TABLE.container.setVisible(false); // Issue on table heading
         PageAdmin_Appointment.container.setVisible(false);
         PageAdmin_Feedback.container.setVisible(false); // Change feedback button to addable every new feedback
         PageAdmin_Payment.container.setVisible(false);
@@ -66,7 +66,7 @@ public class ARunCodeHere {
         EditConfirmation.container.setVisible(false);
 
         PageTechnician.container.setVisible(true);
-        PageTechnician_Appointment_TABLE.container.setVisible(true); // Issue on table heading
+        PageTechnician_Appointment_TABLE.container.setVisible(false); // Issue on table heading
         PageTechnician_Appointment.container.setVisible(false);
         PageTechnician_Feedback.container.setVisible(false);
         PageTechnician_Payment.container.setVisible(false);
