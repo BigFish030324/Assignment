@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,10 +34,11 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
 
 
 
+    static JFrame container;
     JTable table;
     JTextField userDisplay, dateDisplay, timeDisplay;
     JLabel userText, dateText, timeText;
-    static JFrame container;
+    JButton ok;
 
     public PageAdmin_Appointment_TABLE() {
 
@@ -118,7 +120,18 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         timeText.setBounds(30, 480, 100, 20);
         timeText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
+        // Button Section
+        // OK Button
+        ok = new JButton("OK");
+        ok.setBounds(container.getWidth()-150, container.getHeight() - 80, 100, 30);
+        ok.addActionListener(this);
+
+
+
+
+
         // Add components to the frame
+        container.add(ok);
         container.add(icon);
         container.add(scrollpane);
         container.add(userDisplay);

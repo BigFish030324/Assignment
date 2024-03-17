@@ -143,7 +143,7 @@ public class PageCustomer_Appointment implements ActionListener{
         JScrollPane scrollPane = new JScrollPane(descriptionInput);
         scrollPane.setBounds(0, 0, panel.getWidth(), panel.getHeight());
 
-        // OK Button
+        // Register Button
         register = new JButton("Register");
         register.setBounds(container.getWidth() - 190, 410, 100, 30);
         register.addActionListener(this);
