@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,6 +40,7 @@ public class PageTechnician_Appointment implements ActionListener{
     static JTextField userInput;
     static JTextArea descriptionInput;
     JLabel appointmentText, userText, bookDateText, bookTimeText, descriptionText;
+    JButton denyAll, deny, apply;
     JComboBox<String> userComboBox, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
 
     public PageTechnician_Appointment(){
@@ -140,11 +142,30 @@ public class PageTechnician_Appointment implements ActionListener{
         JScrollPane scrollPane = new JScrollPane(descriptionInput);
         scrollPane.setBounds(0, 0, panel.getWidth(), panel.getHeight());
 
+        // Button Section
+        // Deny All Button
+        denyAll = new JButton("Deny All");
+        denyAll.setBounds(container.getWidth() - 440, 410, 110, 30);
+        denyAll.addActionListener(this);
+
+        // Deny Button
+        deny = new JButton("Deny");
+        deny.setBounds(container.getWidth() - 320, 410, 110, 30);
+        deny.addActionListener(this);
+
+        // Apply Button
+        apply = new JButton("Apply");
+        apply.setBounds(container.getWidth() - 200, 410, 110, 30);
+        apply.addActionListener(this);
 
 
 
 
         // Add Section
+        container.add(denyAll);
+        container.add(deny);
+        container.add(apply);
+
         panel.add(scrollPane);
         container.add(panel);
         container.add(appointmentText);
