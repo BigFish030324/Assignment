@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -70,14 +71,20 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         table = new JTable(model);
 
+        // Set column headers directly
+        model.setColumnIdentifiers(columnNames);
+
+        // Disable table editing
+        table.setDefaultEditor(Object.class, null);
+
         // Table Frame
         table.setFont(new Font("Times New Roman", Font.BOLD, 16));
-        table.setBounds((container.getWidth()/2) - 260, 50, 500, 300);
         table.setRowHeight(30);
         table.setAutoCreateRowSorter(true);
 
         // Scroll pane
         JScrollPane scrollpane = new JScrollPane(table);
+        scrollpane.setBounds((container.getWidth() / 2) - 260, 50, 500, 300);
 
         // Text Input Section
         // User Display
@@ -111,14 +118,9 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         timeText.setBounds(30, 480, 100, 20);
         timeText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-
-
-
-
         // Add components to the frame
         container.add(icon);
         container.add(scrollpane);
-        container.add(table);
         container.add(userDisplay);
         container.add(dateDisplay);
         container.add(timeDisplay);
