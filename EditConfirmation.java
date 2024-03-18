@@ -13,8 +13,6 @@ public class EditConfirmation implements ActionListener{
         }
     }
 
-
-
     static JFrame container;
     JButton cancel, confirm;
     JLabel questionText;
@@ -44,10 +42,6 @@ public class EditConfirmation implements ActionListener{
         cancel = new JButton("Cancel");
         cancel.setBounds(115, 70, 100, 30);
         cancel.addActionListener(this);
-
-
-
-
 
         // Add Section
         container.add(confirm);

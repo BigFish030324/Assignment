@@ -14,7 +14,7 @@ public class PageTechnician implements ActionListener {
         try{
             if(e.getSource() == appointment){
                 container.setVisible(false);
-                PageTechnician_Appointment.container.setVisible(true);
+                PageTechnician_Appointment_TABLE.container.setVisible(true);
             } else if(e.getSource() == feedback){
                 container.setVisible(false);
                 PageTechnician_Feedback.container.setVisible(true);

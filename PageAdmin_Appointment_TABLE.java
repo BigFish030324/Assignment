@@ -4,6 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -60,14 +65,27 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
             }
         });
 
+        Scanner file;
+        ArrayList<String[]> temp = new ArrayList<>();
+        try {
+            file = new Scanner(new File("appointment.txt"));
+            while (file.hasNext()) {
+                temp.add(file.nextLine().split(","));
+            }
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        
+        String[][] custAppointment = new String[temp.size()][];
+        for (int i = 0; i < custAppointment.length; i ++) {
+            custAppointment[i] = temp.get(i);
+        }
+
         // Table Section
         // Table Dataset (Text File)
         Object[] columnNames = {"Username", "Date", "Time"};  // Use final for constant values
 
-        String[][] data = {
-                {"Fish", "2023-10-26", "10:00"},
-                {"JOJO", "2023-11-15", "12:30"}
-        };
+        String[][] data = custAppointment;
 
         // Table model and create table
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
@@ -125,10 +143,6 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         ok = new JButton("OK");
         ok.setBounds(container.getWidth()-150, container.getHeight() - 80, 100, 30);
         ok.addActionListener(this);
-
-
-
-
 
         // Add components to the frame
         container.add(ok);

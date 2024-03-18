@@ -20,20 +20,9 @@ import javax.swing.JTextField;
 
 public class PageCustomer_Appointment implements ActionListener{
     public void actionPerformed(ActionEvent e){
-        // if (e.getSource() == userComboBox) {
-        //     System.out.println(userComboBox.getSelectedItem());
-        // } else if (e.getSource() == register) {
-        //     try {
-        //         if (userInput.getText().isEmpty()) {
-        //             throw new Exception();
-        //         } else {
-        //             container.setVisible(false);
-        //             //PageAdmin.container.setVisible(true);
-        //         }
-        //     } catch (Exception f) {
-        //         JOptionPane.showMessageDialog(container, "Invalid Input!");
-        //     }
-        // }
+        if (e.getSource() == register) {
+            Customer.makeAppointment();
+        }
     }
 
 
@@ -43,7 +32,7 @@ public class PageCustomer_Appointment implements ActionListener{
     static JTextArea descriptionInput;
     JButton register;
     JLabel appointmentText, userText, bookDateText, bookTimeText, descriptionText;
-    JComboBox<String> bookDateBox_Date, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
+    static JComboBox<String> bookDateBox_Date, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
 
     public PageCustomer_Appointment(){
 
@@ -150,7 +139,12 @@ public class PageCustomer_Appointment implements ActionListener{
         bookDateBox_Year.addActionListener(this);
 
         // Book Time (Number) Combo Box
-        String[] time = {"1", "2"};
+        String[] time = new String[12];
+
+        for(int i = 1; i <= 12; ++i){
+            time[i-1] = Integer.toString(i);
+        };
+
         bookTimeBox_Time = new JComboBox<>(time);
         bookTimeBox_Time.setBounds(((container.getWidth() + 10)/2) + 5, 250, 170, 30);
         bookTimeBox_Time.addActionListener(this);
@@ -180,10 +174,6 @@ public class PageCustomer_Appointment implements ActionListener{
         register.setBounds(container.getWidth() - 190, 410, 100, 30);
         register.addActionListener(this);
 
-
-
-
-
         // Add Section
         panel.add(scrollPane);
         container.add(panel);
@@ -208,6 +198,7 @@ public class PageCustomer_Appointment implements ActionListener{
         container.add(icon);
         container.setVisible(true);
     }
+
     private int getDaysInMonth(int month, int year) {
         // Months are 0-based, so we add 1
         month++;

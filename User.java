@@ -162,4 +162,21 @@ class Customer extends User {
     public Customer(String name, String password){
         super(2, name, password);
     }
+
+    public static void makeAppointment(){
+        String username = PageCustomer_Appointment.userShow.getText();
+        String date = PageCustomer_Appointment.bookDateBox_Year.getSelectedItem().toString() + " " + PageCustomer_Appointment.bookDateBox_Month.getSelectedItem().toString() + " " + PageCustomer_Appointment.bookDateBox_Date.getSelectedItem().toString();
+        String time = PageCustomer_Appointment.bookTimeBox_Time.getSelectedItem().toString() + ":00 " + PageCustomer_Appointment.bookTimeBox_AMPM.getSelectedItem().toString();
+
+        BufferedWriter write;
+        try {
+            write = new BufferedWriter(new FileWriter("appointment.txt", true));
+            write.write(username+","+date+","+time);
+            write.newLine();
+
+            write.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
