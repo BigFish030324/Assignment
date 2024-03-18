@@ -95,7 +95,7 @@ public class PageCustomer_Appointment implements ActionListener{
         };
 
         bookDateBox_Date = new JComboBox<>(date);
-        bookDateBox_Date.setBounds(((container.getWidth() + 10)/2) + 5, 205, 110, 30);
+        bookDateBox_Date.setBounds((container.getWidth()/2) + 250, 205, 110, 30);
         bookDateBox_Date.addActionListener(this);
 
         // Book Date (Month) Combo Box
@@ -127,7 +127,7 @@ public class PageCustomer_Appointment implements ActionListener{
         // Book Date (Year) Combo Box
         String[] year = {"2024", "2025"};
         bookDateBox_Year = new JComboBox<>(year);
-        bookDateBox_Year.setBounds((container.getWidth()/2) + 250, 205, 110, 30);
+        bookDateBox_Year.setBounds(((container.getWidth() + 10)/2) + 5, 205, 110, 30);
         bookDateBox_Year.addActionListener(this);
 
         // Book Time (Number) Combo Box
