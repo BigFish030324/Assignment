@@ -83,7 +83,9 @@ public class PageAdmin_Edit implements ActionListener{
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(container, "Invalid Input!");
                 }
-            }
+        } else if (e.getSource() == dlt){
+            Manager.deleteUser();
+        }
         
 
         // Click on Edit to enable edit password

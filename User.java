@@ -156,7 +156,17 @@ class Manager extends User {
         }
     }
     public static void deleteUser(){
-
+        String username = PageAdmin_Edit.userInput.getText();
+        for (int i = 0; i < User.userList.size(); i ++) {
+            if (User.userList.get(i).getName().equals(username)) {
+                User.userList.remove(i);
+                try {
+                    writeData();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }
 

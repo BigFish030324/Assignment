@@ -1,4 +1,3 @@
 0,Fish,12345
-1,JOJO,KONODIODA
 1,BengRhui,isahamsapgia
 2,Darien,11111
