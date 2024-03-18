@@ -9,16 +9,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class PageCustomer implements ActionListener {
+
+    static PageCustomer_Appointment customerAppointment;
+    static PageCustomer_Feedback customerFeedback;
+    static PageCustomer_Payment customerPayment;
+
     public void actionPerformed(ActionEvent e){
         try{
             if(e.getSource() == appointment){
                 container.setVisible(false);
+                customerAppointment = new PageCustomer_Appointment();
                 PageCustomer_Appointment.container.setVisible(true);
             } else if(e.getSource() == feedback){
                 container.setVisible(false);
+                customerFeedback = new PageCustomer_Feedback();
                 PageCustomer_Feedback.container.setVisible(true);
             } else if(e.getSource() == payment){
                 container.setVisible(false);
+                customerPayment = new PageCustomer_Payment();
                 PageCustomer_Payment.container.setVisible(true);
             }
             else{

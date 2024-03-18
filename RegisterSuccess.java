@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class RegisterSuccess implements ActionListener{
+    
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == ok){
             container.setVisible(false);

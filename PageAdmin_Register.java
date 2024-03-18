@@ -16,8 +16,10 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 
 public class PageAdmin_Register implements ActionListener{
+
+    static RegisterSuccess registerSuccess;
     @SuppressWarnings("deprecation")
-    
+
     public void actionPerformed(ActionEvent e){
         try{
             if((userInput.getText().isEmpty() || passwordInput.getText().isEmpty() || registerGroup.getSelection() == null) && e.getSource() == ok){
@@ -28,6 +30,7 @@ public class PageAdmin_Register implements ActionListener{
                 Manager.registerUser();
                 container.setVisible(false);
                 PageAdmin.container.setVisible(true);
+                registerSuccess = new RegisterSuccess();
                 RegisterSuccess.container.setVisible(true);
             }
         } 

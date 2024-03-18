@@ -24,7 +24,8 @@ public class EditConfirmation implements ActionListener{
         container.setResizable(false);//Fix the GUI Size
         container.setLayout(null);
 
-        questionText = new JLabel("<html>Are you sure that you want to continue the <br>action?</html>");//asking sentence
+        // Confirmation Text
+        questionText = new JLabel("<html>Are you sure that you want to continue this <br>action?</html>");
         questionText.setBounds(15, 0, 330, 50);
         questionText.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 

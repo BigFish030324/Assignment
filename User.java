@@ -66,6 +66,10 @@ public class User {
 
     }
 
+    static PageAdmin pageAdmin;
+    static PageTechnician pageTechnician;
+    static PageCustomer pageCustomer;
+
     public static void userLogin() throws Exception{
         String username = MainPage.userInput.getText();
         int index = -1;
@@ -78,11 +82,26 @@ public class User {
         char[] password = MainPage.passwordInput.getPassword(); // Hide Password
         String enteredPassword = new String(password); // Get Password as String
 
+        
         // Validate Password and Manager role
         if(enteredPassword.equals(User.userList.get(index).getPass()) && User.userList.get(index).getRole() == 0){
             MainPage.container.setVisible(false);
+            MainPage.container.dispose();
+            pageAdmin = new PageAdmin();
             PageAdmin.container.setVisible(true);
-        } else {
+        }else if(enteredPassword.equals(User.userList.get(index).getPass()) && User.userList.get(index).getRole() == 1){
+            MainPage.container.setVisible(false);
+            MainPage.container.dispose();
+            pageTechnician = new PageTechnician();
+            PageTechnician.container.setVisible(true);
+        } else if(enteredPassword.equals(User.userList.get(index).getPass()) && User.userList.get(index).getRole() == 2){
+            MainPage.container.setVisible(false);
+            MainPage.container.dispose();
+            pageCustomer = new PageCustomer();
+            PageCustomer.container.setVisible(true);
+            PageCustomer_Appointment.userShow.setText(username);
+        }
+        else {
             throw new Exception();
         }
     }

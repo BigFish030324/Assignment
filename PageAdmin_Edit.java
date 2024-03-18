@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 
 public class PageAdmin_Edit implements ActionListener{
+
+    static EditConfirmation j;
+
     public void actionPerformed(ActionEvent e){
         String username = userInput.getText();
     

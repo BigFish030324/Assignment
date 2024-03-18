@@ -2,74 +2,80 @@ public class ARunCodeHere {
     
     static MainPage a;
 
-    static PageAdmin b;
-    static PageAdmin_Register c;
-    static PageAdmin_Edit d;
-    static PageAdmin_Appointment e;
-    static PageAdmin_Feedback f;
-    static PageAdmin_Payment g;
-    static RegisterSuccess h;
-    static EditConfirmation i;
+    // static PageAdmin b;
+    // static PageAdmin_Register c;
+    // static PageAdmin_Edit d;
+    // static PageAdmin_Appointment_TABLE e;
+    // static PageAdmin_Appointment f;
+    // static PageAdmin_Feedback g;
+    // static PageAdmin_Payment h;
+    // static RegisterSuccess i;
+    static EditConfirmation j;
 
-    static PageTechnician j;
-    static PageTechnician_Appointment k;
-    static PageTechnician_Feedback l;
-    static PageTechnician_Payment m;
+    // static PageTechnician k;
+    // static PageTechnician_Appointment_TABLE l;
+    // static PageTechnician_Appointment m;
+    // static PageTechnician_Feedback n;
+    // static PageTechnician_Payment o;
 
-    static PageCustomer n;
-    static PageCustomer_Appointment o;
-    static PageCustomer_Feedback p;
-    static PageCustomer_Payment q;
+    // static PageCustomer p;
+    // static PageCustomer_Appointment q;
+    // static PageCustomer_Feedback r;
+    // static PageCustomer_Payment s;
 
-    static AboutUs z;
+    // static AboutUs z;
 
     public static void main(String[] args) {
         a = new MainPage();
 
-        b = new PageAdmin();
-        c = new PageAdmin_Register();
-        d = new PageAdmin_Edit();
-        e = new PageAdmin_Appointment();
-        f = new PageAdmin_Feedback();
-        g = new PageAdmin_Payment();
-        h = new RegisterSuccess();
-        i = new EditConfirmation();
+        // b = new PageAdmin();
+        // c = new PageAdmin_Register();
+        // d = new PageAdmin_Edit();
+        // e = new PageAdmin_Appointment_TABLE();
+        // f = new PageAdmin_Appointment();
+        // g = new PageAdmin_Feedback();
+        // h = new PageAdmin_Payment();
+        // i = new RegisterSuccess();
+        j = new EditConfirmation();
 
-        j = new PageTechnician();
-        k = new PageTechnician_Appointment();
-        l = new PageTechnician_Feedback();
-        m = new PageTechnician_Payment();
+        // k = new PageTechnician();
+        // l = new PageTechnician_Appointment_TABLE();
+        // m = new PageTechnician_Appointment();
+        // n = new PageTechnician_Feedback();
+        // o = new PageTechnician_Payment();
 
-        n = new PageCustomer();
-        o = new PageCustomer_Appointment();
-        p = new PageCustomer_Feedback();
-        q = new PageCustomer_Payment();
+        // p = new PageCustomer();
+        // q = new PageCustomer_Appointment();
+        // r = new PageCustomer_Feedback();
+        // s = new PageCustomer_Payment();
 
-        z = new AboutUs();
+        // z = new AboutUs();
 
 
 
         MainPage.container.setVisible(true);
 
-        PageAdmin.container.setVisible(false);
-        PageAdmin_Register.container.setVisible(false);
-        PageAdmin_Edit.container.setVisible(false);
-        PageAdmin_Appointment.container.setVisible(false);
-        PageAdmin_Feedback.container.setVisible(false);
-        PageAdmin_Payment.container.setVisible(false);
-        RegisterSuccess.container.setVisible(false);
+        // PageAdmin.container.setVisible(false);
+        // PageAdmin_Register.container.setVisible(false);
+        // PageAdmin_Edit.container.setVisible(false);
+        // PageAdmin_Appointment_TABLE.container.setVisible(false); // Issue on table heading
+        // PageAdmin_Appointment.container.setVisible(false);
+        // PageAdmin_Feedback.container.setVisible(false); // Change feedback button to addable every new feedback
+        // PageAdmin_Payment.container.setVisible(false);
+        // RegisterSuccess.container.setVisible(false);
         EditConfirmation.container.setVisible(false);
 
-        PageTechnician.container.setVisible(false);
-        PageTechnician_Appointment.container.setVisible(false);
-        PageTechnician_Feedback.container.setVisible(false);
-        PageTechnician_Payment.container.setVisible(false);
+        // PageTechnician.container.setVisible(false);
+        // PageTechnician_Appointment_TABLE.container.setVisible(false); // Issue on table heading
+        // PageTechnician_Appointment.container.setVisible(false);
+        // PageTechnician_Feedback.container.setVisible(false);
+        // PageTechnician_Payment.container.setVisible(false);
 
-        PageCustomer.container.setVisible(false);
-        PageCustomer_Appointment.container.setVisible(false);
-        PageCustomer_Feedback.container.setVisible(false);
-        PageCustomer_Payment.container.setVisible(false);
+        // PageCustomer.container.setVisible(false);
+        // PageCustomer_Appointment.container.setVisible(false);
+        // PageCustomer_Feedback.container.setVisible(false);
+        // PageCustomer_Payment.container.setVisible(false);
 
-        AboutUs.container.setVisible(false);
+        // AboutUs.container.setVisible(false); // Need to link OK back to MainPage
     }    
 }

@@ -34,6 +34,7 @@ public class MainPage implements ActionListener{
     JButton enter;
     static JTextField userInput;
     static JPasswordField passwordInput;
+    static AboutUs aboutUs;
     JLabel userText, passwordText, aboutUs1Text, aboutUs2Text;
     JPanel backgroundBox, APUCircle;
     JLayeredPane layer;
@@ -131,6 +132,7 @@ public class MainPage implements ActionListener{
 
         aboutUs2Text.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
+                aboutUs = new AboutUs();
                 AboutUs.container.setVisible(true);
                 container.setVisible(false);
             }
