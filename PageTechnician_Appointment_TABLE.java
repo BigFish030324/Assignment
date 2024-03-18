@@ -90,17 +90,17 @@ public class PageTechnician_Appointment_TABLE implements ActionListener{
         // Text Input Section
         // User Display
         userDisplay = new JTextField();
-        userDisplay.setBounds(120, 375, 410, 35);
+        userDisplay.setBounds(200, 375, 330, 35);
         userDisplay.setColumns(10);
 
         // Date Display
         dateDisplay = new JTextField();
-        dateDisplay.setBounds(120, 425, 410, 35);
+        dateDisplay.setBounds(200, 425, 330, 35);
         dateDisplay.setColumns(10);
 
         // Time Display
         timeDisplay = new JTextField();
-        timeDisplay.setBounds(120, 475, 410, 35);
+        timeDisplay.setBounds(200, 475, 330, 35);
         timeDisplay.setColumns(10);
 
         // Text Section
@@ -110,8 +110,8 @@ public class PageTechnician_Appointment_TABLE implements ActionListener{
         userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         // Date Text
-        dateText = new JLabel("Date");
-        dateText.setBounds(30, 430, 100, 20);
+        dateText = new JLabel("Date (YYYY-MM-DD)");
+        dateText.setBounds(30, 430, 180, 20);
         dateText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         // Time Text
