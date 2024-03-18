@@ -10,23 +10,35 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class PageAdmin implements ActionListener {
+
+    static PageAdmin_Register adminRegister;
+    static PageAdmin_Edit adminEdit;
+    static PageAdmin_Appointment_TABLE adminAppointment;
+    static PageAdmin_Feedback adminFeedback;
+    static PageAdmin_Payment adminPayment;
+
     public void actionPerformed(ActionEvent e){
         try{
             if(e.getSource() == register){
                 container.setVisible(false);
+                adminRegister = new PageAdmin_Register();
                 PageAdmin_Register.container.setVisible(true);
             } 
             else if(e.getSource() == edit){
                 container.setVisible(false);
+                adminEdit = new PageAdmin_Edit();
                 PageAdmin_Edit.container.setVisible(true);
             } else if(e.getSource() == appointment){
                 container.setVisible(false);
+                adminAppointment = new PageAdmin_Appointment_TABLE();
                 PageAdmin_Appointment_TABLE.container.setVisible(true);
             } else if(e.getSource() == feedback){
                 container.setVisible(false);
+                adminFeedback = new PageAdmin_Feedback();
                 PageAdmin_Feedback.container.setVisible(true);
             } else if(e.getSource() == payment){
                 container.setVisible(false);
+                adminPayment = new PageAdmin_Payment();
                 PageAdmin_Payment.container.setVisible(true);
             }
             else{
