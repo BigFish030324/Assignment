@@ -17,6 +17,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -28,7 +29,7 @@ public class MainPage implements ActionListener{
                 User.userLogin();
             }
         } catch(Exception f){
-            // JOptionPane.showMessageDialog(container, "Invalid Input!");
+            JOptionPane.showMessageDialog(container, "Username not Exist or Wrong Password!");
         }
     }
 

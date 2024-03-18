@@ -6,34 +6,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class PageCustomer_Feedback implements ActionListener{
     public void actionPerformed(ActionEvent e){
-        // if (e.getSource() == userComboBox) {
-        //     System.out.println(userComboBox.getSelectedItem());
-        // } else if (e.getSource() == ok) {
-        //     try {
-        //         if (userInput.getText().isEmpty()) {
-        //             throw new Exception();
-        //         } else {
-        //             container.setVisible(false);
-        //             PageAdmin.container.setVisible(true);
-        //         }
-        //     } catch (Exception f) {
-        //         JOptionPane.showMessageDialog(container, "Invalid Input!");
-        //     }
-        // }
+        if (e.getSource() == ok) {
+            if(descriptionInput.getText().isEmpty()){
+                JOptionPane.showMessageDialog(container, "Field cannot be empty!");
+            } else{
+                try {
+                    Customer.writeFeedback();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
     }
 
     static JFrame container;
     static JButton ok;
-    JTextArea descriptionInput;
+    static JTextArea descriptionInput;
     JLabel feedbackText;
 
     public PageCustomer_Feedback() {
