@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-public class PageCustomer_Payment implements ActionListener{
+public class PageCustomer_History implements ActionListener{
     public void actionPerformed(ActionEvent e){
         // if (e.getSource() == userComboBox) {
         //     System.out.println(userComboBox.getSelectedItem());
@@ -39,7 +39,7 @@ public class PageCustomer_Payment implements ActionListener{
     static JTextField userDisplay, dateDisplay, serviceDisplay, totalDisplay;
     JLabel paymentText, userText, dateText, serviceText, totalText;
 
-    public PageCustomer_Payment() {
+    public PageCustomer_History() {
 
         // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");

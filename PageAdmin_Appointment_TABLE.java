@@ -2,18 +2,19 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -44,6 +45,7 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
     JTextField userDisplay, dateDisplay, timeDisplay;
     JLabel userText, dateText, timeText;
     JButton done, add;
+    static JComboBox<String> usernameBox, bookDateBox_Date, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
 
     public PageAdmin_Appointment_TABLE() {
 
@@ -106,21 +108,72 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         JScrollPane scrollpane = new JScrollPane(table);
         scrollpane.setBounds((container.getWidth() / 2) - 260, 50, 500, 300);
 
-        // Text Input Section
-        // User Display
-        userDisplay = new JTextField();
-        userDisplay.setBounds(200, 375, 330, 35);
-        userDisplay.setColumns(10);
+        // Combo Box Section
+        // User Combo Box
+        String[] username = {"Fish", "JOJO"};
+        usernameBox = new JComboBox<>(username);
+        usernameBox.setBounds(200, 375, 330, 30);
+        usernameBox.addActionListener(this);
 
-        // Date Display
-        dateDisplay = new JTextField();
-        dateDisplay.setBounds(200, 425, 330, 35);
-        dateDisplay.setColumns(10);
+        // Book Date (Date) Combo Box
+        String[] date = new String[31];
 
-        // Time Display
-        timeDisplay = new JTextField();
-        timeDisplay.setBounds(200, 475, 330, 35);
-        timeDisplay.setColumns(10);
+        for (int i = 1; i <= 31; i++) {
+            date[i-1] = Integer.toString(i);
+        };
+
+        bookDateBox_Date = new JComboBox<>(date);
+        bookDateBox_Date.setBounds(430, 425, 100, 30);
+        bookDateBox_Date.addActionListener(this);
+
+        // Book Date (Month) Combo Box
+        String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+        bookDateBox_Month = new JComboBox<>(month);
+        bookDateBox_Month.setBounds(315, 425, 100, 30);
+        bookDateBox_Month.addActionListener(this);
+        bookDateBox_Month.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    int month = bookDateBox_Month.getSelectedIndex();
+                    int year = Integer.parseInt((String) bookDateBox_Year.getSelectedItem());
+                    int daysInMonth = getDaysInMonth(month, year);
+
+                    String[] daysArray = new String[daysInMonth];
+                    for (int i = 0; i < daysInMonth; i++) {
+                        daysArray[i] = String.valueOf(i + 1);
+                    }
+
+                    bookDateBox_Date.removeAllItems();
+                    for (String day : daysArray) {
+                        bookDateBox_Date.addItem(day);
+                    }
+                }
+            }
+        });
+
+        // Book Date (Year) Combo Box
+        String[] year = {"2024", "2025"};
+        bookDateBox_Year = new JComboBox<>(year);
+        bookDateBox_Year.setBounds(200, 425, 100, 30);
+        bookDateBox_Year.addActionListener(this);
+
+        // Book Time (Number) Combo Box
+        String[] time = new String[12];
+
+        for(int i = 1; i <= 12; ++i){
+            time[i-1] = Integer.toString(i);
+        };
+
+        bookTimeBox_Time = new JComboBox<>(time);
+        bookTimeBox_Time.setBounds(200, 475, 160, 30);
+        bookTimeBox_Time.addActionListener(this);
+
+        // Book Time (am/pm) Combo Box
+        String[] dayNight = {"am", "pm"};
+        bookTimeBox_AMPM = new JComboBox<>(dayNight);
+        bookTimeBox_AMPM.setBounds(370, 475, 160, 30);
+        bookTimeBox_AMPM.addActionListener(this);
 
         // Text Section
         // Username Text
@@ -154,12 +207,39 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         container.add(add);
         container.add(icon);
         container.add(scrollpane);
-        container.add(userDisplay);
-        container.add(dateDisplay);
-        container.add(timeDisplay);
+        container.add(usernameBox);
+        container.add(bookDateBox_Date);
+        container.add(bookDateBox_Month);
+        container.add(bookDateBox_Year);
+        container.add(bookTimeBox_Time);
+        container.add(bookTimeBox_AMPM);
         container.add(userText);
         container.add(dateText);
         container.add(timeText);
         container.setVisible(true);
+    }
+    private int getDaysInMonth(int month, int year) {
+        // Months are 0-based, so we add 1
+        month++;
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                return 31;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                return 30;
+            case 2:
+                // Assuming non-leap year for simplicity
+                return 28;
+            default:
+                return 0;
+        }
     }
 }
