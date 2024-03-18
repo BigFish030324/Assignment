@@ -53,7 +53,7 @@ public class PageTechnician_Appointment_TABLE implements ActionListener{
         icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
-                PageAdmin.container.setVisible(true);
+                PageTechnician.container.setVisible(true);
                 container.setVisible(false);
             }
         });
@@ -98,10 +98,6 @@ public class PageTechnician_Appointment_TABLE implements ActionListener{
         // Scroll pane
         JScrollPane scrollpane = new JScrollPane(table);
         scrollpane.setBounds((container.getWidth() / 2) - 260, 50, 500, 480);
-
-
-
-
 
         // Add components to the frame
         container.add(scrollpane);

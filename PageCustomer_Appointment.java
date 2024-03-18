@@ -93,6 +93,7 @@ public class PageCustomer_Appointment implements ActionListener{
         // Username Combo Box
         userShow = new JTextField();
         userShow.setEditable(false);
+        userShow.setText(MainPage.userInput.getText());
         userShow.setBounds(((container.getWidth() + 10)/2) + 5, 135, 350, 30);
 
         // Book Date (Date) Combo Box

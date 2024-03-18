@@ -65,9 +65,9 @@ public class User {
         }
 
     }
-    static PageAdmin b;
-    static PageTechnician k;
-    static PageCustomer p; 
+    static PageAdmin pageAdmin;
+    static PageTechnician pageTechnician;
+    static PageCustomer pageCustomer; 
 
     public static void userLogin() throws Exception{
         String username = MainPage.userInput.getText();
@@ -85,19 +85,18 @@ public class User {
         if(enteredPassword.equals(User.userList.get(index).getPass()) && User.userList.get(index).getRole() == 0){
             MainPage.container.setVisible(false);
             MainPage.container.dispose();
-            b = new PageAdmin();
+            pageAdmin = new PageAdmin();
             PageAdmin.container.setVisible(true);
         }else if(enteredPassword.equals(User.userList.get(index).getPass()) && User.userList.get(index).getRole() == 1){
             MainPage.container.setVisible(false);
             MainPage.container.dispose();
-            k = new PageTechnician();
+            pageTechnician = new PageTechnician();
             PageTechnician.container.setVisible(true);
         } else if(enteredPassword.equals(User.userList.get(index).getPass()) && User.userList.get(index).getRole() == 2){
             MainPage.container.setVisible(false);
             MainPage.container.dispose();
-            p = new PageCustomer();
+            pageCustomer = new PageCustomer();
             PageCustomer.container.setVisible(true);
-            PageCustomer_Appointment.userShow.setText(username);
         }
         else {
             throw new Exception();
@@ -155,6 +154,9 @@ class Manager extends User {
         }catch(Exception e){
             System.out.println("Invalid input!");
         }
+    }
+    public static void deleteUser(){
+
     }
 }
 
