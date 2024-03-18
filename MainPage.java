@@ -29,7 +29,7 @@ public class MainPage implements ActionListener{
                 User.userLogin();
             }
         } catch(Exception f){
-            JOptionPane.showMessageDialog(container, "Invalid Input!");
+            // JOptionPane.showMessageDialog(container, "Invalid Input!");
         }
     }
 
@@ -38,6 +38,7 @@ public class MainPage implements ActionListener{
     static JFrame container;
     static JTextField userInput;
     static JPasswordField passwordInput;
+    static AboutUs aboutUs;
     JLabel userText, passwordText, aboutUs1Text, aboutUs2Text;
     JButton enter;
     JPanel backgroundBox, APUCircle;
@@ -152,6 +153,7 @@ public class MainPage implements ActionListener{
 
         aboutUs2Text.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
+                aboutUs = new AboutUs();
                 AboutUs.container.setVisible(true);
                 container.setVisible(false);
             }

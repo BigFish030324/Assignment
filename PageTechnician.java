@@ -10,16 +10,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class PageTechnician implements ActionListener {
+
+    static PageTechnician_Appointment_TABLE technicianAppointment;
+    static PageTechnician_Feedback technicianFeedback;
+    static PageTechnician_Payment technicianPayment;
+
     public void actionPerformed(ActionEvent e){
         try{
             if(e.getSource() == appointment){
                 container.setVisible(false);
+                technicianAppointment = new PageTechnician_Appointment_TABLE();
                 PageTechnician_Appointment.container.setVisible(true);
             } else if(e.getSource() == feedback){
                 container.setVisible(false);
+                technicianFeedback = new PageTechnician_Feedback();
                 PageTechnician_Feedback.container.setVisible(true);
             } else if(e.getSource() == payment){
                 container.setVisible(false);
+                technicianPayment = new PageTechnician_Payment();
                 PageTechnician_Payment.container.setVisible(true);
             }
             else{

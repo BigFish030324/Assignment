@@ -15,6 +15,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class PageAdmin_Register implements ActionListener{
+
+    static RegisterSuccess registerSuccess;
     @SuppressWarnings("deprecation")
     
     public void actionPerformed(ActionEvent e){
@@ -26,6 +28,7 @@ public class PageAdmin_Register implements ActionListener{
                 
                 Manager.registerUser();
                 container.setVisible(false);
+                registerSuccess = new RegisterSuccess();
                 PageAdmin.container.setVisible(true);
                 RegisterSuccess.container.setVisible(true);
             }
