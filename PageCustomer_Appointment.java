@@ -41,7 +41,7 @@ public class PageCustomer_Appointment implements ActionListener{
     static JTextArea descriptionInput;
     JButton register;
     JLabel appointmentText, userText, bookDateText, bookTimeText, descriptionText;
-    JComboBox<String> bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
+    JComboBox<String> bookDateBox_Date, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
 
     public PageCustomer_Appointment(){
 
@@ -104,16 +104,22 @@ public class PageCustomer_Appointment implements ActionListener{
         userShow.setEditable(false);
         userShow.setBounds(((container.getWidth() + 10)/2) + 5, 135, 350, 30);
 
+        // Book Date (Date) Combo Box
+        String[] date = {"1", "2"};
+        bookDateBox_Date = new JComboBox<>(date);
+        bookDateBox_Date.setBounds(((container.getWidth() + 10)/2) + 5, 190, 110, 30);
+        bookDateBox_Date.addActionListener(this);
+
         // Book Date (Month) Combo Box
         String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
         bookDateBox_Month = new JComboBox<>(month);
-        bookDateBox_Month.setBounds(((container.getWidth() + 10)/2) + 5, 190, 350, 30);
+        bookDateBox_Month.setBounds((container.getWidth()/2) + 130, 190, 110, 30);
         bookDateBox_Month.addActionListener(this);
 
         // Book Date (Year) Combo Box
-        String[] year = {"1", "2"};
+        String[] year = {"2024", "2025"};
         bookDateBox_Year = new JComboBox<>(year);
-        bookDateBox_Year.setBounds((container.getWidth()/2) + 190, 190, 170, 30);
+        bookDateBox_Year.setBounds((container.getWidth()/2) + 250, 190, 110, 30);
         bookDateBox_Year.addActionListener(this);
 
         // Book Time (Number) Combo Box
@@ -160,6 +166,7 @@ public class PageCustomer_Appointment implements ActionListener{
         container.add(userText);
         container.add(userShow);
 
+        container.add(bookDateBox_Date);
         container.add(bookDateBox_Month);
         container.add(bookDateBox_Year);
         container.add(bookDateText);
