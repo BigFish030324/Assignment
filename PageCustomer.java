@@ -13,7 +13,7 @@ public class PageCustomer implements ActionListener {
 
     static PageCustomer_Appointment customerAppointment;
     static PageCustomer_Feedback customerFeedback;
-    static PageCustomer_History customerPayment;
+    static PageCustomer_History customerHistory;
 
     public void actionPerformed(ActionEvent e){
         try{
@@ -27,7 +27,7 @@ public class PageCustomer implements ActionListener {
                 PageCustomer_Feedback.container.setVisible(true);
             } else if(e.getSource() == payment){
                 container.setVisible(false);
-                customerPayment = new PageCustomer_History();
+                customerHistory = new PageCustomer_History();
                 PageCustomer_History.container.setVisible(true);
             }
             else{

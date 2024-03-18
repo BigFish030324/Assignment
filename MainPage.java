@@ -29,7 +29,7 @@ public class MainPage implements ActionListener{
                 User.userLogin();
             }
         } catch(Exception f){
-            // JOptionPane.showMessageDialog(container, "Invalid Input!");
+            JOptionPane.showMessageDialog(container, "Username not Exist or Wrong Password!");
         }
     }
 
