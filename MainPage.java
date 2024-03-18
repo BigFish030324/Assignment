@@ -185,10 +185,6 @@ public class MainPage implements ActionListener{
         enter.setBounds((container.getWidth() - 350)/2, 350, 350, 50);
         enter.addActionListener(this);
 
-
-
-
-
         // Add Section
         // Add different layers to container here
         layer.add(enter, JLayeredPane.MODAL_LAYER);
