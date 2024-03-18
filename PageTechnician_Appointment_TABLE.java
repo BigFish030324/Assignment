@@ -9,12 +9,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class PageTechnician_Appointment_TABLE implements ActionListener{
@@ -39,9 +37,6 @@ public class PageTechnician_Appointment_TABLE implements ActionListener{
 
     static JFrame container;
     JTable table;
-    JTextField userDisplay, dateDisplay, timeDisplay;
-    JLabel userText, dateText, timeText;
-    JButton ok;
 
     public PageTechnician_Appointment_TABLE() {
 
@@ -102,59 +97,14 @@ public class PageTechnician_Appointment_TABLE implements ActionListener{
 
         // Scroll pane
         JScrollPane scrollpane = new JScrollPane(table);
-        scrollpane.setBounds((container.getWidth() / 2) - 260, 50, 500, 300);
-
-        // Text Input Section
-        // User Display
-        userDisplay = new JTextField();
-        userDisplay.setBounds(200, 375, 330, 35);
-        userDisplay.setColumns(10);
-
-        // Date Display
-        dateDisplay = new JTextField();
-        dateDisplay.setBounds(200, 425, 330, 35);
-        dateDisplay.setColumns(10);
-
-        // Time Display
-        timeDisplay = new JTextField();
-        timeDisplay.setBounds(200, 475, 330, 35);
-        timeDisplay.setColumns(10);
-
-        // Text Section
-        // Username Text
-        userText = new JLabel("Username");
-        userText.setBounds(30, 380, 100, 20);
-        userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
-
-        // Date Text
-        dateText = new JLabel("Date (YYYY-MM-DD)");
-        dateText.setBounds(30, 430, 180, 20);
-        dateText.setFont(new Font("Times New Roman", Font.BOLD, 16));
-
-        // Time Text
-        timeText = new JLabel("Time");
-        timeText.setBounds(30, 480, 100, 20);
-        timeText.setFont(new Font("Times New Roman", Font.BOLD, 16));
-
-        // Button Section
-        // OK Button
-        ok = new JButton("OK");
-        ok.setBounds(container.getWidth()-150, container.getHeight() - 80, 100, 30);
-        ok.addActionListener(this);
+        scrollpane.setBounds((container.getWidth() / 2) - 260, 50, 500, 480);
 
 
 
 
 
         // Add components to the frame
-        container.add(ok);
         container.add(scrollpane);
-        container.add(userDisplay);
-        container.add(dateDisplay);
-        container.add(timeDisplay);
-        container.add(userText);
-        container.add(dateText);
-        container.add(timeText);
         container.add(icon);
         container.setVisible(true);
     }
