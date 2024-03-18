@@ -13,6 +13,7 @@ public class PageTechnician implements ActionListener {
 
     static PageTechnician_Appointment_TABLE technicianAppointment;
     static PageTechnician_Feedback technicianFeedback;
+    static PageTechnician_History technicianHistory;
     static PageTechnician_Payment technicianPayment;
 
     public void actionPerformed(ActionEvent e){
@@ -24,6 +25,10 @@ public class PageTechnician implements ActionListener {
             } else if(e.getSource() == feedback){
                 container.setVisible(false);
                 technicianFeedback = new PageTechnician_Feedback();
+                PageTechnician_Feedback.container.setVisible(true);
+            } else if(e.getSource() == history){
+                container.setVisible(false);
+                technicianHistory = new PageTechnician_History();
                 PageTechnician_Feedback.container.setVisible(true);
             } else if(e.getSource() == payment){
                 container.setVisible(false);
@@ -42,13 +47,13 @@ public class PageTechnician implements ActionListener {
 
 
     static JFrame container;
-    JButton appointment, feedback, payment;
+    JButton appointment, feedback, history, payment;
     JLabel technicianText;
     public PageTechnician(){
 
         // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(1000,500); // GUI Size
+        container.setSize(1000,550); // GUI Size
         container.setLocationRelativeTo(null); // GUI Location
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Able to exit system
         container.setResizable(false); // Fix the GUI Size
@@ -81,9 +86,14 @@ public class PageTechnician implements ActionListener {
         feedback.setBounds((container.getWidth() - 500)/2, 250, 500, 50);
         feedback.addActionListener(this);
 
+        // History Section
+        history = new JButton("History");
+        history.setBounds((container.getWidth() - 500)/2, 330, 500, 50);
+        history.addActionListener(this);
+
         // Payment Section
         payment = new JButton("Payment");
-        payment.setBounds((container.getWidth() - 500)/2, 330, 500, 50);
+        payment.setBounds((container.getWidth() - 500)/2, 410, 500, 50);
         payment.addActionListener(this);
 
 
@@ -93,6 +103,7 @@ public class PageTechnician implements ActionListener {
         // Add Section
         container.add(appointment);
         container.add(feedback);
+        container.add(history);
         container.add(payment);
         container.add(technicianText);
         container.add(icon);
