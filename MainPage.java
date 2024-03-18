@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -108,6 +110,22 @@ public class MainPage implements ActionListener{
         showPassword.setBounds(((container.getWidth() - 350)/2)+300, 300, 40, 25);
         showPassword.setIcon(image4);
         showPassword.setSelectedIcon(image3);
+
+        // Show/Hide password functionality
+        showPassword.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getSource() == showPassword) {
+                    if (showPassword.isSelected()) {
+                        // Show password
+                        passwordInput.setEchoChar((char) 0);
+                    } else {
+                        // Hide password
+                        passwordInput.setEchoChar('•');
+                    }
+                }
+            }
+        });
 
         // Text Section
         // Username text

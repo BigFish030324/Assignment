@@ -37,11 +37,11 @@ public class PageCustomer_Appointment implements ActionListener{
 
 
     static JFrame container;
-    static JTextField userInput;
+    static JTextField userInput, userShow;
     static JTextArea descriptionInput;
     JButton register;
     JLabel appointmentText, userText, bookDateText, bookTimeText, descriptionText;
-    JComboBox<String> userComboBox, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
+    JComboBox<String> bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
 
     public PageCustomer_Appointment(){
 
@@ -100,10 +100,9 @@ public class PageCustomer_Appointment implements ActionListener{
 
         // Combo Box Section
         // Username Combo Box
-        String[] username = {"Fish", "JOJO"};
-        userComboBox = new JComboBox<>(username);
-        userComboBox.setBounds(((container.getWidth() + 10)/2) + 5, 135, 350, 30);
-        userComboBox.addActionListener(this);
+        userShow = new JTextField();
+        userShow.setEditable(false);
+        userShow.setBounds(((container.getWidth() + 10)/2) + 5, 135, 350, 30);
 
         // Book Date (Month) Combo Box
         String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
@@ -159,7 +158,7 @@ public class PageCustomer_Appointment implements ActionListener{
         container.add(appointmentText);
 
         container.add(userText);
-        container.add(userComboBox);
+        container.add(userShow);
 
         container.add(bookDateBox_Month);
         container.add(bookDateBox_Year);

@@ -62,6 +62,7 @@ public class PageAdmin implements ActionListener {
             public void mouseClicked(MouseEvent e){
                 MainPage.container.setVisible(true);
                 container.setVisible(false);
+                User.readData();
             }
         });
 

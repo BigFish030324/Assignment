@@ -65,13 +65,13 @@ public class ARunCodeHere {
         RegisterSuccess.container.setVisible(false);
         EditConfirmation.container.setVisible(false);
 
-        PageTechnician.container.setVisible(true);
+        PageTechnician.container.setVisible(false);
         PageTechnician_Appointment_TABLE.container.setVisible(false); // Issue on table heading
         PageTechnician_Appointment.container.setVisible(false);
         PageTechnician_Feedback.container.setVisible(false);
         PageTechnician_Payment.container.setVisible(false);
 
-        PageCustomer.container.setVisible(true);
+        PageCustomer.container.setVisible(false);
         PageCustomer_Appointment.container.setVisible(false);
         PageCustomer_Feedback.container.setVisible(false);
         PageCustomer_Payment.container.setVisible(false);

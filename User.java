@@ -81,8 +81,19 @@ public class User {
         // Validate Password and Manager role
         if(enteredPassword.equals(User.userList.get(index).getPass()) && User.userList.get(index).getRole() == 0){
             MainPage.container.setVisible(false);
+            MainPage.container.dispose();
             PageAdmin.container.setVisible(true);
-        } else {
+        }else if(enteredPassword.equals(User.userList.get(index).getPass()) && User.userList.get(index).getRole() == 1){
+            MainPage.container.setVisible(false);
+            MainPage.container.dispose();
+            PageTechnician.container.setVisible(true);
+        } else if(enteredPassword.equals(User.userList.get(index).getPass()) && User.userList.get(index).getRole() == 2){
+            MainPage.container.setVisible(false);
+            MainPage.container.dispose();
+            PageCustomer.container.setVisible(true);
+            PageCustomer_Appointment.userShow.setText(username);
+        }
+        else {
             throw new Exception();
         }
     }
