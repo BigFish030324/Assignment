@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,23 +23,18 @@ import javax.swing.table.DefaultTableModel;
 
 public class PageAdmin_Appointment_TABLE implements ActionListener{
     public void actionPerformed(ActionEvent e){
-        // if (e.getSource() == userComboBox) {
-        //     System.out.println(userComboBox.getSelectedItem());
-        // } else if (e.getSource() == ok) {
-        //     try {
-        //         if (userInput.getText().isEmpty()) {
-        //             throw new Exception();
-        //         } else {
-        //             container.setVisible(false);
-        //             PageAdmin.container.setVisible(true);
-        //         }
-        //     } catch (Exception f) {
-        //         JOptionPane.showMessageDialog(container, "Invalid Input!");
-        //     }
-        // }
+        if (e.getSource() == add) {
+            Manager.makeAppointment();
+            refreshTableData();
+        } else if (e.getSource() == done) {
+            int[] selectedRows = table.getSelectedRows();
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            for (int i = selectedRows.length - 1; i >= 0; i--) {
+                model.removeRow(selectedRows[i]);
+            }
+            writeDataToFile(model);
+        }
     }
-
-
 
     static JFrame container;
     JTable table;
@@ -110,8 +106,14 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
 
         // Combo Box Section
         // User Combo Box
-        String[] username = {"Fish", "JOJO"};
-        usernameBox = new JComboBox<>(username);
+        ArrayList<String> usernames = new ArrayList<>();
+
+        for (User user : User.userList){
+            if(user.getRole() == 2){
+                usernames.add(user.getName());
+            }
+        }
+        usernameBox = new JComboBox<>(usernames.toArray(new String[0]));
         usernameBox.setBounds(200, 375, 330, 30);
         usernameBox.addActionListener(this);
 
@@ -218,6 +220,7 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         container.add(timeText);
         container.setVisible(true);
     }
+
     private int getDaysInMonth(int month, int year) {
         // Months are 0-based, so we add 1
         month++;
@@ -240,6 +243,43 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
                 return 28;
             default:
                 return 0;
+        }
+    }
+
+    private void refreshTableData() {
+        ArrayList<String[]> temp = new ArrayList<>();
+        try {
+            Scanner file = new Scanner(new File("appointment.txt"));
+            while (file.hasNext()) {
+                temp.add(file.nextLine().split(","));
+            }
+            file.close();
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        }
+    
+        String[][] custAppointment = new String[temp.size()][];
+        for (int i = 0; i < custAppointment.length; i++) {
+            custAppointment[i] = temp.get(i);
+        }
+    
+        // Update the table model with the new data
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setDataVector(custAppointment, new Object[]{"Username", "Date", "Time"});
+    }
+
+    private void writeDataToFile(DefaultTableModel model) {
+        try {
+            PrintWriter writer = new PrintWriter(new File("appointment.txt"));
+            for (int i = 0; i < model.getRowCount(); i++) {
+                String username = (String) model.getValueAt(i, 0);
+                String date = (String) model.getValueAt(i, 1);
+                String time = (String) model.getValueAt(i, 2);
+                writer.println(username + "," + date + "," + time);
+            }
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }

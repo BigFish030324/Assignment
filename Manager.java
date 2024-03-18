@@ -53,6 +53,7 @@ public class Manager extends User{
             System.out.println("Invalid input!");
         }
     }
+
     public static void deleteUser(){
         String username = PageAdmin_Edit.userInput.getText();
         for (int i = 0; i < User.userList.size(); i ++) {
@@ -64,6 +65,23 @@ public class Manager extends User{
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    public static void makeAppointment(){
+        String username = PageAdmin_Appointment_TABLE.usernameBox.getSelectedItem().toString();
+        String date = PageAdmin_Appointment_TABLE.bookDateBox_Year.getSelectedItem().toString() + " " + PageAdmin_Appointment_TABLE.bookDateBox_Month.getSelectedItem().toString() + " " + PageAdmin_Appointment_TABLE.bookDateBox_Date.getSelectedItem().toString();
+        String time = PageAdmin_Appointment_TABLE.bookTimeBox_Time.getSelectedItem().toString() + ":00 " + PageAdmin_Appointment_TABLE.bookTimeBox_AMPM.getSelectedItem().toString();
+
+        BufferedWriter write;
+        try {
+            write = new BufferedWriter(new FileWriter("appointment.txt", true));
+            write.write(username+","+date+","+time);
+            write.newLine();
+
+            write.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
