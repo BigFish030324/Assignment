@@ -3,6 +3,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -105,7 +107,12 @@ public class PageCustomer_Appointment implements ActionListener{
         userShow.setBounds(((container.getWidth() + 10)/2) + 5, 135, 350, 30);
 
         // Book Date (Date) Combo Box
-        String[] date = {"1", "2"};
+        String[] date = new String[31];
+
+        for (int i = 1; i <= 31; i++) {
+            date[i-1] = Integer.toString(i);
+        };
+
         bookDateBox_Date = new JComboBox<>(date);
         bookDateBox_Date.setBounds(((container.getWidth() + 10)/2) + 5, 190, 110, 30);
         bookDateBox_Date.addActionListener(this);
@@ -115,6 +122,26 @@ public class PageCustomer_Appointment implements ActionListener{
         bookDateBox_Month = new JComboBox<>(month);
         bookDateBox_Month.setBounds((container.getWidth()/2) + 130, 190, 110, 30);
         bookDateBox_Month.addActionListener(this);
+        bookDateBox_Month.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    int month = bookDateBox_Month.getSelectedIndex();
+                    int year = Integer.parseInt((String) bookDateBox_Year.getSelectedItem());
+                    int daysInMonth = getDaysInMonth(month, year);
+
+                    String[] daysArray = new String[daysInMonth];
+                    for (int i = 0; i < daysInMonth; i++) {
+                        daysArray[i] = String.valueOf(i + 1);
+                    }
+
+                    bookDateBox_Date.removeAllItems();
+                    for (String day : daysArray) {
+                        bookDateBox_Date.addItem(day);
+                    }
+                }
+            }
+        });
 
         // Book Date (Year) Combo Box
         String[] year = {"2024", "2025"};
@@ -180,5 +207,29 @@ public class PageCustomer_Appointment implements ActionListener{
         container.add(ImageAppointment);
         container.add(icon);
         container.setVisible(true);
+    }
+    private int getDaysInMonth(int month, int year) {
+        // Months are 0-based, so we add 1
+        month++;
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                return 31;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                return 30;
+            case 2:
+                // Assuming non-leap year for simplicity
+                return 28;
+            default:
+                return 0;
+        }
     }
 }

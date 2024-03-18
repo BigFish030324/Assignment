@@ -21,7 +21,7 @@ public class PageAdmin implements ActionListener {
                 PageAdmin_Edit.container.setVisible(true);
             } else if(e.getSource() == appointment){
                 container.setVisible(false);
-                PageAdmin_Appointment.container.setVisible(true);
+                PageAdmin_Appointment_TABLE.container.setVisible(true);
             } else if(e.getSource() == feedback){
                 container.setVisible(false);
                 PageAdmin_Feedback.container.setVisible(true);
