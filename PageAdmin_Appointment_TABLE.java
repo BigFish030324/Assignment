@@ -38,7 +38,7 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
     JTable table;
     JTextField userDisplay, dateDisplay, timeDisplay;
     JLabel userText, dateText, timeText;
-    JButton ok;
+    JButton done, add;
 
     public PageAdmin_Appointment_TABLE() {
 
@@ -121,17 +121,23 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         timeText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         // Button Section
-        // OK Button
-        ok = new JButton("OK");
-        ok.setBounds(container.getWidth()-150, container.getHeight() - 80, 100, 30);
-        ok.addActionListener(this);
+        // Done Button
+        done = new JButton("Done");
+        done.setBounds(container.getWidth()-260, container.getHeight() - 80, 100, 30);
+        done.addActionListener(this);
+
+        // Add Button
+        add = new JButton("Add");
+        add.setBounds(container.getWidth()-150, container.getHeight() - 80, 100, 30);
+        add.addActionListener(this);
 
 
 
 
 
         // Add components to the frame
-        container.add(ok);
+        container.add(done);
+        container.add(add);
         container.add(icon);
         container.add(scrollpane);
         container.add(userDisplay);
