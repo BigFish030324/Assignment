@@ -86,7 +86,7 @@ public class PageTechnician_History implements ActionListener{
 
         // Table Section
         // Table Dataset (Text File)
-        Object[] columnNames = {"Username", "Date", "Time", "Service", "Total"};  // Use final for constant values
+        Object[] columnNames = {"Username", "Date", "Time", "Technician", "Total"};  // Use final for constant values
 
         String[][] data = custAppointment;
 

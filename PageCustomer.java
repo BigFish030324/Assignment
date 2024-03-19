@@ -13,7 +13,6 @@ public class PageCustomer implements ActionListener {
 
     static PageCustomer_Appointment customerAppointment;
     static PageCustomer_Feedback customerFeedback;
-    static PageCustomer_History customerHistory;
 
     public void actionPerformed(ActionEvent e){
         try{
@@ -25,12 +24,7 @@ public class PageCustomer implements ActionListener {
                 container.setVisible(false);
                 customerFeedback = new PageCustomer_Feedback();
                 PageCustomer_Feedback.container.setVisible(true);
-            } else if(e.getSource() == history){
-                container.setVisible(false);
-                customerHistory = new PageCustomer_History();
-                PageCustomer_History.container.setVisible(true);
-            }
-            else{
+            } else{
                 throw new Exception();
             }
         }

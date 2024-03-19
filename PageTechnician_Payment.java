@@ -3,8 +3,14 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -83,13 +89,38 @@ public class PageTechnician_Payment implements ActionListener{
 
         // Combo Box Section
         // Username Combo Box
-        String[] users = {"Fish", "JOJO"};
+
+        Scanner file;
+        ArrayList<String[]> temp = new ArrayList<>();
+        try {
+            file = new Scanner(new File("appointment.txt"));
+            while (file.hasNext()) {
+                temp.add(file.nextLine().split(","));
+            }
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        }
+
+        ArrayList<String> customerList = new ArrayList<>();
+
+        for (int i = 0; i < temp.size(); i++) {
+            if (temp.get(i)[3].equals(MainPage.userInput.getText())) {
+                customerList.add(temp.get(i)[0]);
+            }
+        }
+
+        String[] users = customerList.toArray(new String[0]);
         JComboBox<String> usersComboBox = new JComboBox<>(users);
         usersComboBox.setBounds(50, 80, 450, 30);
         container.add(usersComboBox);
 
         // Date (Number) Combo Box
-        String[] date = {"1", "2"};
+        String[] date = new String[31];
+
+        for (int i = 1; i <= 31; i++) {
+            date[i-1] = Integer.toString(i);
+        };
+
         JComboBox<String> dateComboBox = new JComboBox<>(date);
         dateComboBox.setBounds(50, 150, 220, 30);
         container.add(dateComboBox);
@@ -97,6 +128,26 @@ public class PageTechnician_Payment implements ActionListener{
         // Date (Month) Combo Box
         String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
         JComboBox<String> monthComboBox = new JComboBox<>(month);
+        monthComboBox.addActionListener(this);
+        monthComboBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    int month = monthComboBox.getSelectedIndex();
+                    int daysInMonth = getDaysInMonth(month);
+
+                    String[] daysArray = new String[daysInMonth];
+                    for (int i = 0; i < daysInMonth; i++) {
+                        daysArray[i] = String.valueOf(i + 1);
+                    }
+
+                    dateComboBox.removeAllItems();
+                    for (String day : daysArray) {
+                        dateComboBox.addItem(day);
+                    }
+                }
+            }
+        });
         monthComboBox.setBounds(280, 150, 220, 30);
         container.add(monthComboBox);
 
@@ -106,9 +157,31 @@ public class PageTechnician_Payment implements ActionListener{
         servicesComboBox.setBounds(50, 220, 450, 30);
         container.add(servicesComboBox);
 
+        servicesComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedOption = (String) servicesComboBox.getSelectedItem();
+                switch (selectedOption) {
+                    case "Service 1":
+                        // Handle Option 1 selection
+                        totalDisplay.setText("10.50");
+                        break;
+                    case "Service 2":
+                        // Handle Option 2 selection
+                        totalDisplay.setText("9.20");
+                        break;
+                    default:
+                        // Handle default case
+                        totalDisplay.setText("Unknown option selected");
+                        break;
+                    }
+                }
+            });
+
         // Input Section
         // Total Display
         totalDisplay = new JTextField();
+        totalDisplay.setEditable(false);
         totalDisplay.setBounds(145, 320, 90, 30);
 
         // Button Section
@@ -121,10 +194,6 @@ public class PageTechnician_Payment implements ActionListener{
         ok = new JButton("OK");
         ok.setBounds(container.getWidth() - 180, container.getHeight() - 80, 120, 30);
         ok.addActionListener(this);
-
-
-
-
 
         // Add Section
         // Buttons
@@ -146,5 +215,30 @@ public class PageTechnician_Payment implements ActionListener{
         container.add(icon);
         usersComboBox.setVisible(true);
         container.setVisible(true);
+    }
+
+    private int getDaysInMonth(int month) {
+        // Months are 0-based, so we add 1
+        month++;
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                return 31;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                return 30;
+            case 2:
+                // Assuming non-leap year for simplicity
+                return 28;
+            default:
+                return 0;
+        }
     }
 }

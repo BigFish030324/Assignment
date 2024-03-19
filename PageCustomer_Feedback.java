@@ -19,17 +19,17 @@ import javax.swing.JTextArea;
 
 public class PageCustomer_Feedback implements ActionListener{
     public void actionPerformed(ActionEvent e){
-        if (e.getSource() == ok) {
-            if(descriptionInput.getText().isEmpty()){
-                JOptionPane.showMessageDialog(container, "Field cannot be empty!");
-            } else{
-                try {
-                    Customer.writeFeedback();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        }
+        // if (e.getSource() == ok) {
+        //     if(descriptionInput.getText().isEmpty()){
+        //         JOptionPane.showMessageDialog(container, "Field cannot be empty!");
+        //     } else{
+        //         try {
+        //             Customer.writeFeedback();
+        //         } catch (IOException e1) {
+        //             e1.printStackTrace();
+        //         }
+        //     }
+        // }
     }
 
     static JFrame container;

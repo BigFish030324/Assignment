@@ -1,23 +1,18 @@
 import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 
 public class PageTechnician_Feedback implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -93,8 +88,14 @@ public class PageTechnician_Feedback implements ActionListener{
 
         // Combo Box Section
         // User Combo Box
-        String[] username = {"Darien", "SS"};
-        usernameBox = new JComboBox<>(username);
+        ArrayList<String> customer = new ArrayList<>();
+
+        for (User user : User.userList){
+            if(user.getRole() == 2){
+                customer.add(user.getName());
+            }
+        }
+        usernameBox = new JComboBox<>(customer.toArray(new String[0]));
         usernameBox.setBounds(65, 130, 600, 30);
         usernameBox.addActionListener(this);
 
