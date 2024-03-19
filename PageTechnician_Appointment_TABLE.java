@@ -37,6 +37,7 @@ public class PageTechnician_Appointment_TABLE implements ActionListener{
 
 
     static JFrame container;
+    JLabel appointmentText;
     JTable table;
 
     public PageTechnician_Appointment_TABLE() {
@@ -58,6 +59,12 @@ public class PageTechnician_Appointment_TABLE implements ActionListener{
                 container.setVisible(false);
             }
         });
+
+        // Text Section
+        // Appointment Text
+        appointmentText = new JLabel("Appointment");
+        appointmentText.setBounds((container.getWidth() - 160)/2, 5, 160, 50);
+        appointmentText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         Scanner file;
         ArrayList<String[]> temp = new ArrayList<>();
@@ -112,6 +119,7 @@ public class PageTechnician_Appointment_TABLE implements ActionListener{
         scrollpane.setBounds((container.getWidth() / 2) - 260, 50, 500, 480);
 
         // Add components to the frame
+        container.add(appointmentText);
         container.add(scrollpane);
         container.add(icon);
         container.setVisible(true);
