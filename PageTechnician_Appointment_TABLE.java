@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -69,16 +70,27 @@ public class PageTechnician_Appointment_TABLE implements ActionListener{
             e1.printStackTrace();
         }
         
-        String[][] custAppointment = new String[temp.size()][];
-        for (int i = 0; i < custAppointment.length; i ++) {
-            custAppointment[i] = temp.get(i);
+        ArrayList<String[]> custAppointment = new ArrayList<>();
+        for (int i = 0; i < temp.size(); i ++) {
+            if(temp.get(i)[3].equals(MainPage.userInput.getText())){
+                String[] tempList = new String[3];
+                tempList[0] = temp.get(i)[0];
+                tempList[1] = temp.get(i)[1];
+                tempList[2] = temp.get(i)[2];
+                custAppointment.add(tempList);
+            }
+        }
+
+        String[][] finalString = new String[custAppointment.size()][];
+        for (int i = 0; i < finalString.length; i ++) {
+            finalString[i] = custAppointment.get(i);
         }
 
         // Table Section
         // Table Dataset (Text File)
         Object[] columnNames = {"Username", "Date", "Time"};  // Use final for constant values
 
-        String[][] data = custAppointment;
+        String[][] data = finalString;
 
         // Table model and create table
         DefaultTableModel model = new DefaultTableModel(data, columnNames);

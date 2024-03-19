@@ -7,6 +7,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -93,8 +94,14 @@ public class PageCustomer_Appointment implements ActionListener{
         userShow.setBounds(((container.getWidth() + 10)/2) + 5, 135, 350, 30);
 
         // Technician Combo Box
-        String[] technican = {"BengRhui", "SS"};
-        technicianBox = new JComboBox<>(technican);
+        ArrayList<String> technician = new ArrayList<>();
+
+        for (User user : User.userList){
+            if(user.getRole() == 1){
+                technician.add(user.getName());
+            }
+        }
+        technicianBox = new JComboBox<>(technician.toArray(new String[0]));
         technicianBox.setBounds(((container.getWidth() + 10)/2) + 5, 200, 350, 30);
         technicianBox.addActionListener(this);
 

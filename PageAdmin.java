@@ -72,6 +72,8 @@ public class PageAdmin implements ActionListener {
         icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         icon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
+                MainPage.userInput.setText("");
+                MainPage.passwordInput.setText("");
                 MainPage.container.setVisible(true);
                 container.setVisible(false);
                 User.readData();
