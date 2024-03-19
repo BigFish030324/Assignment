@@ -39,7 +39,7 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
     static JFrame container;
     JTable table;
     JTextField userDisplay, dateDisplay, timeDisplay;
-    JLabel userText, technicianText, dateText, timeText;
+    JLabel appointmentText, userText, technicianText, dateText, timeText;
     JButton done, add;
     static JComboBox<String> usernameBox, technicianBox, bookDateBox_Date, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
 
@@ -192,6 +192,11 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         bookTimeBox_AMPM.addActionListener(this);
 
         // Text Section
+        // Appointment Text
+        appointmentText = new JLabel("Appointment");
+        appointmentText.setBounds((container.getWidth() - 160)/2, 5, 160, 50);
+        appointmentText.setFont(new Font("Times New Roman", Font.BOLD, 24));
+
         // Username Text
         userText = new JLabel("Username");
         userText.setBounds(30, 380, 100, 20);
@@ -235,6 +240,7 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         container.add(bookDateBox_Year);
         container.add(bookTimeBox_Time);
         container.add(bookTimeBox_AMPM);
+        container.add(appointmentText);
         container.add(userText);
         container.add(technicianText);
         container.add(dateText);

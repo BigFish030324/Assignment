@@ -116,7 +116,7 @@ public class PageTechnician_Feedback implements ActionListener{
 
         // Add Section
 
-        // Right Panel
+        // Description Panel
         descriptionPanel.add(scrollPane2);
         container.add(feedbackText);
         container.add(userText);
