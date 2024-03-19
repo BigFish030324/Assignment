@@ -78,14 +78,23 @@ public class PageCustomer_Appointment implements ActionListener{
             }
         });
 
+        // The background of a hotel use for container
+        ImageIcon image = new ImageIcon("..\\Assignment\\Images\\Wooden_Background.jpg");
+        Image setSize = image.getImage();
+        setSize = setSize.getScaledInstance(container.getWidth(), container.getHeight(), Image.SCALE_SMOOTH);
+        image = new ImageIcon(setSize);
+        JLabel ImageCustomer = new JLabel();
+        ImageCustomer.setIcon(image);
+        ImageCustomer.setBounds(0, 0, container.getWidth(), container.getHeight());
+
         // Image of Appointment
         ImageIcon image1 = new ImageIcon("..\\Assignment\\Images\\Appointment.png");
         Image setSize1 = image1.getImage();
-        setSize1 = setSize1.getScaledInstance(280, 180, Image.SCALE_SMOOTH);
+        setSize1 = setSize1.getScaledInstance(320, 210, Image.SCALE_SMOOTH);
         image1 = new ImageIcon(setSize1);
         JLabel ImageAppointment = new JLabel();
         ImageAppointment.setIcon(image1);
-        ImageAppointment.setBounds(60, 120, 290, 190);
+        ImageAppointment.setBounds(60, 140, 320, 210);
 
         // Text Section
         // Appointment Text
@@ -217,6 +226,7 @@ public class PageCustomer_Appointment implements ActionListener{
 
         container.add(ImageAppointment);
         container.add(icon);
+        container.add(ImageCustomer);
         container.setVisible(true);
     }
 
