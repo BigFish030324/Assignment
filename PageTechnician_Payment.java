@@ -77,7 +77,7 @@ public class PageTechnician_Payment implements ActionListener{
 
         // Services Text
         servicesText = new JLabel("Services");
-        servicesText.setBounds(55, 180, 350, 30);
+        servicesText.setBounds(55, 190, 350, 30);
         servicesText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         // Total Text

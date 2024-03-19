@@ -13,7 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 public class PageCustomer_History implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -37,7 +40,8 @@ public class PageCustomer_History implements ActionListener{
 
     static JFrame container;
     static JTextField userDisplay, dateDisplay, serviceDisplay, totalDisplay;
-    JLabel paymentText, userText, dateText, serviceText, totalText;
+    JTable table;
+    JLabel historyText, userText, dateText, serviceText, totalText;
 
     public PageCustomer_History() {
 
@@ -70,10 +74,28 @@ public class PageCustomer_History implements ActionListener{
         leftBelowPanel.setLayout(new FlowLayout());
         leftBelowPanel.setPreferredSize(new Dimension(100, 600));
 
-        // Payment Button (Addable button when receive new payment)
-        JButton button1 = new JButton("Payment 1");
-        button1.setPreferredSize(new Dimension(200, 40));
-        leftBelowPanel.add(button1);
+        // Table Section
+        // Table Dataset (Text File)
+        Object[] roleNames = {"TestColumn"};  // Use final for constant values
+
+        String[][] data = { {"TestRow1"}, {"TestRow2"}, {"TestRow3"} };
+
+        // Table model and create table
+        DefaultTableModel model = new DefaultTableModel(data, roleNames);
+        table = new JTable(model);
+
+        // Set column headers directly
+        model.setColumnIdentifiers(roleNames);
+
+        // Disable table editing
+        table.setDefaultEditor(Object.class, null);
+
+        // Table Frame
+        table.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        TableColumnModel columnModel = table.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(280);
+        table.setRowHeight(50);
+        table.setAutoCreateRowSorter(true);
 
         // Scroll Pane for Left Below Panel
         JScrollPane scrollPane = new JScrollPane(leftBelowPanel);
@@ -88,10 +110,10 @@ public class PageCustomer_History implements ActionListener{
         rightPanel.setBounds(250, 5, 430, 345);
 
         // Text Section
-        // Payment Text
-        paymentText = new JLabel("Payment");
-        paymentText.setBounds((container.getWidth()/2) - 50, 5, 140, 50);
-        paymentText.setFont(new Font("Times New Roman", Font.BOLD, 24));
+        // History Text
+        historyText = new JLabel("History");
+        historyText.setBounds((container.getWidth()/2) - 50, 5, 140, 50);
+        historyText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         // Username Text
         userText = new JLabel("Username");
@@ -139,8 +161,11 @@ public class PageCustomer_History implements ActionListener{
         container.add(scrollPane);
         container.add(leftTopPanel);
 
+        // Left Below Panel
+        leftBelowPanel.add(table);
+
         // Right Panel
-        container.add(paymentText);
+        container.add(historyText);
         container.add(userText);
         container.add(userDisplay);
         container.add(dateText);
