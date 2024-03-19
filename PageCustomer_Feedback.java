@@ -33,7 +33,7 @@ public class PageCustomer_Feedback implements ActionListener{
     }
 
     static JFrame container;
-    static JButton ok;
+    static JButton submit;
     static JTextArea descriptionInput;
     JLabel feedbackText, technicianText;
     static JComboBox<String> technicianBox;
@@ -88,13 +88,13 @@ public class PageCustomer_Feedback implements ActionListener{
         JScrollPane scrollPane = new JScrollPane(descriptionInput);
         scrollPane.setBounds((container.getWidth() - 600)/2, 140, 600, 150);
 
-        // OK Button
-        ok = new JButton("OK");
-        ok.setBounds(540, 320, 110, 30);
-        ok.addActionListener(this);
+        // Submit Button
+        submit = new JButton("Submit");
+        submit.setBounds(540, 320, 110, 30);
+        submit.addActionListener(this);
 
         // Add section
-        container.add(ok);
+        container.add(submit);
         container.add(icon);
 
         container.add(technicianBox);
