@@ -29,7 +29,7 @@ public class PageTechnician implements ActionListener {
             } else if(e.getSource() == history){
                 container.setVisible(false);
                 technicianHistory = new PageTechnician_History();
-                PageTechnician_Feedback.container.setVisible(true);
+                PageTechnician_History.container.setVisible(true);
             } else if(e.getSource() == payment){
                 container.setVisible(false);
                 technicianPayment = new PageTechnician_Payment();

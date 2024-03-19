@@ -12,8 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 public class PageTechnician_Feedback implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -35,6 +38,7 @@ public class PageTechnician_Feedback implements ActionListener{
 
     static JFrame container;
     static JTextField userDisplay, dateDisplay;
+    JTable table;
     JTextArea descriptionDisplay;
     JLabel customerText, feedbackText, userText, dateText, descriptionText;
 
@@ -74,10 +78,28 @@ public class PageTechnician_Feedback implements ActionListener{
         leftBelowPanel.setLayout(new FlowLayout());
         leftBelowPanel.setPreferredSize(new Dimension(100, 600));
 
-        // Feedback Button (Addable Feedback when receive new feedback)
-        JButton button1 = new JButton("Feedback 1");
-        button1.setPreferredSize(new Dimension(280, 40));
-        leftBelowPanel.add(button1);
+        // Table Section
+        // Table Dataset (Text File)
+        Object[] roleNames = {"TestColumn"};  // Use final for constant values
+
+        String[][] data = { {"TestRow1"}, {"TestRow2"}, {"TestRow3"} };
+
+        // Table model and create table
+        DefaultTableModel model = new DefaultTableModel(data, roleNames);
+        table = new JTable(model);
+
+        // Set column headers directly
+        model.setColumnIdentifiers(roleNames);
+
+        // Disable table editing
+        table.setDefaultEditor(Object.class, null);
+
+        // Table Frame
+        table.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        TableColumnModel columnModel = table.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(280);
+        table.setRowHeight(50);
+        table.setAutoCreateRowSorter(true);
 
         // Scroll Pane for Left Below Panel
         JScrollPane scrollPane = new JScrollPane(leftBelowPanel);
@@ -138,6 +160,9 @@ public class PageTechnician_Feedback implements ActionListener{
         container.add(customerText);
         container.add(scrollPane);
         container.add(leftTopPanel);
+
+        // Left Below Panel
+        leftBelowPanel.add(table);
 
         // Right Panel
         rightPanel.add(scrollPane2);

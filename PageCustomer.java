@@ -25,7 +25,7 @@ public class PageCustomer implements ActionListener {
                 container.setVisible(false);
                 customerFeedback = new PageCustomer_Feedback();
                 PageCustomer_Feedback.container.setVisible(true);
-            } else if(e.getSource() == payment){
+            } else if(e.getSource() == history){
                 container.setVisible(false);
                 customerHistory = new PageCustomer_History();
                 PageCustomer_History.container.setVisible(true);
@@ -42,7 +42,7 @@ public class PageCustomer implements ActionListener {
 
 
     static JFrame container;
-    JButton appointment, feedback, payment;
+    JButton appointment, feedback, history;
     JLabel customerText;
 
     public PageCustomer(){
@@ -85,9 +85,9 @@ public class PageCustomer implements ActionListener {
         feedback.addActionListener(this);
 
         // Payment Button
-        payment = new JButton("Payment");
-        payment.setBounds((container.getWidth() - 500)/2, 330, 500, 50);
-        payment.addActionListener(this);
+        history = new JButton("History");
+        history.setBounds((container.getWidth() - 500)/2, 330, 500, 50);
+        history.addActionListener(this);
 
 
 
@@ -96,7 +96,7 @@ public class PageCustomer implements ActionListener {
         // Add Section
         container.add(appointment);
         container.add(feedback);
-        container.add(payment);
+        container.add(history);
         container.add(customerText);
         container.add(icon);
         container.setVisible(true);

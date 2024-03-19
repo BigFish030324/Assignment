@@ -39,15 +39,15 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
     static JFrame container;
     JTable table;
     JTextField userDisplay, dateDisplay, timeDisplay;
-    JLabel userText, dateText, timeText;
+    JLabel userText, technicianText, dateText, timeText;
     JButton done, add;
-    static JComboBox<String> usernameBox, bookDateBox_Date, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
+    static JComboBox<String> usernameBox, technicianBox, bookDateBox_Date, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
 
     public PageAdmin_Appointment_TABLE() {
 
         // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(580, 600);
+        container.setSize(580, 650);
         container.setLocationRelativeTo(null);
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setResizable(false);
@@ -81,7 +81,9 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
 
         // Table Section
         // Table Dataset (Text File)
+
         Object[] columnNames = {"Username", "Date", "Time", "Technician"};  // Use final for constant values
+
 
         String[][] data = custAppointment;
 
@@ -117,6 +119,12 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         usernameBox.setBounds(200, 375, 330, 30);
         usernameBox.addActionListener(this);
 
+        // Technicain Combo Box
+        String[] technician = {"BengRhui", "SS"};
+        technicianBox = new JComboBox<>(technician);
+        technicianBox.setBounds(200, 425, 330, 30);
+        technicianBox.addActionListener(this);
+
         // Book Date (Date) Combo Box
         String[] date = new String[31];
 
@@ -125,13 +133,13 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         };
 
         bookDateBox_Date = new JComboBox<>(date);
-        bookDateBox_Date.setBounds(430, 425, 100, 30);
+        bookDateBox_Date.setBounds(430, 475, 100, 30);
         bookDateBox_Date.addActionListener(this);
 
         // Book Date (Month) Combo Box
         String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
         bookDateBox_Month = new JComboBox<>(month);
-        bookDateBox_Month.setBounds(315, 425, 100, 30);
+        bookDateBox_Month.setBounds(315, 475, 100, 30);
         bookDateBox_Month.addActionListener(this);
         bookDateBox_Month.addItemListener(new ItemListener() {
             @Override
@@ -157,7 +165,7 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         // Book Date (Year) Combo Box
         String[] year = {"2024", "2025"};
         bookDateBox_Year = new JComboBox<>(year);
-        bookDateBox_Year.setBounds(200, 425, 100, 30);
+        bookDateBox_Year.setBounds(200, 475, 100, 30);
         bookDateBox_Year.addActionListener(this);
 
         // Book Time (Number) Combo Box
@@ -168,13 +176,13 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         };
 
         bookTimeBox_Time = new JComboBox<>(time);
-        bookTimeBox_Time.setBounds(200, 475, 160, 30);
+        bookTimeBox_Time.setBounds(200, 525, 160, 30);
         bookTimeBox_Time.addActionListener(this);
 
         // Book Time (am/pm) Combo Box
         String[] dayNight = {"am", "pm"};
         bookTimeBox_AMPM = new JComboBox<>(dayNight);
-        bookTimeBox_AMPM.setBounds(370, 475, 160, 30);
+        bookTimeBox_AMPM.setBounds(370, 525, 160, 30);
         bookTimeBox_AMPM.addActionListener(this);
 
         // Text Section
@@ -183,14 +191,19 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         userText.setBounds(30, 380, 100, 20);
         userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
+        // Technician Text
+        technicianText = new JLabel("Technician");
+        technicianText.setBounds(30, 430, 180, 20);
+        technicianText.setFont(new Font("Times New Roman", Font.BOLD, 16));
+
         // Date Text
         dateText = new JLabel("Date (YYYY-MM-DD)");
-        dateText.setBounds(30, 430, 180, 20);
+        dateText.setBounds(30, 480, 100, 20);
         dateText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         // Time Text
         timeText = new JLabel("Time");
-        timeText.setBounds(30, 480, 100, 20);
+        timeText.setBounds(30, 530, 100, 20);
         timeText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         // Button Section
@@ -210,12 +223,14 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         container.add(icon);
         container.add(scrollpane);
         container.add(usernameBox);
+        container.add(technicianBox);
         container.add(bookDateBox_Date);
         container.add(bookDateBox_Month);
         container.add(bookDateBox_Year);
         container.add(bookTimeBox_Time);
         container.add(bookTimeBox_AMPM);
         container.add(userText);
+        container.add(technicianText);
         container.add(dateText);
         container.add(timeText);
         container.setVisible(true);
