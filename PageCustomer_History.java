@@ -93,7 +93,7 @@ public class PageCustomer_History implements ActionListener{
         // Table Frame
         table.setFont(new Font("Times New Roman", Font.BOLD, 16));
         TableColumnModel columnModel = table.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(280);
+        columnModel.getColumn(0).setPreferredWidth(220);
         table.setRowHeight(50);
         table.setAutoCreateRowSorter(true);
 

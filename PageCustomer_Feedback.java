@@ -7,8 +7,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -33,7 +35,8 @@ public class PageCustomer_Feedback implements ActionListener{
     static JFrame container;
     static JButton ok;
     static JTextArea descriptionInput;
-    JLabel feedbackText;
+    JLabel feedbackText, technicianText;
+    static JComboBox<String> technicianBox;
 
     public PageCustomer_Feedback() {
 
@@ -59,13 +62,31 @@ public class PageCustomer_Feedback implements ActionListener{
         feedbackText.setBounds((container.getWidth() - 140)/2, 30, 140, 50);
         feedbackText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
+        // Technician Text
+        technicianText = new JLabel("Technician: ");
+        technicianText.setBounds((container.getWidth() - 600)/2, 100, 350, 30);
+        technicianText.setFont(new Font("Times New Roman", Font.BOLD, 16));
+
+        // Technician Combo Box
+        ArrayList<String> technician = new ArrayList<>();
+
+        for (User user : User.userList){
+            if(user.getRole() == 1){
+                technician.add(user.getName());
+            }
+        }
+        technicianBox = new JComboBox<>(technician.toArray(new String[0]));
+        technicianBox.setBounds((container.getWidth() - 400)/2, 100, 500, 30);
+        technicianBox.addActionListener(this);
+
+        //Input Section
         // Description Input
         descriptionInput = new JTextArea(15, 50);
         descriptionInput.setSize(300, 200);
 
         // Scroll Pane for Description Input
         JScrollPane scrollPane = new JScrollPane(descriptionInput);
-        scrollPane.setBounds((container.getWidth() - 600)/2, (container.getHeight() - 200)/2, 600, 200);
+        scrollPane.setBounds((container.getWidth() - 600)/2, 140, 600, 150);
 
         // OK Button
         ok = new JButton("OK");
@@ -76,7 +97,9 @@ public class PageCustomer_Feedback implements ActionListener{
         container.add(ok);
         container.add(icon);
 
+        container.add(technicianBox);
         container.add(scrollPane);
+        container.add(technicianText);
         container.add(feedbackText);
         
         container.setVisible(true);
