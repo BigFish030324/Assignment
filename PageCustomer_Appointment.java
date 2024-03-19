@@ -7,23 +7,50 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class PageCustomer_Appointment implements ActionListener{
+
     public void actionPerformed(ActionEvent e){
+        Scanner file;
+        ArrayList<String[]> temp = new ArrayList<>();
+        try {
+            file = new Scanner(new File("appointment.txt"));
+            while (file.hasNext()) {
+                temp.add(file.nextLine().split(","));
+            }
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        };
+
         if (e.getSource() == book) {
-            Customer.makeAppointment();
+            boolean paymentCompleted = false;
+            for(int i = 0; i < temp.size(); i++){
+                if(temp.get(i)[0].equals(userShow.getText())){
+                    JOptionPane.showMessageDialog(container, "Please complete last payment first!");
+                    paymentCompleted = true;
+                    break;
+                }
+            }
+            if(!paymentCompleted){
+                Customer.makeAppointment();
+                JOptionPane.showMessageDialog(container, "Appoinment made Successfully!");
+                container.setVisible(false);
+                PageCustomer.container.setVisible(true);
+            }
         }
     }
-
-
 
     static JFrame container;
     static JTextField userInput, userShow;
