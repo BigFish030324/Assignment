@@ -15,7 +15,7 @@ public class PageAdmin implements ActionListener {
     static PageAdmin_Edit adminEdit;
     static PageAdmin_Appointment_TABLE adminAppointment;
     static PageAdmin_Feedback adminFeedback;
-    static PageAdmin_Payment adminPayment;
+    static PageAdmin_PaymentHistory adminHistory;
 
     public void actionPerformed(ActionEvent e){
         try{
@@ -36,10 +36,10 @@ public class PageAdmin implements ActionListener {
                 container.setVisible(false);
                 adminFeedback = new PageAdmin_Feedback();
                 PageAdmin_Feedback.container.setVisible(true);
-            } else if(e.getSource() == payment){
+            } else if(e.getSource() == history){
                 container.setVisible(false);
-                adminPayment = new PageAdmin_Payment();
-                PageAdmin_Payment.container.setVisible(true);
+                adminHistory = new PageAdmin_PaymentHistory();
+                PageAdmin_PaymentHistory.container.setVisible(true);
             }
             else{
                 throw new Exception();
@@ -53,7 +53,7 @@ public class PageAdmin implements ActionListener {
 
 
     static JFrame container;
-    JButton register, edit, appointment, feedback, payment;
+    JButton register, edit, appointment, feedback, history;
     JLabel adminText;
 
     public PageAdmin(){
@@ -104,10 +104,10 @@ public class PageAdmin implements ActionListener {
         feedback.setBounds((container.getWidth() - 500)/2, 380, 500, 50);
         feedback.addActionListener(this);
 
-        // Payment Button
-        payment = new JButton("Payment");
-        payment.setBounds((container.getWidth() - 500)/2, 450, 500, 50);
-        payment.addActionListener(this);
+        // History Button
+        history = new JButton("History");
+        history.setBounds((container.getWidth() - 500)/2, 450, 500, 50);
+        history.addActionListener(this);
 
 
 
@@ -118,7 +118,7 @@ public class PageAdmin implements ActionListener {
         container.add(edit);
         container.add(appointment);
         container.add(feedback);
-        container.add(payment);
+        container.add(history);
         container.add(adminText);
         container.add(icon);
         container.setVisible(true);

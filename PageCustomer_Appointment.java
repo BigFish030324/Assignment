@@ -27,14 +27,14 @@ public class PageCustomer_Appointment implements ActionListener{
     static JFrame container;
     static JTextField userInput, userShow;
     JButton book;
-    JLabel appointmentText, userText, bookDateText, bookTimeText;
-    static JComboBox<String> bookDateBox_Date, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
+    JLabel appointmentText, userText, technicianText, bookDateText, bookTimeText;
+    static JComboBox<String> technicianBox, bookDateBox_Date, bookDateBox_Month, bookDateBox_Year, bookTimeBox_Time, bookTimeBox_AMPM;
 
     public PageCustomer_Appointment(){
 
         // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(800,430); // GUI Size
+        container.setSize(800,470); // GUI Size
         container.setLocationRelativeTo(null); // GUI Location
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Able to exit system
         container.setResizable(false); // Fix the GUI Size
@@ -70,14 +70,19 @@ public class PageCustomer_Appointment implements ActionListener{
         userText.setBounds(((container.getWidth() + 10)/2) + 10, 110, 350, 30);
         userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
+        // Technician Text
+        technicianText = new JLabel("Technician");
+        technicianText.setBounds(((container.getWidth() + 10)/2) + 10, 175, 350, 30);
+        technicianText.setFont(new Font("Times New Roman", Font.BOLD, 16));
+
         // Book Date Text
         bookDateText = new JLabel("Book Date");
-        bookDateText.setBounds(((container.getWidth() + 10)/2) + 10, 175, 350, 30);
+        bookDateText.setBounds(((container.getWidth() + 10)/2) + 10, 240, 350, 30);
         bookDateText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         // Book Time Text
         bookTimeText = new JLabel("Book Time");
-        bookTimeText.setBounds(((container.getWidth() + 10)/2) + 10, 240, 350, 30);
+        bookTimeText.setBounds(((container.getWidth() + 10)/2) + 10, 305, 350, 30);
         bookTimeText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         // Combo Box Section
@@ -87,6 +92,12 @@ public class PageCustomer_Appointment implements ActionListener{
         userShow.setText(MainPage.userInput.getText());
         userShow.setBounds(((container.getWidth() + 10)/2) + 5, 135, 350, 30);
 
+        // Technician Combo Box
+        String[] technican = {"BengRhui", "SS"};
+        technicianBox = new JComboBox<>(technican);
+        technicianBox.setBounds(((container.getWidth() + 10)/2) + 5, 200, 350, 30);
+        technicianBox.addActionListener(this);
+
         // Book Date (Date) Combo Box
         String[] date = new String[31];
 
@@ -95,13 +106,13 @@ public class PageCustomer_Appointment implements ActionListener{
         };
 
         bookDateBox_Date = new JComboBox<>(date);
-        bookDateBox_Date.setBounds((container.getWidth()/2) + 250, 205, 110, 30);
+        bookDateBox_Date.setBounds((container.getWidth()/2) + 250, 265, 110, 30);
         bookDateBox_Date.addActionListener(this);
 
         // Book Date (Month) Combo Box
         String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
         bookDateBox_Month = new JComboBox<>(month);
-        bookDateBox_Month.setBounds((container.getWidth()/2) + 130, 205, 110, 30);
+        bookDateBox_Month.setBounds((container.getWidth()/2) + 130, 265, 110, 30);
         bookDateBox_Month.addActionListener(this);
         bookDateBox_Month.addItemListener(new ItemListener() {
             @Override
@@ -127,7 +138,7 @@ public class PageCustomer_Appointment implements ActionListener{
         // Book Date (Year) Combo Box
         String[] year = {"2024", "2025"};
         bookDateBox_Year = new JComboBox<>(year);
-        bookDateBox_Year.setBounds(((container.getWidth() + 10)/2) + 5, 205, 110, 30);
+        bookDateBox_Year.setBounds(((container.getWidth() + 10)/2) + 5, 265, 110, 30);
         bookDateBox_Year.addActionListener(this);
 
         // Book Time (Number) Combo Box
@@ -138,18 +149,18 @@ public class PageCustomer_Appointment implements ActionListener{
         };
 
         bookTimeBox_Time = new JComboBox<>(time);
-        bookTimeBox_Time.setBounds(((container.getWidth() + 10)/2) + 5, 275, 170, 30);
+        bookTimeBox_Time.setBounds(((container.getWidth() + 10)/2) + 5, 330, 170, 30);
         bookTimeBox_Time.addActionListener(this);
 
         // Book Time (am/pm) Combo Box
         String[] dayNight = {"am", "pm"};
         bookTimeBox_AMPM = new JComboBox<>(dayNight);
-        bookTimeBox_AMPM.setBounds((container.getWidth()/2) + 190, 275, 170, 30);
+        bookTimeBox_AMPM.setBounds((container.getWidth()/2) + 190, 330, 170, 30);
         bookTimeBox_AMPM.addActionListener(this);
 
         // Book Button
         book = new JButton("Book");
-        book.setBounds(container.getWidth() - 140, 340, 100, 30);
+        book.setBounds(container.getWidth() - 140, 390, 100, 30);
         book.addActionListener(this);
 
         // Add Section
@@ -157,8 +168,10 @@ public class PageCustomer_Appointment implements ActionListener{
         container.add(appointmentText);
 
         container.add(userText);
+        container.add(technicianText);
         container.add(userShow);
 
+        container.add(technicianBox);
         container.add(bookDateBox_Date);
         container.add(bookDateBox_Month);
         container.add(bookDateBox_Year);
