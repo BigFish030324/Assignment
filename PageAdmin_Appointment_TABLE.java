@@ -81,7 +81,9 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
 
         // Table Section
         // Table Dataset (Text File)
-        Object[] columnNames = {"Username", "Technician", "Date", "Time"};  // Use final for constant values
+
+        Object[] columnNames = {"Username", "Date", "Time", "Technician"};  // Use final for constant values
+
 
         String[][] data = custAppointment;
 
@@ -278,7 +280,7 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
     
         // Update the table model with the new data
         DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setDataVector(custAppointment, new Object[]{"Username", "Date", "Time"});
+        model.setDataVector(custAppointment, new Object[]{"Username", "Date", "Time", "Technician"});
     }
 
     private void writeDataToFile(DefaultTableModel model) {
@@ -288,7 +290,8 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
                 String username = (String) model.getValueAt(i, 0);
                 String date = (String) model.getValueAt(i, 1);
                 String time = (String) model.getValueAt(i, 2);
-                writer.println(username + "," + date + "," + time);
+                String technician = (String) model.getValueAt(i, 3);
+                writer.println(username + "," + date + "," + time + "," + technician);
             }
             writer.close();
         } catch (FileNotFoundException e) {

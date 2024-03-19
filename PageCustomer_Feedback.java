@@ -72,10 +72,6 @@ public class PageCustomer_Feedback implements ActionListener{
         ok.setBounds(540, 320, 110, 30);
         ok.addActionListener(this);
 
-
-
-
-
         // Add section
         container.add(ok);
         container.add(icon);

@@ -27,8 +27,6 @@ public class MainPage implements ActionListener{
         try{
             if(e.getSource() == enter){
                 User.userLogin();
-                userInput.setText("");
-                passwordInput.setText("");
             }
         } catch(Exception f){
             JOptionPane.showMessageDialog(container, "Username not Exist or Wrong Password!");
