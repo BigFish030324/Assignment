@@ -14,7 +14,6 @@ public class PageAdmin implements ActionListener {
     static PageAdmin_Register adminRegister;
     static PageAdmin_Edit adminEdit;
     static PageAdmin_Appointment_TABLE adminAppointment;
-    static PageAdmin_Feedback adminFeedback;
     static PageAdmin_PaymentHistory adminHistory;
 
     public void actionPerformed(ActionEvent e){
@@ -32,10 +31,6 @@ public class PageAdmin implements ActionListener {
                 container.setVisible(false);
                 adminAppointment = new PageAdmin_Appointment_TABLE();
                 PageAdmin_Appointment_TABLE.container.setVisible(true);
-            } else if(e.getSource() == feedback){
-                container.setVisible(false);
-                adminFeedback = new PageAdmin_Feedback();
-                PageAdmin_Feedback.container.setVisible(true);
             } else if(e.getSource() == history){
                 container.setVisible(false);
                 adminHistory = new PageAdmin_PaymentHistory();
@@ -53,7 +48,7 @@ public class PageAdmin implements ActionListener {
 
 
     static JFrame container;
-    JButton register, edit, appointment, feedback, history;
+    JButton register, edit, appointment, history;
     JLabel adminText;
 
     public PageAdmin(){
@@ -61,7 +56,7 @@ public class PageAdmin implements ActionListener {
         // Background Section
         // Frame of this Page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(1000,600);//GUI Size
+        container.setSize(1000,550);//GUI Size
         container.setLocationRelativeTo(null);//GUI Location
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setResizable(false);//Fix the GUI Size
@@ -93,22 +88,17 @@ public class PageAdmin implements ActionListener {
 
         // Edit Button
         edit = new JButton("Edit");
-        edit.setBounds((container.getWidth() - 500)/2, 240, 500, 50);
+        edit.setBounds((container.getWidth() - 500)/2, 250, 500, 50);
         edit.addActionListener(this);
 
         // Appointment Button
         appointment = new JButton("Appointment");
-        appointment.setBounds((container.getWidth() - 500)/2, 310, 500, 50);
+        appointment.setBounds((container.getWidth() - 500)/2, 330, 500, 50);
         appointment.addActionListener(this);
-
-        // Feedback Button
-        feedback = new JButton("Feedback");
-        feedback.setBounds((container.getWidth() - 500)/2, 380, 500, 50);
-        feedback.addActionListener(this);
 
         // History Button
         history = new JButton("History");
-        history.setBounds((container.getWidth() - 500)/2, 450, 500, 50);
+        history.setBounds((container.getWidth() - 500)/2, 410, 500, 50);
         history.addActionListener(this);
 
 
@@ -119,7 +109,6 @@ public class PageAdmin implements ActionListener {
         container.add(register);
         container.add(edit);
         container.add(appointment);
-        container.add(feedback);
         container.add(history);
         container.add(adminText);
         container.add(icon);
