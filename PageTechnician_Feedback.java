@@ -49,6 +49,7 @@ public class PageTechnician_Feedback implements ActionListener{
         container.setSize(750, 600);
         container.setLocationRelativeTo(null);
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        container.setResizable(false);
         container.setLayout(null);
 
         // Back Icon
