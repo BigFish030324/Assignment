@@ -83,7 +83,7 @@ public class PageAdmin_PaymentHistory implements ActionListener{
 
         // Table Section
         // Table Dataset (Text File)
-        Object[] columnNames = {"Username", "Date", "Time", "Technician", "Service", "Total"};  // Use final for constant values
+        Object[] columnNames = {"Username", "Date", "Time", "Technician", "Total"};  // Use final for constant values
 
         String[][] data = custAppointment;
 

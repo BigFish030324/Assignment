@@ -120,8 +120,14 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         usernameBox.addActionListener(this);
 
         // Technicain Combo Box
-        String[] technician = {"BengRhui", "SS"};
-        technicianBox = new JComboBox<>(technician);
+        ArrayList<String> technician = new ArrayList<>();
+
+        for (User user : User.userList){
+            if(user.getRole() == 1){
+                technician.add(user.getName());
+            }
+        }
+        technicianBox = new JComboBox<>(technician.toArray(new String[0]));
         technicianBox.setBounds(200, 425, 330, 30);
         technicianBox.addActionListener(this);
 

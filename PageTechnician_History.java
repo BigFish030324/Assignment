@@ -9,11 +9,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 public class PageTechnician_History implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -88,14 +91,40 @@ public class PageTechnician_History implements ActionListener{
         String[][] data = custAppointment;
 
         // Table model and create table
-        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        DefaultTableModel model = new DefaultTableModel(data, columnNames){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // Only the "Total" column is editable
+                return column == columnNames.length - 1;
+            }
+        };
         table = new JTable(model);
 
         // Set column headers directly
         model.setColumnIdentifiers(columnNames);
 
-        // Disable table editing
-        table.setDefaultEditor(Object.class, null);
+        // Make the "Total" column editable
+        int totalColumnIndex = -1;
+        for (int i = 0; i < columnNames.length; i++) {
+            if (columnNames[i].equals("Total")) {
+                totalColumnIndex = i;
+                break;
+            }
+        }
+
+        DefaultCellEditor totalEditor = new DefaultCellEditor(new JTextField());
+        if (totalColumnIndex != -1) {
+            TableColumn totalColumn = table.getColumnModel().getColumn(totalColumnIndex);
+            totalColumn.setCellEditor(totalEditor);
+        }
+
+        // Disable editing for other columns
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            if (i != totalColumnIndex) {
+                TableColumn column = table.getColumnModel().getColumn(i);
+                column.setCellEditor(null);
+            }
+        }
 
         // Table Frame
         table.setFont(new Font("Times New Roman", Font.BOLD, 16));
