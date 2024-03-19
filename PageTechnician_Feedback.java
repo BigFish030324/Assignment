@@ -38,15 +38,15 @@ public class PageTechnician_Feedback implements ActionListener{
     }
 
     static JFrame container;
-    static JTextField userDisplay, dateDisplay;
+    static JTextField userDisplay;
     JTextArea descriptionDisplay;
-    JLabel customerText, feedbackText, userText, dateText, descriptionText;
+    JLabel customerText, feedbackText, userText, descriptionText;
 
     public PageTechnician_Feedback() {
 
         // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
-        container.setSize(750, 600);
+        container.setSize(750, 520);
         container.setLocationRelativeTo(null);
         container.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         container.setResizable(false);
@@ -67,7 +67,7 @@ public class PageTechnician_Feedback implements ActionListener{
         // Description Panel
         JPanel descriptionPanel = new JPanel();
         descriptionPanel.setLayout(null);
-        descriptionPanel.setBounds(65, 280, 600, 250);
+        descriptionPanel.setBounds(65, 200, 600, 250);
         JComboBox<String> usernameBox;
 
         // Text Section
@@ -81,14 +81,9 @@ public class PageTechnician_Feedback implements ActionListener{
         userText.setBounds(70, 100, 350, 30);
         userText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        // Date text
-        dateText = new JLabel("Date");
-        dateText.setBounds(70, 170, 350, 30);
-        dateText.setFont(new Font("Times New Roman", Font.BOLD, 16));
-
         // Description Text
         descriptionText = new JLabel("Description");
-        descriptionText.setBounds(70, 240, 350, 30);
+        descriptionText.setBounds(70, 170, 350, 30);
         descriptionText.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
         // Combo Box Section
@@ -97,11 +92,6 @@ public class PageTechnician_Feedback implements ActionListener{
         usernameBox = new JComboBox<>(username);
         usernameBox.setBounds(65, 130, 600, 30);
         usernameBox.addActionListener(this);
-
-        // Input Section
-        // Date Display
-        dateDisplay = new JTextField();
-        dateDisplay.setBounds(65, 200, 600, 30);
 
         // Description Display
         descriptionDisplay = new JTextArea(20, 50);
@@ -116,14 +106,11 @@ public class PageTechnician_Feedback implements ActionListener{
 
 
         // Add Section
-
         // Description Panel
         descriptionPanel.add(scrollPane2);
         container.add(feedbackText);
         container.add(userText);
         container.add(usernameBox);
-        container.add(dateText);
-        container.add(dateDisplay);
         container.add(descriptionText);
         container.add(descriptionPanel);
 
