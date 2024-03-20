@@ -5,7 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -36,10 +39,13 @@ public class PageTechnician_Feedback implements ActionListener{
 
     static JFrame container;
     static JTextField userDisplay;
-    JTextArea descriptionDisplay;
+    static JTextArea descriptionDisplay;
+    static JComboBox<String> usernameBox;
     JLabel customerText, feedbackText, userText, descriptionText;
 
     public PageTechnician_Feedback() {
+
+        Technician.readFeedback();
 
         // Frame of this page
         container = new JFrame("APU Hostel Home Appliances Service Centre (AHHASC)");
@@ -72,7 +78,6 @@ public class PageTechnician_Feedback implements ActionListener{
         JPanel descriptionPanel = new JPanel();
         descriptionPanel.setLayout(null);
         descriptionPanel.setBounds(65, 200, 600, 250);
-        JComboBox<String> usernameBox;
 
         // Text Section
         // Feedback Text
@@ -101,19 +106,35 @@ public class PageTechnician_Feedback implements ActionListener{
         }
         usernameBox = new JComboBox<>(customer.toArray(new String[0]));
         usernameBox.setBounds(65, 130, 600, 30);
-        usernameBox.addActionListener(this);
+        usernameBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    String selectedCustomer = (String) e.getItem();
+                    String loggedInTechnician = MainPage.userInput.getText();
+                    if (Technician.feedbackMap.containsKey(selectedCustomer)) {
+                        Map<String, String> technicianFeedback = Technician.feedbackMap.get(selectedCustomer);
+                        String feedback = technicianFeedback.get(loggedInTechnician);
+                        if (feedback != null) {
+                            descriptionDisplay.setText(feedback);
+                        } else {
+                            descriptionDisplay.setText("No feedback found for the selected customer.");
+                        }
+                    } else {
+                        descriptionDisplay.setText("No feedback found for the selected customer.");
+                    }
+                }
+            }
+        });
 
         // Description Display
         descriptionDisplay = new JTextArea(20, 50);
         descriptionDisplay.setSize(600, 400);
+        descriptionDisplay.setEditable(false);
 
         // Scroll Pane for Description Display
         JScrollPane scrollPane2 = new JScrollPane(descriptionDisplay);
         scrollPane2.setBounds(0, 0, descriptionPanel.getWidth(), descriptionPanel.getHeight());
-
-
-
-
 
         // Add Section
         // Description Panel

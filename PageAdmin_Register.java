@@ -25,7 +25,6 @@ public class PageAdmin_Register implements ActionListener{
                 throw new Exception();
             }
             else{
-                
                 Manager.registerUser();
                 container.setVisible(false);
                 registerSuccess = new RegisterSuccess();
@@ -37,8 +36,6 @@ public class PageAdmin_Register implements ActionListener{
             JOptionPane.showMessageDialog(container, "Invalid Input!");
         }
     }
-
-
 
     static JFrame container;
     static JTextField userInput;
@@ -117,10 +114,6 @@ public class PageAdmin_Register implements ActionListener{
         ok = new JButton("OK");
         ok.setBounds(container.getWidth()-150, 300, 100, 30);
         ok.addActionListener(this);
-
-
-
-
 
         // Add Section
         container.add(ok);

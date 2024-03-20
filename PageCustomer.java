@@ -84,7 +84,7 @@ public class PageCustomer implements ActionListener {
 
         // Text Section
         // Customer Text
-        customerText = new JLabel("Welcome, " + "Customer" + "!");
+        customerText = new JLabel("Welcome, " + MainPage.userInput.getText() + "!");
         customerText.setBounds((container.getWidth() - 260)/2, 75, 260, 50);
         customerText.setFont(new Font("Times New Roman", Font.BOLD, 26));
 
@@ -98,10 +98,6 @@ public class PageCustomer implements ActionListener {
         feedback = new JButton("Feedback");
         feedback.setBounds((container.getWidth() - 400)/2, 240, 400, 60);
         feedback.addActionListener(this);
-
-
-
-
 
         // Add Section
         container.add(appointment);

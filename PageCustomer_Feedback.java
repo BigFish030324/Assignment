@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -12,22 +13,23 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class PageCustomer_Feedback implements ActionListener{
     public void actionPerformed(ActionEvent e){
-        // if (e.getSource() == ok) {
-        //     if(descriptionInput.getText().isEmpty()){
-        //         JOptionPane.showMessageDialog(container, "Field cannot be empty!");
-        //     } else{
-        //         try {
-        //             Customer.writeFeedback();
-        //         } catch (IOException e1) {
-        //             e1.printStackTrace();
-        //         }
-        //     }
-        // }
+        if (e.getSource() == submit) {
+            if(descriptionInput.getText().isEmpty()){
+                JOptionPane.showMessageDialog(container, "Field cannot be empty!");
+            } else{
+                try {
+                    Customer.writeFeedback();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
     }
 
     static JFrame container;

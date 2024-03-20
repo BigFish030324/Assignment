@@ -109,10 +109,6 @@ public class PageTechnician implements ActionListener {
         payment.setBounds((container.getWidth() - 500)/2, 410, 500, 50);
         payment.addActionListener(this);
 
-
-
-
-
         // Add Section
         container.add(appointment);
         container.add(feedback);
