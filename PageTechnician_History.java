@@ -6,7 +6,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -75,26 +81,34 @@ public class PageTechnician_History implements ActionListener{
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
         }
-        
-        String[][] custPayment = new String[temp.size()][];
-        for (int i = 0; i < custPayment.length; i ++) {
-            custPayment[i] = temp.get(i);
+
+        // Create a map to store filteredRows for each technician
+        Map<String, ArrayList<String[]>> technicianRows = new HashMap<>();
+
+        for (String[] row : temp) {
+            if (row.length >= 4 && !isEmptyRow(row)) {
+                String technician = row[3];
+                if (!technicianRows.containsKey(technician)) {
+                    technicianRows.put(technician, new ArrayList<>());
+                }
+                technicianRows.get(technician).add(row);
+            }
         }
+
+        // Get the filteredRows for the logged-in user
+        ArrayList<String[]> filteredRows = technicianRows.get(MainPage.userInput.getText());
+        if (filteredRows == null) {
+            filteredRows = new ArrayList<>();
+        }
+
+        String[][] data = filteredRows.toArray(new String[filteredRows.size()][]);
 
         // Table Section
         // Table Dataset (Text File)
         Object[] columnNames = {"Username", "Date", "Time", "Technician", "Total"};  // Use final for constant values
 
-        String[][] data = custPayment;
-
         // Table model and create table
-        DefaultTableModel model = new DefaultTableModel(data, columnNames){
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                // Only the "Total" column is editable
-                return column == columnNames.length - 1;
-            }
-        };
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
         table = new JTable(model);
 
         // Set column headers directly
@@ -114,7 +128,12 @@ public class PageTechnician_History implements ActionListener{
         // Paid Button
         paid = new JButton("Paid");
         paid.setBounds(container.getWidth() - 175, container.getHeight() - 80, 120, 30);
-        paid.addActionListener(this);
+        paid.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                handlePaidButtonClick();
+            }
+        });
 
         // Add components to the frame
         container.add(paid);
@@ -122,5 +141,88 @@ public class PageTechnician_History implements ActionListener{
         container.add(historyText);
         container.add(icon);
         container.setVisible(true);
+    }
+
+    private void handlePaidButtonClick() {
+        // Get the selected rows from the table
+        int[] selectedRows = table.getSelectedRows();
+
+        // Remove the selected rows from the table model
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        ArrayList<String[]> updatedRows = new ArrayList<>();
+
+        String currentTechnician = MainPage.userInput.getText();
+
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String[] rowData = new String[model.getColumnCount()];
+            for (int j = 0; j < model.getColumnCount(); j++) {
+                rowData[j] = (String) model.getValueAt(i, j);
+            }
+
+            if (!isRowSelected(i, selectedRows) && rowData[3].equals(currentTechnician)) {
+                updatedRows.add(rowData);
+            }
+        }
+
+        // Update the table model with the remaining rows
+        model.setRowCount(0);
+        for (String[] rowData : updatedRows) {
+            model.addRow(rowData);
+        }
+
+        // Update the payment.txt file
+        updatePaymentFile(updatedRows);
+    }
+
+    private boolean isRowSelected(int rowIndex, int[] selectedRows) {
+        for (int selectedRow : selectedRows) {
+            if (selectedRow == rowIndex) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void updatePaymentFile(ArrayList<String[]> updatedRows) {
+        try {
+            File file = new File("payment.txt");
+            ArrayList<String[]> allRows = new ArrayList<>();
+
+            // Read all rows from the file
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String[] row = scanner.nextLine().split(",");
+                allRows.add(row);
+            }
+            scanner.close();
+
+            // Remove the rows that belong to the logged-in technician and are not in updatedRows
+            String currentTechnician = MainPage.userInput.getText();
+            allRows.removeIf(row -> row.length >= 4 && row[3].equals(currentTechnician) && !updatedRows.contains(row));
+            allRows.addAll(updatedRows);
+
+            PrintWriter writer = new PrintWriter(file);
+
+            for (String[] row : allRows) {
+                writer.println(String.join(",", row));
+            }
+    
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean isEmptyRow(String[] row) {
+        if (row.length < 4){
+            return true;
+        }
+        for (String element : row) {
+            if (!element.isEmpty()) {
+                return false; // Non-empty element found, row is not empty
+            }
+        }
+        return true; // All elements are empty, row is empty
     }
 }
