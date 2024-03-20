@@ -1,10 +1,12 @@
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -75,6 +77,15 @@ public class PageAdmin implements ActionListener {
             }
         });
 
+        // The background for admin pages
+        ImageIcon image = new ImageIcon("..\\Assignment\\Images\\Wooden_Background.jpg");
+        Image setSize = image.getImage();
+        setSize = setSize.getScaledInstance(container.getWidth(), container.getHeight(), Image.SCALE_SMOOTH);
+        image = new ImageIcon(setSize);
+        JLabel ImageAdmin = new JLabel();
+        ImageAdmin.setIcon(image);
+        ImageAdmin.setBounds(0, 0, container.getWidth(), container.getHeight());
+
         // Admin Word
         adminText = new JLabel("Admin");
         adminText.setBounds((container.getWidth() - 110)/2, 100, 110, 50);
@@ -112,6 +123,7 @@ public class PageAdmin implements ActionListener {
         container.add(history);
         container.add(adminText);
         container.add(icon);
+        container.add(ImageAdmin);
         container.setVisible(true);
     }
 }

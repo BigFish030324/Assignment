@@ -1,5 +1,6 @@
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -12,6 +13,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -62,6 +64,15 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
                 container.setVisible(false);
             }
         });
+
+        // The background for admin pages
+        ImageIcon image = new ImageIcon("..\\Assignment\\Images\\Wooden_Background.jpg");
+        Image setSize = image.getImage();
+        setSize = setSize.getScaledInstance(container.getWidth(), container.getHeight(), Image.SCALE_SMOOTH);
+        image = new ImageIcon(setSize);
+        JLabel ImageAdmin = new JLabel();
+        ImageAdmin.setIcon(image);
+        ImageAdmin.setBounds(0, 0, container.getWidth(), container.getHeight());
 
         Scanner file;
         ArrayList<String[]> temp = new ArrayList<>();
@@ -245,6 +256,7 @@ public class PageAdmin_Appointment_TABLE implements ActionListener{
         container.add(technicianText);
         container.add(dateText);
         container.add(timeText);
+        container.add(ImageAdmin);
         container.setVisible(true);
     }
 

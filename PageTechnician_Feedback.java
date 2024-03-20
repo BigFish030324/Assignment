@@ -1,11 +1,13 @@
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -57,7 +59,14 @@ public class PageTechnician_Feedback implements ActionListener{
             }
         });
 
-
+        // The background of a hotel use for container
+        ImageIcon image = new ImageIcon("..\\Assignment\\Images\\Wooden_Background.jpg");
+        Image setSize = image.getImage();
+        setSize = setSize.getScaledInstance(container.getWidth(), container.getHeight(), Image.SCALE_SMOOTH);
+        image = new ImageIcon(setSize);
+        JLabel ImageTechnician = new JLabel();
+        ImageTechnician.setIcon(image);
+        ImageTechnician.setBounds(0, 0, container.getWidth(), container.getHeight());
 
         // Description Panel
         JPanel descriptionPanel = new JPanel();
@@ -117,6 +126,7 @@ public class PageTechnician_Feedback implements ActionListener{
 
         // Container
         container.add(icon);
+        container.add(ImageTechnician);
         container.setVisible(true);
     }
 }

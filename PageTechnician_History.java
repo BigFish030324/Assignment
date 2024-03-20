@@ -1,5 +1,6 @@
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.DefaultCellEditor;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -41,6 +44,7 @@ public class PageTechnician_History implements ActionListener{
     static JFrame container;
     JLabel historyText;
     JTable table;
+    JButton paid;
 
     public PageTechnician_History() {
 
@@ -133,12 +137,19 @@ public class PageTechnician_History implements ActionListener{
 
         // Scroll pane
         JScrollPane scrollpane = new JScrollPane(table);
-        scrollpane.setBounds((container.getWidth()/2) - 305, 70, 600, 460);
+        scrollpane.setBounds((container.getWidth()/2) - 305, 70, 600, 440);
+
+        // Paid Button
+        paid = new JButton("Paid");
+        paid.setBounds(container.getWidth() - 175, container.getHeight() - 80, 120, 30);
+        paid.addActionListener(this);
 
         // Add components to the frame
+        container.add(paid);
         container.add(scrollpane);
         container.add(historyText);
         container.add(icon);
+        container.add(ImageTechnician);
         container.setVisible(true);
     }
 }

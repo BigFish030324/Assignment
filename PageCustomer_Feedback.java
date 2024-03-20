@@ -1,19 +1,17 @@
-
-// import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -57,6 +55,15 @@ public class PageCustomer_Feedback implements ActionListener{
             }
         });
 
+        // The background of a hotel use for container
+        ImageIcon image = new ImageIcon("..\\Assignment\\Images\\Wooden_Background.jpg");
+        Image setSize = image.getImage();
+        setSize = setSize.getScaledInstance(container.getWidth(), container.getHeight(), Image.SCALE_SMOOTH);
+        image = new ImageIcon(setSize);
+        JLabel ImageCustomer = new JLabel();
+        ImageCustomer.setIcon(image);
+        ImageCustomer.setBounds(0, 0, container.getWidth(), container.getHeight());
+
         // Feedback Text
         feedbackText = new JLabel("Feedback");
         feedbackText.setBounds((container.getWidth() - 140)/2, 30, 140, 50);
@@ -95,13 +102,14 @@ public class PageCustomer_Feedback implements ActionListener{
 
         // Add section
         container.add(submit);
-        container.add(icon);
 
         container.add(technicianBox);
         container.add(scrollPane);
         container.add(technicianText);
         container.add(feedbackText);
         
+        container.add(icon);
+        container.add(ImageCustomer);
         container.setVisible(true);
     }
 }
