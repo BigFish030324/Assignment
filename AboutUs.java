@@ -1,7 +1,9 @@
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +15,7 @@ public class AboutUs implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == okButton) {
             container.dispose();
+            MainPage.container.setVisible(true);
         }
     }
 
@@ -76,6 +79,7 @@ public class AboutUs implements ActionListener {
         panel.add(aboutUs);
         panel.add(scrollPane);
         container.add(panel);
+
         container.setVisible(true);
     }
 }
