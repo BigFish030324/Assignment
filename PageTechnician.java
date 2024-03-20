@@ -100,7 +100,7 @@ public class PageTechnician implements ActionListener {
         feedback.addActionListener(this);
 
         // History Section
-        history = new JButton("History");
+        history = new JButton("Unpaid");
         history.setBounds((container.getWidth() - 500)/2, 330, 500, 50);
         history.addActionListener(this);
 

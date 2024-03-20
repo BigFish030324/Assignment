@@ -72,14 +72,14 @@ public class PageAdmin_PaymentHistory implements ActionListener{
 
         // Text Section
         // History Text
-        historyText = new JLabel("History");
+        historyText = new JLabel("Unpaid");
         historyText.setBounds((container.getWidth()/2) - 50, 10, 140, 50);
         historyText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         Scanner file;
         ArrayList<String[]> temp = new ArrayList<>();
         try {
-            file = new Scanner(new File("appointment.txt"));
+            file = new Scanner(new File("payment.txt"));
             while (file.hasNext()) {
                 temp.add(file.nextLine().split(","));
             }
@@ -87,16 +87,16 @@ public class PageAdmin_PaymentHistory implements ActionListener{
             e1.printStackTrace();
         }
         
-        String[][] custAppointment = new String[temp.size()][];
-        for (int i = 0; i < custAppointment.length; i ++) {
-            custAppointment[i] = temp.get(i);
+        String[][] custPayment = new String[temp.size()][];
+        for (int i = 0; i < custPayment.length; i ++) {
+            custPayment[i] = temp.get(i);
         }
 
         // Table Section
         // Table Dataset (Text File)
         Object[] columnNames = {"Username", "Date", "Time", "Technician", "Total"};  // Use final for constant values
 
-        String[][] data = custAppointment;
+        String[][] data = custPayment;
 
         // Table model and create table
         DefaultTableModel model = new DefaultTableModel(data, columnNames);

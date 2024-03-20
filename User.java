@@ -1,8 +1,11 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class User {
     private int role;
@@ -98,5 +101,31 @@ public class User {
         else {
             throw new Exception();
         }
+    }
+
+    public static List<String> readAppointmentFile(String fileName) {
+        List<String> appointments = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                appointments.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return appointments;
+    }
+
+    public static List<String> readPaymentFile(String fileName) {
+        List<String> payments = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                payments.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return payments;
     }
 }

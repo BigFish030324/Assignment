@@ -1,4 +1,3 @@
-// import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
@@ -6,9 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.ImageIcon;
@@ -16,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class PageTechnician_Payment implements ActionListener{
@@ -141,21 +145,60 @@ public class PageTechnician_Payment implements ActionListener{
                         // Handle default case
                         totalDisplay.setText("Unknown option selected");
                         break;
+                }
+            }
+        });
+
+        // Button Section
+        // Create New Button
+        createNew = new JButton("Create New");
+        createNew.setBounds(container.getWidth() - 180, 220, 120, 30);
+
+        createNew.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedUser = (String) usersComboBox.getSelectedItem();
+                String totalValue = totalDisplay.getText();
+
+                List<String> appointments = User.readAppointmentFile("appointment.txt");
+                List<String> payments = User.readPaymentFile("payment.txt");
+
+                boolean userExists = false;
+                for (String payment : payments) {
+                    String[] parts = payment.split(",");
+                    String name = parts[0];
+        
+                    if (name.equals(selectedUser)) {
+                        userExists = true;
+                        break;
                     }
                 }
-            });
+
+                if (!userExists) {
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("payment.txt", true))) {
+                        for (String appointment : appointments) {
+                            String[] parts = appointment.split(",");
+                            String name = parts[0];
+
+                            if (name.equals(selectedUser)) {
+                                writer.write(appointment + "," + totalValue);
+                                writer.newLine();
+                            }
+                        }
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                } else{
+                    JOptionPane.showMessageDialog(container, "User already has a payment record.");
+                }
+            }
+        });
 
         // Input Section
         // Total Display
         totalDisplay = new JTextField();
         totalDisplay.setEditable(false);
         totalDisplay.setBounds(145, 220, 90, 30);
-
-        // Button Section
-        // Create New Button
-        createNew = new JButton("Create New");
-        createNew.setBounds(container.getWidth() - 180, 220, 120, 30);
-        createNew.addActionListener(this);
 
         // Add Section
         // Buttons

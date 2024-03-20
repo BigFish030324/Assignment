@@ -1,6 +1,5 @@
 import java.awt.Cursor;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -10,16 +9,12 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.DefaultCellEditor;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 public class PageTechnician_History implements ActionListener{
     public void actionPerformed(ActionEvent e){
@@ -38,8 +33,6 @@ public class PageTechnician_History implements ActionListener{
         //     }
         // }
     }
-
-
 
     static JFrame container;
     JLabel historyText;
@@ -68,14 +61,14 @@ public class PageTechnician_History implements ActionListener{
 
         // Text Section
         // History Text
-        historyText = new JLabel("History");
+        historyText = new JLabel("Unpaid");
         historyText.setBounds((container.getWidth()/2) - 50, 10, 140, 50);
         historyText.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
         Scanner file;
         ArrayList<String[]> temp = new ArrayList<>();
         try {
-            file = new Scanner(new File("appointment.txt"));
+            file = new Scanner(new File("payment.txt"));
             while (file.hasNext()) {
                 temp.add(file.nextLine().split(","));
             }
@@ -83,16 +76,16 @@ public class PageTechnician_History implements ActionListener{
             e1.printStackTrace();
         }
         
-        String[][] custAppointment = new String[temp.size()][];
-        for (int i = 0; i < custAppointment.length; i ++) {
-            custAppointment[i] = temp.get(i);
+        String[][] custPayment = new String[temp.size()][];
+        for (int i = 0; i < custPayment.length; i ++) {
+            custPayment[i] = temp.get(i);
         }
 
         // Table Section
         // Table Dataset (Text File)
         Object[] columnNames = {"Username", "Date", "Time", "Technician", "Total"};  // Use final for constant values
 
-        String[][] data = custAppointment;
+        String[][] data = custPayment;
 
         // Table model and create table
         DefaultTableModel model = new DefaultTableModel(data, columnNames){
@@ -107,28 +100,7 @@ public class PageTechnician_History implements ActionListener{
         // Set column headers directly
         model.setColumnIdentifiers(columnNames);
 
-        // Make the "Total" column editable
-        int totalColumnIndex = -1;
-        for (int i = 0; i < columnNames.length; i++) {
-            if (columnNames[i].equals("Total")) {
-                totalColumnIndex = i;
-                break;
-            }
-        }
-
-        DefaultCellEditor totalEditor = new DefaultCellEditor(new JTextField());
-        if (totalColumnIndex != -1) {
-            TableColumn totalColumn = table.getColumnModel().getColumn(totalColumnIndex);
-            totalColumn.setCellEditor(totalEditor);
-        }
-
-        // Disable editing for other columns
-        for (int i = 0; i < table.getColumnCount(); i++) {
-            if (i != totalColumnIndex) {
-                TableColumn column = table.getColumnModel().getColumn(i);
-                column.setCellEditor(null);
-            }
-        }
+        table.setDefaultEditor(Object.class, null);
 
         // Table Frame
         table.setFont(new Font("Times New Roman", Font.BOLD, 16));
@@ -149,7 +121,6 @@ public class PageTechnician_History implements ActionListener{
         container.add(scrollpane);
         container.add(historyText);
         container.add(icon);
-        container.add(ImageTechnician);
         container.setVisible(true);
     }
 }
