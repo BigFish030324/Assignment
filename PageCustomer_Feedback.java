@@ -90,6 +90,7 @@ public class PageCustomer_Feedback implements ActionListener{
         // Description Input
         descriptionInput = new JTextArea(15, 50);
         descriptionInput.setSize(300, 200);
+        descriptionInput.setLineWrap(true);
 
         // Scroll Pane for Description Input
         JScrollPane scrollPane = new JScrollPane(descriptionInput);

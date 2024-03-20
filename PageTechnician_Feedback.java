@@ -106,6 +106,7 @@ public class PageTechnician_Feedback implements ActionListener{
         // Description Display
         descriptionDisplay = new JTextArea(20, 50);
         descriptionDisplay.setSize(600, 400);
+        descriptionDisplay.setLineWrap(true);
 
         // Scroll Pane for Description Display
         JScrollPane scrollPane2 = new JScrollPane(descriptionDisplay);
