@@ -108,7 +108,7 @@ public class PageAdmin implements ActionListener {
         appointment.addActionListener(this);
 
         // History Button
-        history = new JButton("Unpaidz");
+        history = new JButton("Unpaid");
         history.setBounds((container.getWidth() - 500)/2, 410, 500, 50);
         history.addActionListener(this);
 
