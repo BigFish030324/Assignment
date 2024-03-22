@@ -121,6 +121,7 @@ public class PageAdmin_PaymentHistory implements ActionListener{
         container.add(scrollpane);
         container.add(historyText);
         container.add(icon);
+        container.add(ImageAdmin);
         container.setVisible(true);
     }
 }

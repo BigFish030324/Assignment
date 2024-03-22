@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -25,9 +26,30 @@ import javax.swing.table.DefaultTableModel;
 
 public class PageAdmin_Appointment_TABLE implements ActionListener{
     public void actionPerformed(ActionEvent e){
+        Scanner file;
+        ArrayList<String[]> temp = new ArrayList<>();
+        try {
+            file = new Scanner(new File("appointment.txt"));
+            while (file.hasNext()) {
+                temp.add(file.nextLine().split(","));
+            }
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        };
+
         if (e.getSource() == add) {
-            Manager.makeAppointment();
+            boolean paymentCompleted = false;
+            for(int i = 0; i < temp.size(); i++){
+                if(temp.get(i)[0].equals(usernameBox.getSelectedItem().toString())){
+                    JOptionPane.showMessageDialog(container, "Customer last payment not Completed!");
+                    paymentCompleted = true;
+                    break;
+                }
+            }
+            if(!paymentCompleted){
+                Manager.makeAppointment();
             refreshTableData();
+            }
         } else if (e.getSource() == done) {
             int[] selectedRows = table.getSelectedRows();
             DefaultTableModel model = (DefaultTableModel) table.getModel();

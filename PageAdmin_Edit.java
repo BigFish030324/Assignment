@@ -51,7 +51,7 @@ public class PageAdmin_Edit implements ActionListener{
                     throw new Exception();
                 }
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(container, "Invalid Input!");
+                JOptionPane.showMessageDialog(container, "User not Found!");
             }
         } else if (e.getSource() == apply) { //Click Apply to make changes
             try {
@@ -79,12 +79,18 @@ public class PageAdmin_Edit implements ActionListener{
                     User.setPass(index, passwordInput.getText());
                     User.setRole(index, role);
                     Manager.writeData();
+                    JOptionPane.showMessageDialog(container, "Successfully Editted");
+                    container.dispose();
+                    PageAdmin.container.setVisible(true);
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(container, "Invalid Input!");
                 }
         } else if (e.getSource() == dlt){
             Manager.deleteUser();
+            JOptionPane.showMessageDialog(container, "Successfully Deleted");
+            container.dispose();
+            PageAdmin.container.setVisible(true);
         }
         
 
