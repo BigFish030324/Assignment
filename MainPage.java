@@ -188,7 +188,7 @@ public class MainPage implements ActionListener{
         enter.addActionListener(this);
 
         // Add Section
-        // Add different layers to container here
+        // Add different layers to container
         layer.add(enter, JLayeredPane.MODAL_LAYER);
         layer.add(showPassword, JLayeredPane.POPUP_LAYER);
         layer.add(userText, JLayeredPane.MODAL_LAYER);
