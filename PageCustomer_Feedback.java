@@ -57,7 +57,7 @@ public class PageCustomer_Feedback implements ActionListener{
             }
         });
 
-        // The background of a hotel use for container
+        // The background of customer pages
         ImageIcon image = new ImageIcon("..\\Assignment\\Images\\Wooden_Background.jpg");
         Image setSize = image.getImage();
         setSize = setSize.getScaledInstance(container.getWidth(), container.getHeight(), Image.SCALE_SMOOTH);

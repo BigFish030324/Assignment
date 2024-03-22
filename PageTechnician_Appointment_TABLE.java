@@ -61,7 +61,7 @@ public class PageTechnician_Appointment_TABLE implements ActionListener{
             }
         });
 
-        // The background of a hotel use for container
+        // The background of technician pages
         ImageIcon image = new ImageIcon("..\\Assignment\\Images\\Wooden_Background.jpg");
         Image setSize = image.getImage();
         setSize = setSize.getScaledInstance(container.getWidth(), container.getHeight(), Image.SCALE_SMOOTH);
