@@ -133,7 +133,7 @@ public class PageCustomer_Appointment implements ActionListener{
         ArrayList<String> technician = new ArrayList<>();
 
         for (User user : User.userList){
-            if(user.getRole() == 1){
+            if(user.getRole() == 1 && !technician.contains(user.getName())){
                 technician.add(user.getName());
             }
         }
