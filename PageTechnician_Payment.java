@@ -24,20 +24,7 @@ import javax.swing.JTextField;
 
 public class PageTechnician_Payment implements ActionListener{
     public void actionPerformed(ActionEvent e){
-        // if (e.getSource() == userComboBox) {
-        //     System.out.println(userComboBox.getSelectedItem());
-        // } else if (e.getSource() == ok) {
-        //     try {
-        //         if (userInput.getText().isEmpty()) {
-        //             throw new Exception();
-        //         } else {
-        //             container.setVisible(false);
-        //             PageAdmin.container.setVisible(true);
-        //         }
-        //     } catch (Exception f) {
-        //         JOptionPane.showMessageDialog(container, "Invalid Input!");
-        //     }
-        // }
+        
     }
 
     static JFrame container;
@@ -174,7 +161,7 @@ public class PageTechnician_Payment implements ActionListener{
                     }
                 }
 
-                if (!userExists) {
+                if (!userExists && !totalDisplay.getText().isEmpty()) {
                     try (BufferedWriter writer = new BufferedWriter(new FileWriter("payment.txt", true))) {
                         for (String appointment : appointments) {
                             String[] parts = appointment.split(",");
@@ -188,8 +175,11 @@ public class PageTechnician_Payment implements ActionListener{
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
+                    JOptionPane.showMessageDialog(container, "Payment made successfully");
+                    container.dispose();
+                    PageTechnician.container.setVisible(true);
                 } else{
-                    JOptionPane.showMessageDialog(container, "User already has a payment record.");
+                    JOptionPane.showMessageDialog(container, "User already has a payment record or Choose a service.");
                 }
             }
         });
