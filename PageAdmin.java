@@ -111,11 +111,7 @@ public class PageAdmin implements ActionListener {
         history = new JButton("Unpaidz");
         history.setBounds((container.getWidth() - 500)/2, 410, 500, 50);
         history.addActionListener(this);
-
-
-
-
-
+        
         // Add Section
         container.add(register);
         container.add(edit);
