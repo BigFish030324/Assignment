@@ -25,6 +25,9 @@ public class PageCustomer_Feedback implements ActionListener{
             } else{
                 try {
                     Customer.writeFeedback();
+                    JOptionPane.showMessageDialog(container, "Feedback made");
+                    container.dispose();
+                    PageCustomer.container.setVisible(true);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
